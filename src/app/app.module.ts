@@ -1,9 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AuthModule } from './auth/auth.module';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { RoutesModule } from './app.routes';
 
 import { AppComponent } from './app.component';
-import { RoutesModule } from './app.routes';
+
 
 @NgModule({
   declarations: [
@@ -11,6 +13,7 @@ import { RoutesModule } from './app.routes';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     RoutesModule,
     AuthModule
   ],
