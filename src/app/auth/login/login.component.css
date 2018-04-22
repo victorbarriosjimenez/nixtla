@@ -6,18 +6,26 @@ h1 {
 h5 {
     color: #00C2FD;
     margin-top: -10px;
+    margin-bottom: 20px;
     font-family: 'Noto Sans', sans-serif;
 }
+.centered-form {
+    margin-top: 10%;
+}
 .full-width {
-    width: 300px;
+    width: 100%;
+}
+.btn-login {
+    background-color: #00C2FD;
+    color: white;
+    margin: 10px auto;
+    padding: 2.5px 50px;
     display: block;
 }
-.material-form {
-    margin: 0 auto;
-    display: flex;
-    width: 300px;
-    flex-direction: column;
-}
-button mat-raised-button {
-    display: block;
+.bordered-form {
+    padding: 70px 50px;
+    border-bottom: 3px solid #00C2FD;;
+    -webkit-box-shadow: 11px 10px 99px -64px rgba(0,0,0,0.2);
+    -moz-box-shadow: 11px 10px 99px -64px rgba(0,0,0,0.2);
+    box-shadow: 11px 10px 99px -64px rgba(0,0,0,0.2);
 }
