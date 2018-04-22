@@ -1,3 +1,5 @@
-.heading { 
+h1 {
     color: #00C2FD;
+    font-family: 'lemonmilkbold';
+    text-align: center;
 }
