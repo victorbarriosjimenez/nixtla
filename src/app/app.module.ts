@@ -6,7 +6,6 @@ import { RoutesModule } from './app.routes';
 import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
-
 @NgModule({
   declarations: [
     AppComponent
