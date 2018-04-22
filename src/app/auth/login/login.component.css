@@ -3,3 +3,8 @@ h1 {
     font-family: 'lemonmilkbold';
     text-align: center;
 }
+h5 {
+    color: #00C2FD;
+    margin-top: -10px;
+    font-family: 'Noto Sans', sans-serif;
+}
