@@ -9,9 +9,11 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   public loginForm: FormGroup;
+  public changeType: string = "password";
+  public visibilityIcon: string = "visibility";
+  public isPasswordVisible: boolean = false;
   public isLoginIn: boolean = false;
   constructor(private _formBuilder: FormBuilder,
-              private _authService: AuthService,
               private _router: Router) { }
   ngOnInit() {    
     this.createsLoginForm();
@@ -24,15 +26,18 @@ export class LoginComponent implements OnInit {
   }
   public loginToAccountWithEmailAndPassword( ): void { 
     this.isLoginIn = true;
-    
-   /* this._authService.emailLogin(
-        this.loginForm.value['email'],
-        this.loginForm.value['password']
-    ).then( ( )=>{
-      this.isLoginIn = false 
+  }
+  public loginToAccountWithGoogleAccount(){ 
+  }
+  public togglePasswordDisplay(){ 
+    this.isPasswordVisible = !this.isPasswordVisible;
+    if(!this.isPasswordVisible){
+      this.changeType = "password";
+      this.visibilityIcon = "visibility"
     }
-    ).catch( () => {
-      this.isLoginIn = false 
-    });
-  }*/
+    else { 
+      this.changeType = "text";
+      this.visibilityIcon = "visibility_off"
+    } 
+  }
 }

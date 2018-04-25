@@ -14,7 +14,9 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
     CommonModule,
     MaterialElementsModule,
     AngularFireAuthModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    FormsModule,
+    ReactiveFormsModule
    ],
   declarations: [
     RegisterComponent,
