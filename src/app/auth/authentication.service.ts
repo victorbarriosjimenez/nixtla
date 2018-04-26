@@ -3,16 +3,13 @@ import { Router } from '@angular/router';
 import * as firebase from 'firebase/app';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
-
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/switchMap'
-
 interface User {
-  uid: string;
-  email: string;
-  photoURL?: string;
-  displayName?: string;
-  favoriteColor?: string;
+  uid: any;
+  email: any;
+  displayName: any;
+  photoURL: any
 }
 @Injectable()
 export class AuthService {
@@ -30,18 +27,16 @@ export class AuthService {
           }
         })
   }
-  googleLogin() {
+  public loginWithGoogleAccount() {
     const provider = new firebase.auth.GoogleAuthProvider()
     return this.oAuthLogin(provider);
   }
-
   private oAuthLogin(provider) {
     return this.afAuth.auth.signInWithPopup(provider)
       .then((credential) => {
         this.updateUserData(credential.user)
       })
   }
-
   private updateUserData(user) {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
     const data: User = {
@@ -50,10 +45,9 @@ export class AuthService {
       displayName: user.displayName,
       photoURL: user.photoURL
     }
-
     return userRef.set(data, { merge: true })
   }
-  signOut() {
+  public logOutFromApp() {
     this.afAuth.auth.signOut().then(() => {
         this.router.navigate(['/']);
     });
