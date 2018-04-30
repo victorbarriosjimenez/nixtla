@@ -16,8 +16,6 @@ export class RegisterComponent implements OnInit {
              emailFormControl:['', Validators.compose([Validators.required, Validators.email])],
              nameFormControl:['',Validators.required],
              passwordFormControl: ['', Validators.compose([Validators.required, Validators.minLength(8), Validators.maxLength(20)])],
-             address: ['', Validators.required],
       });
    } 
 }
-/* 050361 */

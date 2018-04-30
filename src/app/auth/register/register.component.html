@@ -13,6 +13,9 @@
                           [errorStateMatcher]="matcher"
                           required
                           formControlName="emailFormControl">
+                          <mat-hint>
+                                Ingresa un correo electrónico
+                         </mat-hint>
                           <mat-error *ngIf="registrationForm.controls.emailFormControl.hasError('email') && !registrationForm.controls.emailFormControl.hasError('required')">
                                 Ingresa un correo válido
                           </mat-error>
@@ -54,8 +57,8 @@
               </mat-form-field> 
               <br>
               <br>
-              <button [disabled]="!registrationForm.valid" mat-raised-button type="submit" color="primary">Crear Cuenta</button>
-          </form>
+              <button [disabled]="!registrationForm.valid" mat-raised-button type="submit" class="btn-login">REGISTRAR CUENTA</button>
+        </form>
           <hr>
           <p class="register-invitation">¿Ya tienes una cuenta? e inicia sesión <a href="/">aquí</a> </p>          
       </div>
