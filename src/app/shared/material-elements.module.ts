@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import {  
           MatButtonModule,
           MatInputModule,
-          MatIconModule          
+          MatIconModule
         } 
         from '@angular/material';
 import { CommonModule } from '@angular/common';
