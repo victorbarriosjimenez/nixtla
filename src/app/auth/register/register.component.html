@@ -4,7 +4,8 @@
             <h1>Nixtla</h1>
             <h5>Administrador</h5>
             <h6>Registro</h6>
-            <form [formGroup]="registrationForm">    
+            <form [formGroup]="registrationForm"
+                  (ngSubmit)="registerAccountWithEmailAndPassword()">    
               <mat-form-field class="full-width">
                       <input 
                           matInput

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup,FormControl } from '@angular/forms';
+import { AuthService } from '../authentication.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -18,4 +19,7 @@ export class RegisterComponent implements OnInit {
              passwordFormControl: ['', Validators.compose([Validators.required, Validators.minLength(8), Validators.maxLength(20)])],
       });
    } 
+  public registerAccountWithEmailAndPassword(): void { 
+    const formModel = this.registrationForm.value;
+  }
 }

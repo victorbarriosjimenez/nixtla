@@ -8,8 +8,6 @@ import 'rxjs/add/operator/switchMap'
 interface User {
   uid: any;
   email: any;
-  displayName: any;
-  photoURL: any
 }
 @Injectable()
 export class AuthService {
@@ -27,23 +25,26 @@ export class AuthService {
           }
         })
   }
-  public loginWithGoogleAccount() {
-    const provider = new firebase.auth.GoogleAuthProvider()
-    return this.oAuthLogin(provider);
+  public createUser(email, password) {
+    return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
+    .then(user => {
+      return this.setUserDoc(user)
+    })
+    .catch(error => console.log(error));
   }
-  private oAuthLogin(provider) {
-    return this.afAuth.auth.signInWithPopup(provider)
-      .then((credential) => {
-        this.updateUserData(credential.user)
-      })
+  private setUserDoc(user) {
+    const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${user.uid}`);
+    const data: User = {
+      uid: user.uid,
+      email: user.email || null,
+    }
+    return userRef.set(data)
   }
   private updateUserData(user) {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
     const data: User = {
       uid: user.uid,
       email: user.email,
-      displayName: user.displayName,
-      photoURL: user.photoURL
     }
     return userRef.set(data, { merge: true })
   }
