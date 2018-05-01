@@ -1,0 +1,32 @@
+.aside-bar {
+    position: absolute;
+    width: 10vh;
+    height: 100vh;
+    background-color: #00C2FD; 
+    color: white; 
+    display: flex;
+    flex-direction: column;  
+}
+.brand-name {
+    background-color: transparent;
+    color: white;
+    margin: 50px auto;
+    font-size: 3.5em;
+    font-family: 'lemonmilkbold';
+}
+.menu-items {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+}
+.menu-item { 
+    margin: 40px auto;
+    width: 70px;
+    height: 70px;
+    text-align: center;
+    font-size: 2.5em;
+}
+.menu-item:hover {
+    background-color: rgb(20, 117, 155); 
+}
+
