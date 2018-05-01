@@ -19,11 +19,11 @@ export class AuthService {
   public createUserWithEmailAndPassword(email,password) {
     return this.afAuth.auth.createUserWithEmailAndPassword(email,password)
                .then(user => {
-                 return this.setUserToDatabase(user);
+                 return this.setAdministratorToDatabase(user);
                })
                .catch(err=> console.log(err));
   }
-  public setUserToDatabase(user) {
+  public setAdministratorToDatabase(user) {
     const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${user.uid}`);
     console.log(user.uid);
     const data: User = {
