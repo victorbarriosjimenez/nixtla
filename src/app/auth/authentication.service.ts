@@ -30,7 +30,10 @@ export class AuthService {
       uid: user.uid,
       email: user.email || null,
     }
-    console.log(data);
     return userRef.set(data);
+  }
+  public logoutUser() {
+    this.afAuth.auth.signOut();
+    this.router.navigate(['/']);
   }
 }

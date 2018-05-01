@@ -8,7 +8,5 @@ import * as firebase from 'firebase/app';
 export class AuthService {
   constructor(private afAuth: AngularFireAuth,
               private afs: AngularFirestore,
-              private router: Router) {
-                  
-  }
+              private router: Router) {  }
 }

@@ -4,7 +4,7 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { MaterialElementsModule  } from '../shared/material-elements.module';
 import { BranchesComponent } from './branches/branches.component';
 import { BranchDetailsComponent } from './branch-details/branch-details.component';
-
+import { BranchFormComponent } from './branch-form/branch-form.component';
 @NgModule({
   imports: [
     CommonModule, 
@@ -14,7 +14,8 @@ import { BranchDetailsComponent } from './branch-details/branch-details.componen
    ],
   declarations: [,
     BranchesComponent,
-    BranchDetailsComponent
+    BranchDetailsComponent,
+    BranchFormComponent
 ],
   exports: [
   ],
