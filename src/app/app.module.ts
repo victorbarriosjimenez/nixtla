@@ -9,6 +9,8 @@ import { AppComponent } from './app.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { PromotersModule } from './promoters/promoters.module';
+import { SupervisorsModule } from './supervisors/supervisors.module';
 @NgModule({
   declarations: [
     AppComponent
@@ -22,7 +24,9 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
     AngularFireAuthModule,
     AngularFirestoreModule,
     RoutesModule,
-    AuthModule
+    AuthModule,
+    PromotersModule,
+    SupervisorsModule,
   ],
   providers: [
   

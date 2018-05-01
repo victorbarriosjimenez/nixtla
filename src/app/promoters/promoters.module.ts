@@ -16,5 +16,5 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
     
   ]
 })
-export class PromothersModule { }
+export class PromotersModule { }
  
