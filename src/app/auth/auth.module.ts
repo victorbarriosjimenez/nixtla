@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { MaterialElementsModule  } from '../shared/material-elements.module';
 import { AuthService } from './authentication.service';
+import { NavigationComponent } from './navigation/navigation.component';
 @NgModule({
   imports: [
     CommonModule, 
@@ -16,7 +17,8 @@ import { AuthService } from './authentication.service';
   declarations: [
     RegisterComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    NavigationComponent
   ],
   exports: [
   ],

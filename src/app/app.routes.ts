@@ -5,7 +5,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { HomeComponent } from './auth/home/home.component';
 const appRoutes: Routes = [  
-  { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
 ];

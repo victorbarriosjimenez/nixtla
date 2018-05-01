@@ -1,18 +1,18 @@
 h1 {
     font-family: 'lemonmilkbold';
     text-align: center;
-    color: #00C2FD;    
+    color: rgb(0, 59, 253);    
 }
 h5 {
     margin-top: -10px;
-    color: #00C2FD;    
+    color: rgb(0, 59, 253);    
     
     text-align: center;
     margin-bottom: 20px;
     font-family: 'Noto Sans', sans-serif;
 }
 h6 {
-    color: #00C2FD;    
+    color: rgb(0, 59, 253);    
     
     text-align: left;
 }
@@ -24,7 +24,7 @@ h6 {
     margin: 5px auto; 
 }
 .btn-login {
-    background-color: #00C2FD;
+    background-color: rgb(0, 59, 253);
     color: white;
     margin: 10px auto;
     padding: 2.5px 50px;
@@ -32,7 +32,7 @@ h6 {
 }
 .bordered-form {
     padding: 70px 50px;
-    border-bottom: 3px solid #00C2FD;;
+    border-bottom: 3px solid rgb(0, 59, 253);
     -webkit-box-shadow: 11px 10px 99px -64px rgba(0,0,0,0.7);
     -moz-box-shadow: 11px 10px 99px -64px rgba(0,0,0,0.7); 
     box-shadow: 11px 10px 99px -64px rgba(0,0,0,0.7);
@@ -41,13 +41,4 @@ h6 {
     color: darkgrey;
     font-size: .75em;
     text-align: center;
- }
- /*
-    ¿Qué tipo de comunicacion se aplica en su equipo de trabajo?
-    La empresa le solicita preparacion a los empleados
-    ¿Que técnicas de motivacion aplica hacia su personal?
-    ¿Qué tipos de reconocimientos ofrece la empresa a su personal?
-    Los puntos de vista opiniones de su personal son tomados en cuenta por su conducto?
-    Cuando se presenta algun conflicto en su empresa ¿Qué estrategias aplica usted?
-    ¿Cada cuando realiza reuniones de trabajo para proporcionar información sobre los objetivos generales  y ?
-*/
+}
