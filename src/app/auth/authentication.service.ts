@@ -6,32 +6,27 @@ import { Observable } from 'rxjs/Observable';
 import * as firebase from 'firebase/app';
 import {  Administrator, Promoter , Supervisor } from '../models/user';
 import 'rxjs/add/operator/switchMap';
-interface User {
-  uid: string;
-  email: string;
-}
 @Injectable()
 export class AuthService {
-  admin: Administrator;
+  admin: Observable<Administrator>;
   
-  user: Observable<User>;
+  //user: Observable<User>;
   constructor(private afAuth: AngularFireAuth,
               private afs: AngularFirestore,
               private router: Router) {
   }
   public createUserWithEmailAndPassword(email,password) {
     return this.afAuth.auth.createUserWithEmailAndPassword(email,password)
-               .then(user => {
-                 return this.setAdministratorToDatabase(user);
+               .then(admin => {
+                 return this.setAdministratorToDatabase(admin);
                })
                .catch(err=> console.log(err));
   }
-  public setAdministratorToDatabase(user) {
-    const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${user.uid}`);
-    console.log(user.uid);
-    const data: User = {
-      uid: user.uid,
-      email: user.email || null,
+  public setAdministratorToDatabase(admin) {
+    const userRef: AngularFirestoreDocument<Administrator> = this.afs.doc(`administrators/${admin.uid}`);
+    const data: Administrator = {
+      uid: admin.uid,
+      email: admin.email || null,
     }
     return userRef.set(data);
   }
