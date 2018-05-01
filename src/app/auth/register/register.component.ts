@@ -22,12 +22,12 @@ export class RegisterComponent implements OnInit {
    } 
   public registerAccountWithEmailAndPassword(): void { 
     const formModel = this.registrationForm.value;
-    const userModel = { 
+    const administratorModel: Administrator = { 
         email: formModel.emailFormControl as string,
         name:  formModel.nameFormControl as string,
         password: formModel.passwordFormControl as string
     }
-    this._authService.createUserWithEmailAndPassword(userModel)
+    this._authService.createUserWithEmailAndPassword(administratorModel)
         .then(e => console.log(e));
   }
 }

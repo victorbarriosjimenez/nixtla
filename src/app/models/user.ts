@@ -7,6 +7,7 @@ export interface User {
     rfc?: string;
     nss?: string;
     departamento?: string;
+    password?: string;
     employeeKey?: string; 
 }
 export interface Administrator extends User { 
