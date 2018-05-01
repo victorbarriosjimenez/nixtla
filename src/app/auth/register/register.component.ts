@@ -21,5 +21,10 @@ export class RegisterComponent implements OnInit {
    } 
   public registerAccountWithEmailAndPassword(): void { 
     const formModel = this.registrationForm.value;
+    const UserModel = { 
+        email: formModel.emailFormControl as string,
+        name:  formModel.usernameFormControl as string,
+        password: formModel.passwordFormControl as string
+    }
   }
 }
