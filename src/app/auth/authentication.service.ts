@@ -3,43 +3,35 @@ import { Router } from '@angular/router';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/switchMap'
+import * as firebase from 'firebase/app';
+import 'rxjs/add/operator/switchMap';
 interface User {
-  uid: any;
-  email: any;
+  uid: string;
+  email: string;
+  photoURL: string;
+  catchPhrase?: string;
 }
 @Injectable()
 export class AuthService {
   user: Observable<User>;
   constructor(private afAuth: AngularFireAuth,
               private afs: AngularFirestore,
-              private router: Router) { }
-  public createUser(email, password) {
-        return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
-        .then(user => {
-          return this.setUserDoc(user)
-        })
-        .catch(error => console.log(error));
+              private router: Router) {
   }
-  private setUserDoc(user) {
+  public createUserWithEmailAndPassword(email,password) {
+    return this.afAuth.auth.createUserWithEmailAndPassword(email,password)
+               .then(user => {
+                 return this.setUserToDatabase(user)
+               })
+               .catch(err=> console.log(err));
+  }
+  public setUserToDatabase(user) {
     const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${user.uid}`);
     const data: User = {
       uid: user.uid,
       email: user.email || null,
+      photoURL: 'https://goo.gl/Fz9nrQ'
     }
     return userRef.set(data)
-  }
-  private updateUserData(user) {
-    const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
-    const data: User = {
-      uid: user.uid,
-      email: user.email,
-    }
-    return userRef.set(data, { merge: true })
-  }
-  public logOutFromApp() {
-    this.afAuth.auth.signOut().then(() => {
-        this.router.navigate(['/']);
-    });
   }
 }

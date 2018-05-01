@@ -34,9 +34,9 @@ h6 {
 .bordered-form {
     padding: 70px 50px;
     border-bottom: 3px solid #00C2FD;;
-    -webkit-box-shadow: 11px 10px 99px -64px rgba(0,0,0,0.4);
-    -moz-box-shadow: 11px 10px 99px -64px rgba(0,0,0,0.4); 
-    box-shadow: 11px 10px 99px -64px rgba(0,0,0,0.4);
+    -webkit-box-shadow: 11px 10px 99px -64px rgba(0,0,0,0.7);
+    -moz-box-shadow: 11px 10px 99px -64px rgba(0,0,0,0.7); 
+    box-shadow: 11px 10px 99px -64px rgba(0,0,0,0.7);
 }
 .register-invitation {
     color: darkgrey;

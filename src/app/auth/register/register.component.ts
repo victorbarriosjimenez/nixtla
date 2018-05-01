@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup,FormControl } from '@angular/forms';
 import { AuthService } from '../authentication.service';
-import { AuthModule } from '../auth.module';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -9,23 +8,25 @@ import { AuthModule } from '../auth.module';
 })
 export class RegisterComponent implements OnInit {
   public registrationForm: FormGroup;
-  constructor(private _formBuilder: FormBuilder, private _auth: AuthService) { }
+  constructor(private _formBuilder: FormBuilder, private _authService: AuthService) { }
   ngOnInit() {
     this.createForm();
   }
   public createForm( ): void {
     this.registrationForm =  this._formBuilder.group({
              emailFormControl:['', Validators.compose([Validators.required, Validators.email])],
-             nameFormControl:['',Validators.required],
+             nameFormControl:['', Validators.required],
              passwordFormControl: ['', Validators.compose([Validators.required, Validators.minLength(8), Validators.maxLength(20)])],
       });
    } 
   public registerAccountWithEmailAndPassword(): void { 
     const formModel = this.registrationForm.value;
-    const UserModel = { 
+    const userModel = { 
         email: formModel.emailFormControl as string,
-        name:  formModel.usernameFormControl as string,
+        name:  formModel.nameFormControl as string,
         password: formModel.passwordFormControl as string
     }
+    this._authService.createUserWithEmailAndPassword(userModel.email,userModel.password)
+        .then(e => console.log(e));
   }
 }

@@ -8,7 +8,7 @@ import { MaterialElementsModule  } from '../shared/material-elements.module';
 import { AuthService } from './authentication.service';
 @NgModule({
   imports: [
-    CommonModule,
+    CommonModule, 
     MaterialElementsModule,
     FormsModule,
     ReactiveFormsModule
