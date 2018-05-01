@@ -5,7 +5,7 @@ import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firesto
 import { Observable } from 'rxjs/Observable';
 import * as firebase from 'firebase/app';
 @Injectable()
-export class AuthService {
+export class BranchesService {
   constructor(private afAuth: AngularFireAuth,
               private afs: AngularFirestore,
               private router: Router) {  }
