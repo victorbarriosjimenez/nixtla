@@ -9,7 +9,6 @@ import 'rxjs/add/operator/switchMap';
 @Injectable()
 export class AuthService {
   admin: Observable<Administrator>;
-  
   //user: Observable<User>;
   constructor(private afAuth: AngularFireAuth,
               private afs: AngularFirestore,
@@ -26,12 +25,14 @@ export class AuthService {
     const userRef: AngularFirestoreDocument<Administrator> = this.afs.doc(`administrators/${admin.uid}`);
     const data: Administrator = {
       uid: admin.uid,
+      name: admin.name,
       email: admin.email || null,
     }
-    return userRef.set(data);
+    console.log(data);
+    //return userRef.set(data);
   }
   public logoutUser() {
     this.afAuth.auth.signOut();
-    this.router.navigate(['/']);
+    this.router.navigate(['/login']);
   }
 }

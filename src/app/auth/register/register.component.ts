@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup,FormControl } from '@angular/forms';
 import { AuthService } from '../authentication.service';
+import { Administrator } from '../../models/user';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -26,7 +27,7 @@ export class RegisterComponent implements OnInit {
         name:  formModel.nameFormControl as string,
         password: formModel.passwordFormControl as string
     }
-    this._authService.createUserWithEmailAndPassword(userModel.email,userModel.password)
+    this._authService.createUserWithEmailAndPassword(userModel)
         .then(e => console.log(e));
   }
 }
