@@ -38,7 +38,7 @@
 .menu-item:hover {
     border-right: 5px solid white;
     cursor: pointer;
-    color: rgb(0, 59, 253);
+    color: white;
     transition: .2s border-right;
     background-color: rgb(19, 3, 109); 
 }
