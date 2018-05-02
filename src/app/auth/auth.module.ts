@@ -9,6 +9,7 @@ import { AuthService } from './authentication.service';
 import { NavigationComponent } from './navigation/navigation.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthGuard } from './authentication.guard';
+import { SettingsComponent } from './settings/settings.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -21,8 +22,9 @@ import { AuthGuard } from './authentication.guard';
     RegisterComponent,
     LoginComponent,
     HomeComponent,
-    NavigationComponent
-  ],
+    NavigationComponent,
+    SettingsComponent
+],
   exports: [
   ],
   providers: [ 

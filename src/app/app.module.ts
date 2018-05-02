@@ -13,7 +13,6 @@ import { PromotersModule } from './promoters/promoters.module';
 import { SupervisorsModule } from './supervisors/supervisors.module';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-
 @NgModule({
   declarations: [
     AppComponent
