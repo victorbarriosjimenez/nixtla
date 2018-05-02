@@ -27,8 +27,7 @@ export class AuthService {
       name: adminName,
       email: admin.email || null
     }
-    console.log(data);
-    //return userRef.set(data);
+    return userRef.set(data);
   }
   public logoutUser() {
     this.afAuth.auth.signOut();

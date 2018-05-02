@@ -26,4 +26,4 @@ import { BranchesService } from './branches.service';
     BranchesService
   ]
 })
-export class AuthModule { }
+export class BranchesModule { }

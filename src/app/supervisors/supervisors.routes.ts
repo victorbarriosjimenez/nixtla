@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes , CanActivate } from '@angular/router';
+import { SupervisorsComponent } from './supervisors/supervisors.component';
 const appRoutes: Routes = [  
-  //{ path: , component:  },
+   { path: '/supervisors' , component: SupervisorsComponent  }
 ];
 @NgModule({
   imports: [
