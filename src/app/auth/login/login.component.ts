@@ -14,24 +14,25 @@ export class LoginComponent implements OnInit {
   public isPasswordVisible: boolean = false;
   public isLoginIn: boolean = false;
   constructor(private _formBuilder: FormBuilder,
-              private _router: Router) { }
+              private _router: Router,
+              private _authService: AuthService) { }
   ngOnInit() {    
     this.createsLoginForm();
   }
   public createsLoginForm( ): void { 
     this.loginForm =  this._formBuilder.group({
-      emailFormControl:['', Validators.compose([Validators.required, Validators.email])],
+      emailFormControl:['', Validators.compose([Validators.required, Validators.email, Validators.minLength(8)])],
       passwordFormControl: ['', Validators.required],
     });
   }
-  public loginToAccountWithEmailAndPassword( ): void { 
+  private loginToAccountWithEmailAndPassword( ): void { 
     this.isLoginIn = true;
     const loginForm = this.loginForm.value;
     const loginUserModel = { 
         email: loginForm.emailFormControl as string,
         password: loginForm.passwordFormControl as string
     }
-    console.log(loginUserModel);
+    this._authService.loginWithEmailAndPassword(loginUserModel);
   }
   public togglePasswordDisplay(){ 
     this.isPasswordVisible = !this.isPasswordVisible;

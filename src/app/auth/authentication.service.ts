@@ -31,8 +31,10 @@ export class AuthService {
     return userRef.set(data);
   }
   public loginWithEmailAndPassword(_userloginModel: User) {
-    console.log("Hey", _userloginModel);
-    //this.afAuth.auth.signInWithEmailAndPassword(_userloginModel.email,_userloginModel.password)
+    this.afAuth.auth.signInWithEmailAndPassword(_userloginModel.email,_userloginModel.password)
+        .then( user => {
+              this.router.navigate(['/home']);
+        });
   }
   public logoutUser() {
     this.afAuth.auth.signOut();
