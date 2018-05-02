@@ -9,9 +9,13 @@ import 'rxjs/add/operator/switchMap';
 @Injectable()
 export class AuthService {
   admin: Observable<Administrator>;
+  public authState: any = null;
   constructor(private afAuth: AngularFireAuth,
               private afs: AngularFirestore,
               private router: Router) {
+                this.afAuth.authState.subscribe((auth) => {
+                  this.authState = auth
+              }); 
   }
   public createUserWithEmailAndPassword(administrator: Administrator) {
     return this.afAuth.auth.createUserWithEmailAndPassword(administrator.email,administrator.password)

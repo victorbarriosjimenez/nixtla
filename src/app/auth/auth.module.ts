@@ -7,9 +7,12 @@ import { LoginComponent } from './login/login.component';
 import { MaterialElementsModule  } from '../shared/material-elements.module';
 import { AuthService } from './authentication.service';
 import { NavigationComponent } from './navigation/navigation.component';
+import { HttpClientModule } from '@angular/common/http';
+import { AuthGuard } from './authentication.guard';
 @NgModule({
   imports: [
-    CommonModule, 
+    CommonModule,
+    HttpClientModule, 
     MaterialElementsModule,
     FormsModule,
     ReactiveFormsModule
@@ -23,7 +26,8 @@ import { NavigationComponent } from './navigation/navigation.component';
   exports: [
   ],
   providers: [ 
-    AuthService
+    AuthService,
+    AuthGuard
   ]
 })
 export class AuthModule { }

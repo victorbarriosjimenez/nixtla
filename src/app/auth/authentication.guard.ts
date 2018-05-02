@@ -7,19 +7,19 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/take';
 @Injectable()
-export class AuthGuard  {
-  constructor(private auth: AuthService, private router: Router) {}
-  /*canActivate(
+export class AuthGuard implements CanActivate {
+  constructor(private _afAuth: AngularFireAuth , private router: Router) {}
+  canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | boolean {
-      return this.auth.user
+      return this._afAuth.authState
            .take(1)
-           .map(user => !!(user && user.catchPhrase) )
+           .map(user => !!(user) )
            .do(loggedIn => {
              if (!loggedIn) {
                this.router.navigate(['/login']);
              }
          })
 
-  }*/
+  }
 }
