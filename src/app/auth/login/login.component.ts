@@ -26,8 +26,12 @@ export class LoginComponent implements OnInit {
   }
   public loginToAccountWithEmailAndPassword( ): void { 
     this.isLoginIn = true;
-  }
-  public loginToAccountWithGoogleAccount(){ 
+    const loginForm = this.loginForm.value;
+    const loginUserModel = { 
+        email: loginForm.email as string,
+        password: loginForm.password as string
+    }
+    
   }
   public togglePasswordDisplay(){ 
     this.isPasswordVisible = !this.isPasswordVisible;

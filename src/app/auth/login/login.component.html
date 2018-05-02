@@ -10,6 +10,9 @@
                             type="email"
                             placeholder="Correo electrónico"
                             formControlName="email">
+                        <mat-hint>
+                                Ingresa un correo electrónico
+                        </mat-hint>
                 </mat-form-field> 
                 <mat-form-field class="full-width">
                         <input   
@@ -20,8 +23,11 @@
                             <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="togglePasswordDisplay()">
                                 <mat-icon>{{ visibilityIcon }}</mat-icon>
                             </button>
+                            <mat-hint>
+                                Ingresa tu contraseña
+                            </mat-hint>
                 </mat-form-field>
-                <button class="btn-login" mat-raised-button color="blue" type="submit">                              
+                <button [disabled]="loginForm.valid" class="btn-login" mat-raised-button type="submit">                              
                         ENTRAR
                 </button>        
             </form>

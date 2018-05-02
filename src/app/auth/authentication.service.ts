@@ -30,6 +30,9 @@ export class AuthService {
     }
     return userRef.set(data);
   }
+  public loginWithEmailAndPassword(administrator: Administrator) {
+    return this.afAuth.auth.signInWithEmailAndPassword(email, password)
+  }
   public logoutUser() {
     this.afAuth.auth.signOut();
     this.router.navigate(['/login']);
