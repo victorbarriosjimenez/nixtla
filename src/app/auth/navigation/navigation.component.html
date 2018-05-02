@@ -26,10 +26,8 @@
               <mat-icon>settings</mat-icon>                
           </a>
       </li>
-      <li class="menu-item" matTooltip="Salir de Nixtla" matTooltipPosition="after">
-          <a routerLink="/home">
-              <mat-icon>exit_to_app</mat-icon>                
-          </a>
+      <li (click)="logout()" class="menu-item" matTooltip="Salir de Nixtla" matTooltipPosition="after">
+            <mat-icon>exit_to_app</mat-icon>                
       </li>  
   </ul>
 </nav>

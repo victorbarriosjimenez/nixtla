@@ -16,7 +16,8 @@ export class AuthService {
   public createUserWithEmailAndPassword(administrator: Administrator) {
     return this.afAuth.auth.createUserWithEmailAndPassword(administrator.email,administrator.password)
                .then(admin => {
-                 return this.setAdministratorToDatabase(admin,administrator.name);
+                 this.setAdministratorToDatabase(admin,administrator.name);
+                 this.router.navigate(['/home']);
                })
                .catch(err=> console.log(err));
   }
