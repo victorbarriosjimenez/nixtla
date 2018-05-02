@@ -11,7 +11,6 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { PromotersModule } from './promoters/promoters.module';
 import { SupervisorsModule } from './supervisors/supervisors.module';
-import { BranchesModule } from './branches/branches.module';
 @NgModule({
   declarations: [
     AppComponent
