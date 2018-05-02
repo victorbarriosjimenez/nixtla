@@ -5,7 +5,6 @@ import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { HomeComponent } from './auth/home/home.component';
 import { AuthGuard } from './auth/authentication.guard';
-
 const appRoutes: Routes = [  
   { path: '', component: HomeComponent, canActivate: [AuthGuard], data: { animation: 'home' } },
   { path: 'login', component: LoginComponent,  },
