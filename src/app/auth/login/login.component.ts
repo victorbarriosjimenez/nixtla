@@ -20,18 +20,18 @@ export class LoginComponent implements OnInit {
   }
   public createsLoginForm( ): void { 
     this.loginForm =  this._formBuilder.group({
-      email:['', Validators.compose([Validators.required, Validators.email])],
-      password: ['', Validators.required],
+      emailFormControl:['', Validators.compose([Validators.required, Validators.email])],
+      passwordFormControl: ['', Validators.required],
     });
   }
   public loginToAccountWithEmailAndPassword( ): void { 
     this.isLoginIn = true;
     const loginForm = this.loginForm.value;
     const loginUserModel = { 
-        email: loginForm.email as string,
-        password: loginForm.password as string
+        email: loginForm.emailFormControl as string,
+        password: loginForm.passwordFormControl as string
     }
-    
+    console.log(loginUserModel);
   }
   public togglePasswordDisplay(){ 
     this.isPasswordVisible = !this.isPasswordVisible;

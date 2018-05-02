@@ -4,7 +4,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import * as firebase from 'firebase/app';
-import {  Administrator, Promoter , Supervisor } from '../models/user';
+import { User,Administrator, Promoter , Supervisor } from '../models/user';
 import 'rxjs/add/operator/switchMap';
 @Injectable()
 export class AuthService {
@@ -30,8 +30,9 @@ export class AuthService {
     }
     return userRef.set(data);
   }
-  public loginWithEmailAndPassword(administrator: Administrator) {
-    return this.afAuth.auth.signInWithEmailAndPassword(email, password)
+  public loginWithEmailAndPassword(_userloginModel: User) {
+    console.log("Hey", _userloginModel);
+    //this.afAuth.auth.signInWithEmailAndPassword(_userloginModel.email,_userloginModel.password)
   }
   public logoutUser() {
     this.afAuth.auth.signOut();
