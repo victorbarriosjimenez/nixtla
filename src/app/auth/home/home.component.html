@@ -1,4 +1,39 @@
 <app-navigation></app-navigation>
 <div class="home-container">
-    <h1>Sucursales</h1>  
+    <h1>Crear una nueva sucursal</h1> 
+    <form class="example-form">
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Sucursal">
+        </mat-form-field>
+        <table class="example-full-width" cellspacing="0"><tr>
+          <td><mat-form-field class="example-full-width">
+            <input matInput placeholder="No. Promotores">
+          </mat-form-field></td>
+          <td><mat-form-field class="example-full-width">
+            <input matInput placeholder="No. de Supervisores">
+          </mat-form-field></td>
+        </tr></table>
+        <p>
+          <mat-form-field class="example-full-width">
+            <textarea matInput placeholder="Dirección"></textarea>
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <textarea matInput placeholder="Dirección 2"></textarea>
+          </mat-form-field>
+        </p>
+        <table class="example-full-width" cellspacing="0"><tr>
+          <td><mat-form-field class="example-full-width">
+            <input matInput placeholder="Ciudad">
+          </mat-form-field></td>
+          <td><mat-form-field class="example-full-width">
+            <input matInput placeholder="Estado">
+          </mat-form-field></td>
+          <td><mat-form-field class="example-full-width">
+            <input matInput #postalCode maxlength="5" placeholder="Código Postal">
+            <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
+          </mat-form-field></td>
+        </tr></table>
+      </form>
+      <br>
+      <button  mat-raised-button type="submit" class="btn-login">Registrar Sucursal</button>      
 </div>
