@@ -8,6 +8,7 @@ import {
         from '@angular/material';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../auth/authentication.service';
+import { FloatingButtonComponent } from './floating-button/floating-button.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -16,8 +17,9 @@ import { AuthService } from '../auth/authentication.service';
     MatIconModule,
     MatTooltipModule    
   ], 
-  declarations: [
-  ],
+  declarations: [,
+    FloatingButtonComponent
+],
   exports: [
     MatButtonModule,
     MatInputModule,

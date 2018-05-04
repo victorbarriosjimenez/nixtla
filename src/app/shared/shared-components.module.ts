@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NavigationComponent } from './navigation/navigation.component';
 import { AuthService } from '../auth/authentication.service';
 import { MaterialElementsModule  } from './material-elements.module';
+import { FloatingButtonComponent } from './floating-button/floating-button.component';
 
 @NgModule({
   imports: [
@@ -10,10 +11,12 @@ import { MaterialElementsModule  } from './material-elements.module';
     MaterialElementsModule
   ], 
   declarations: [
-    NavigationComponent
+    NavigationComponent,
+    FloatingButtonComponent
   ],
   exports: [
-    NavigationComponent
+    NavigationComponent,
+    FloatingButtonComponent
   ],
   providers: [
     AuthService
