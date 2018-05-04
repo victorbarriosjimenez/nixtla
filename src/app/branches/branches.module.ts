@@ -10,13 +10,15 @@ import { BranchesService } from './branches.service';
 import { RouterModule } from '@angular/router';
 import { AuthGuard } from '../auth/authentication.guard';
 import { AuthModule } from '../auth/auth.module';
+import { SharedComponentsModule } from '../shared/shared-components.module';
 @NgModule({
   imports: [
     CommonModule, 
     MaterialElementsModule,
     BranchesRoutesModule,        
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedComponentsModule
    ],
   declarations: [
     BranchesComponent,

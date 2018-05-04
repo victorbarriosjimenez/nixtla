@@ -16,7 +16,6 @@ import { SharedComponentsModule } from '../shared/shared-components.module';
    ],
   declarations: [
     PromoterComponent,
-    PromoterDetailsComponent,
     PromoterDetailsComponent
   ],
   providers: [ 
