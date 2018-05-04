@@ -6,23 +6,23 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { MaterialElementsModule  } from '../shared/material-elements.module';
 import { AuthService } from './authentication.service';
-import { NavigationComponent } from './navigation/navigation.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthGuard } from './authentication.guard';
 import { SettingsComponent } from './settings/settings.component';
+import { SharedComponentsModule } from '../shared/shared-components.module';
 @NgModule({
   imports: [
     CommonModule,
     HttpClientModule, 
     MaterialElementsModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedComponentsModule
    ],
   declarations: [
     RegisterComponent,
     LoginComponent,
     HomeComponent,
-    NavigationComponent,
     SettingsComponent
 ],
   exports: [

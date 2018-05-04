@@ -1,28 +1,30 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule,ReactiveFormsModule } from '@angular/forms'; 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'; 
 import { MaterialElementsModule  } from '../shared/material-elements.module';
 import { BranchesComponent } from './branches/branches.component';
 import { BranchDetailsComponent } from './branch-details/branch-details.component';
 import { BranchFormComponent } from './branch-form/branch-form.component';
 import { BranchesRoutesModule } from './branches.routes';
 import { BranchesService } from './branches.service';
+import { RouterModule } from '@angular/router';
+import { AuthGuard } from '../auth/authentication.guard';
+import { AuthModule } from '../auth/auth.module';
 @NgModule({
   imports: [
     CommonModule, 
     MaterialElementsModule,
+    BranchesRoutesModule,        
     FormsModule,
-    ReactiveFormsModule,
-    BranchesRoutesModule
+    ReactiveFormsModule
    ],
-  declarations: [,
+  declarations: [
     BranchesComponent,
     BranchDetailsComponent,
     BranchFormComponent
 ],
-  exports: [
-  ],
   providers: [ 
+    AuthGuard,
     BranchesService
   ]
 })

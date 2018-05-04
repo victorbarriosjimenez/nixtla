@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes , CanActivate } from '@angular/router';
-const appRoutes: Routes = [  
-  //{ path: , component:  },
+import { AuthGuard } from '../auth/authentication.guard';
+import { PromoterComponent } from './promoter/promoter.component'
+const promoterRoutes: Routes = [  
+  { path: 'promoters' , component: PromoterComponent, canActivate: [AuthGuard] }
 ];
 @NgModule({
   imports: [
+    RouterModule.forChild(promoterRoutes)    
   ],
   exports: [
     RouterModule

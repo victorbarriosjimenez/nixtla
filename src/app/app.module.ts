@@ -14,13 +14,18 @@ import { SupervisorsModule } from './supervisors/supervisors.module';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { BranchesModule } from './branches/branches.module';
+import { CommonModule } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    AngularFireModule.initializeApp(environment.firebase),    
-    RouterModule,
+    AngularFireModule.initializeApp(environment.firebase),   
+    CommonModule,
+    RouterModule,  
+    BranchesModule,  
+    PromotersModule,         
+    RoutesModule,    
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
@@ -28,9 +33,7 @@ import { BranchesModule } from './branches/branches.module';
     ReactiveFormsModule,
     AngularFireAuthModule,
     AngularFirestoreModule,
-    RoutesModule,
-    AuthModule,
-    BranchesModule
+    AuthModule
   ],
   providers: [
   

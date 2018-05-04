@@ -7,6 +7,7 @@ import {
         } 
         from '@angular/material';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../auth/authentication.service';
 @NgModule({
   imports: [
     CommonModule,
@@ -21,7 +22,10 @@ import { CommonModule } from '@angular/common';
     MatButtonModule,
     MatInputModule,
     MatIconModule,
-    MatTooltipModule
+    MatTooltipModule,
+  ],
+  providers: [
+    AuthService
   ]
 })
 export class MaterialElementsModule { }
