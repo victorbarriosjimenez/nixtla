@@ -13,6 +13,7 @@ import { PromotersModule } from './promoters/promoters.module';
 import { SupervisorsModule } from './supervisors/supervisors.module';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { BranchesModule } from './branches/branches.module';
 @NgModule({
   declarations: [
     AppComponent
@@ -28,7 +29,8 @@ import { RouterModule } from '@angular/router';
     AngularFireAuthModule,
     AngularFirestoreModule,
     RoutesModule,
-    AuthModule
+    AuthModule,
+    BranchesModule
   ],
   providers: [
   

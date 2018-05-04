@@ -1,30 +1,20 @@
 <nav class="aside-bar">   
   <a class="brand-name" href="/">N</a>
   <ul class="menu-items">
-      <li class="menu-item" matTooltip="Buscar" matTooltipPosition="after">
-          <a routerLink="/search">
+      <li class="menu-item" (click)="navigate('search')" matTooltip="Buscar" matTooltipPosition="after">
                <mat-icon>search</mat-icon>                
-          </a>
       </li>
-      <li class="menu-item" matTooltip="Sucursales" matTooltipPosition="after">
-          <a routerLink="/register">
+      <li class="menu-item" (click)="navigate('branches')" matTooltip="Sucursales" matTooltipPosition="after">
               <mat-icon>business</mat-icon>                
-          </a>
       </li>
-      <li class="menu-item" matTooltip="Supervisores" matTooltipPosition="after">
-          <a routerLink="/home">
+      <li class="menu-item" (click)="navigate('supervisors')" matTooltip="Supervisores" matTooltipPosition="after">
               <mat-icon>group</mat-icon>                
-          </a>
       </li>
-      <li class="menu-item" matTooltip="Promotores" matTooltipPosition="after">
-          <a routerLink="/home">
+      <li class="menu-item" (click)="navigate('promoters')" matTooltip="Promotores" matTooltipPosition="after">
               <mat-icon>person</mat-icon>                
-          </a>
       </li>
-      <li class="menu-item" matTooltip="Configuración" matTooltipPosition="after"> 
-          <a routerLink="/home">
+      <li class="menu-item" (click)="navigate('settings')" matTooltip="Configuración" matTooltipPosition="after"> 
               <mat-icon>settings</mat-icon>                
-          </a>
       </li>
       <li (click)="logout()" class="menu-item" matTooltip="Salir de Nixtla" matTooltipPosition="after">
             <mat-icon>exit_to_app</mat-icon>                
