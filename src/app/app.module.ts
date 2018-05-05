@@ -15,12 +15,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { BranchesModule } from './branches/branches.module';
 import { CommonModule } from '@angular/common';
+import { AgmCoreModule } from '@agm/core';
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    AngularFireModule.initializeApp(environment.firebase),   
+    AngularFireModule.initializeApp(environment.firebase), 
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCUbOflVAbwvABiv8Kp8oq5ALadDky0HNE'
+    }),  
     CommonModule,
     RouterModule,  
     BranchesModule,  

@@ -4,7 +4,6 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { AuthService } from '../auth/authentication.service';
 import { MaterialElementsModule  } from './material-elements.module';
 import { FloatingButtonComponent } from './floating-button/floating-button.component';
-
 @NgModule({
   imports: [
     CommonModule,

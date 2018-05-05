@@ -20,7 +20,7 @@ export class RegisterComponent implements OnInit {
              passwordFormControl: ['', Validators.compose([Validators.required, Validators.minLength(8), Validators.maxLength(20)])],
       });
    } 
-  public registerAccountWithEmailAndPassword(): void { 
+  public registerAccountWithEmailAndPassword( ): void { 
     const formModel = this.registrationForm.value;
     const administratorModel: Administrator = { 
         email: formModel.emailFormControl as string,
