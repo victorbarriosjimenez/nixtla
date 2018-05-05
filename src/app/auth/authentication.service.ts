@@ -14,7 +14,7 @@ export class AuthService {
               private afs: AngularFirestore,
               private router: Router) {
                 this.afAuth.authState.subscribe((auth) => {
-                  this.authState = auth
+                   this.authState = auth
               }); 
   }
   public createUserWithEmailAndPassword(administrator: Administrator) {
@@ -39,6 +39,9 @@ export class AuthService {
         .then( user => {
               this.router.navigate(['/']);
         });
+  }
+  public getAdministratorDocument(uid): Observable<Administrator>{
+   return  this.afs.doc(`administrators/${uid}`).valueChanges();
   }
   public logoutUser() {
     this.afAuth.auth.signOut();
