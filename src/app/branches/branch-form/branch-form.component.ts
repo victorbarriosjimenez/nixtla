@@ -8,17 +8,23 @@ import { BranchesService } from '../branches.service';
 })
 export class BranchFormComponent implements OnInit {
   public branchForm: FormGroup;
-  public lat: number = 51.678418;
-  public lng: number = 7.809007;
+  public lat: number = 19.5015841;
+  public lng: number = -99.4042516;
   constructor(private _formBuilder: FormBuilder) { }
   ngOnInit() { 
     this.createForm();
-  } †
+  } 
   public createForm( ): void {
     this.branchForm =  this._formBuilder.group({
         nameFormControl:['', Validators.required],
+        cityFormControl: ['', Validators.required],
+        stateFormControl: ['', Validators.required],
+        supervisorFormControl: [''],
         address1FormControl:['', Validators.required],     
-        address2FormControl:['', Validators.required]             
+        address2FormControl:[''],
+        postalCodeFormControl: ['', Validators.compose([Validators.required, Validators.maxLength(5)])],
+        contactFormControl: ['', Validators.compose([Validators.required, Validators.maxLength(10)]) ],
+        contactEmailFormControl: ['',Validators.compose([Validators.required, Validators.email])]     
     });
   }
   public createNewBranch(){
