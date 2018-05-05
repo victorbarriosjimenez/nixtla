@@ -11,6 +11,7 @@ import { RouterModule } from '@angular/router';
 import { AuthGuard } from '../auth/authentication.guard';
 import { AuthModule } from '../auth/auth.module';
 import { SharedComponentsModule } from '../shared/shared-components.module';
+import { AgmCoreModule } from '@agm/core';
 @NgModule({
   imports: [
     CommonModule, 
@@ -18,7 +19,8 @@ import { SharedComponentsModule } from '../shared/shared-components.module';
     BranchesRoutesModule,        
     FormsModule,
     ReactiveFormsModule,
-    SharedComponentsModule
+    SharedComponentsModule,
+    AgmCoreModule
    ],
   declarations: [
     BranchesComponent,

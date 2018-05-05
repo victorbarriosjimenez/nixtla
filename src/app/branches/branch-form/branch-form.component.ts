@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
 import { BranchesService } from '../branches.service';
 @Component({
   selector: 'app-branch-form',
@@ -9,17 +8,20 @@ import { BranchesService } from '../branches.service';
 })
 export class BranchFormComponent implements OnInit {
   public branchForm: FormGroup;
-  constructor(private _router: Router,
-              private _branchesService: BranchesService,
-              private _formBuilder) { }
-  ngOnInit() { }
-  public createBranch( ): void {
-
-  }
+  public lat: number = 51.678418;
+  public lng: number = 7.809007;
+  constructor(private _formBuilder: FormBuilder) { }
+  ngOnInit() { 
+    this.createForm();
+  } †
   public createForm( ): void {
     this.branchForm =  this._formBuilder.group({
         nameFormControl:['', Validators.required],
-        addressFormControl:['', Validators.required],        
-      });
+        address1FormControl:['', Validators.required],     
+        address2FormControl:['', Validators.required]             
+    });
+  }
+  public createNewBranch(){
+     
   }
 }
