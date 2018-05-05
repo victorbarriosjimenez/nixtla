@@ -2,7 +2,7 @@
 <div class="home-container">
   <h1>Crear una nueva sucursal</h1>
   <div class="row">
-    <div class="col-md-8 col-xs-12 col-sm-8 col-lg-8">
+    <div class="col-md-6 col-xs-12 col-sm-6 col-lg-6">
         <form [formGroup]="branchForm">
             <mat-form-field class="full-width">
                 <input 
@@ -130,11 +130,20 @@
                             Ingresa un correo válido
                       </mat-error>
                 </mat-form-field> 
-                
              </td>
             </tr>
+            <tr>
+               Horarios
+            </tr>
+            <tr>
+                <td>
+                    Lunes a viernes
+                </td>
+                <td>Sabados</td>
+                <td>Domingos</td>
+            </tr>
           </table>
-          <agm-map [latitude]="lat" [longitude]="lng"></agm-map>
+        <!--  <agm-map [latitude]="lat" [longitude]="lng"></agm-map>-->
           <button [disabled]="!branchForm.valid" mat-raised-button type="submit" class="btn-login">CREAR SUCURSAL</button>          
         </form> 
     </div>

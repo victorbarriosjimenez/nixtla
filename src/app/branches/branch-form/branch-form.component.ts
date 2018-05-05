@@ -24,7 +24,14 @@ export class BranchFormComponent implements OnInit {
         address2FormControl:[''],
         postalCodeFormControl: ['', Validators.compose([Validators.required, Validators.maxLength(5)])],
         contactFormControl: ['', Validators.compose([Validators.required, Validators.maxLength(10)]) ],
-        contactEmailFormControl: ['',Validators.compose([Validators.required, Validators.email])]     
+        contactEmailFormControl: ['',Validators.compose([Validators.required, Validators.email])],     
+        scheduleMonFriOpenFormControl: ['', Validators.required], 
+        scheduleMonFriCloseFormControl: ['', Validators.required],         
+        scheduleSatOpenFormControl: [''],
+        scheduleSatCloseFormControl: [''],        
+        scheduleSunOpenFormControl: [''],
+        scheduleSunCloseFormControl: [''],        
+        detailsFormControl: [''],
     });
   }
   public createNewBranch(){
