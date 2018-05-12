@@ -147,8 +147,15 @@
                         Agrega los detalles de la sucursal
                 </mat-error>
             </mat-form-field> 
-        <!--  <agm-map [latitude]="lat" [longitude]="lng"></agm-map>-->
-          <button [disabled]="!branchForm.valid" mat-raised-button type="submit" class="btn-login">CREAR SUCURSAL</button>          
+            <p> 
+                <strong>
+                    Selecciona las coordenadas de la sucursal
+                </strong>
+            </p>
+            <agm-map [streetViewControl]="false" (mapClick)="setBranchCoordinates($event)" [latitude]="lat" [longitude]="lng">
+                <agm-marker [latitude]="markerLat" [longitude]="markerLng"></agm-marker>
+            </agm-map>            
+            <button [disabled]="!branchForm.valid" mat-raised-button type="submit" class="btn-login">CREAR SUCURSAL</button>          
         </form> 
     </div>
     <div class="col-md-6 col-xs-12 col-lg-6 col-sm-6">
@@ -247,6 +254,7 @@
                         </mat-form-field>
                     </td>
                 </tr>
+                {{ markerLat }} , {{ markerLng }}
         </table>
         <mat-form-field class="full-width">
                 <input 

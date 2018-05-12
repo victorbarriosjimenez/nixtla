@@ -8,6 +8,9 @@ import { BranchesService } from '../branches.service';
 })
 export class BranchFormComponent implements OnInit {
   public branchForm: FormGroup;
+  public hasMarked: boolean = false;
+  public markerLat: number;
+  public markerLng: number;
   public lat: number = 19.5015841;
   public lng: number = -99.4042516;
   public openSchedules = [
@@ -49,5 +52,12 @@ export class BranchFormComponent implements OnInit {
         imageFormControl: ['', Validators.required]
     });
   }
-  public createNewBranch(){  }
+  public setBranchCoordinates($event) {
+    this.hasMarked = true;
+    this.markerLat = $event['coords'].lat;
+    this.markerLng = $event['coords'].lng;
+  }
+  public createNewBranch(){  
+
+  }
 }
