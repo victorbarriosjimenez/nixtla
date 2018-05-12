@@ -3,7 +3,8 @@ import {
           MatButtonModule,
           MatInputModule,
           MatIconModule,
-          MatTooltipModule
+          MatTooltipModule,
+          MatSelectModule
         } 
         from '@angular/material';
 import { CommonModule } from '@angular/common';
@@ -14,7 +15,8 @@ import { AuthService } from '../auth/authentication.service';
     MatButtonModule,
     MatInputModule,
     MatIconModule,
-    MatTooltipModule    
+    MatTooltipModule,
+    MatSelectModule   
   ], 
   declarations: [
 ],
@@ -23,6 +25,7 @@ import { AuthService } from '../auth/authentication.service';
     MatInputModule,
     MatIconModule,
     MatTooltipModule,
+    MatSelectModule
   ],
   providers: [
     AuthService

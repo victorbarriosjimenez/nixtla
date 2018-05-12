@@ -113,6 +113,9 @@
                         placeholder="Telefono de contacto"
                         formControlName="contactFormControl">
                         <mat-hint align="end">10</mat-hint>
+                        <mat-error *ngIf="branchForm.controls.contactFormControl.hasError('required')">
+                                Ingresa un número telefónico de contacto
+                        </mat-error>
                 </mat-form-field>
              </td>
              <td>
@@ -132,20 +135,130 @@
                 </mat-form-field> 
              </td>
             </tr>
-            <tr>
-               Horarios
-            </tr>
-            <tr>
-                <td>
-                    Lunes a viernes
-                </td>
-                <td>Sabados</td>
-                <td>Domingos</td>
-            </tr>
           </table>
+          <mat-form-field class="full-width">
+                <textarea
+                    matInput
+                    required
+                    placeholder="Detalles de la sucursal"
+                    formControlName="detailsFormControl">
+                </textarea>
+                <mat-error *ngIf="branchForm.controls.detailsFormControl.hasError('email')">
+                        Agrega los detalles de la sucursal
+                </mat-error>
+            </mat-form-field> 
         <!--  <agm-map [latitude]="lat" [longitude]="lng"></agm-map>-->
           <button [disabled]="!branchForm.valid" mat-raised-button type="submit" class="btn-login">CREAR SUCURSAL</button>          
         </form> 
+    </div>
+    <div class="col-md-6 col-xs-12 col-lg-6 col-sm-6">
+        <table class="full-width">
+            <tr>
+                <strong>Horarios</strong> 
+            </tr>
+                    <tr>
+                        <td>
+                            Lunes a Viernes
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <mat-form-field class="full-width">
+                            <mat-select 
+                                        required
+                                        placeholder="Horario de entrada"
+                                        formControlName="scheduleMonFriOpenFormControl">
+                                <mat-option *ngFor="let openSched of openSchedules" [value]="openSched.sched">
+                                    {{ openSched.sched }}
+                                </mat-option>
+                            </mat-select>
+                            </mat-form-field>
+                        </td>
+                        <td>
+                            <mat-form-field class="full-width">
+                                    <mat-select 
+                                            required                                    
+                                            placeholder="Horario de salida"
+                                            formControlName="scheduleMonFriCloseFormControl">
+                                        <mat-option *ngFor="let closeSched of closingSchedules" [value]="closeSched.sched">
+                                                {{ closeSched.sched }}
+                                        </mat-option>
+                                    </mat-select>
+                            </mat-form-field>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Sábados
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <mat-form-field class="full-width">
+                                <mat-select 
+                                        required
+                                        placeholder="Horario de entrada"
+                                        formControlName="scheduleSatOpenFormControl">
+                                    <mat-option *ngFor="let openSched of openSchedules" [value]="openSched.sched">
+                                            {{ openSched.sched }}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </td>
+                        <td>
+                            <mat-form-field class="full-width">
+                                <mat-select 
+                                        required
+                                        placeholder="Horario de salida"
+                                        formControlName="scheduleSatCloseFormControl">
+                                    <mat-option *ngFor="let closeSched of closingSchedules" [value]="closeSched.sched">
+                                            {{ closeSched.sched }}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </td>
+                </tr>
+                <tr>
+                    <td>
+                        Domingos
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <mat-form-field class="full-width">
+                                <mat-select 
+                                        placeholder="Horario de entrada"
+                                        formControlName="scheduleSunOpenFormControl">
+                                    <mat-option *ngFor="let openSched of openSchedules" [value]="openSched.sched">
+                                            {{ openSched.sched }}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                    </td>
+                    <td>
+                        <mat-form-field class="full-width">
+                                <mat-select 
+                                        placeholder="Horario de entrada"
+                                        formControlName="scheduleSunOpenFormControl">
+                                    <mat-option *ngFor="let openSched of openSchedules" [value]="openSched.sched">
+                                            {{ openSched.sched }}
+                                    </mat-option>
+                                </mat-select>
+                        </mat-form-field>
+                    </td>
+                </tr>
+        </table>
+        <mat-form-field class="full-width">
+                <input 
+                    matInput
+                    type="text"
+                    required
+                    placeholder="Foto de la sucursal"
+                    formControlName="imageFormControl">
+                    <mat-error *ngIf="branchForm.controls.imageFormControl.hasError('required')">
+                            Ingresa la url de la imagen
+                    </mat-error>
+        </mat-form-field>
     </div>
   </div>
 </div>
