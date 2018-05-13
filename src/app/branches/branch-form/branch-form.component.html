@@ -3,7 +3,7 @@
   <h1>Crear una nueva sucursal</h1>
   <form [formGroup]="branchForm" (ngSubmit)="createNewBranch()">
     <div class="row">
-            <div class="col-md-6 col-xs-12 col-sm-6 col-lg-6">
+            <div class="col-md-6 col-xs-12 col-sm-12 col-lg-6">
                     <mat-form-field class="full-width">
                         <input 
                             matInput
@@ -156,7 +156,7 @@
                         </strong>
                     </p>
              </div>
-            <div class="col-md-6 col-xs-12 col-lg-6 col-sm-6">
+            <div class="col-md-6 col-xs-12 col-lg-6 col-sm-12">
                 <table class="full-width">
                     <tr>
                         <strong>Horarios</strong> 
@@ -258,27 +258,30 @@
                 <mat-form-field class="full-width">
                         <input 
                             matInput
-                            type="text"
+                            type="number"
                             required
-                            placeholder="Foto de la sucursal"
-                            formControlName="imageFormControl">
-                            <mat-error *ngIf="branchForm.controls.imageFormControl.hasError('required')">
-                                    Ingresa la url de la imagen
+                            placeholder="Cantidad de horas extras"
+                            formControlName="extraHoursFormControl"
+                            value="0"
+                            step="1"
+                            min="1" max="7">
+                            <mat-error *ngIf="branchForm.controls.extraHoursFormControl.hasError('required')">
+                                    Ingresa un número
                             </mat-error>
                 </mat-form-field>
             </div>
     </div>
     <div class="row">
-        <div class="col-md-6 col-xs-12 col-sm-6 col-lg-6">
+        <div class="col-md-6 col-xs-12 col-sm-12 col-lg-6">
             <agm-map [streetViewControl]="false" (mapClick)="setBranchCoordinates($event)" [latitude]="lat" [longitude]="lng">
                     <agm-marker [latitude]="markerLat" [longitude]="markerLng"></agm-marker>
                 </agm-map>
             <mat-error *ngIf="showMapError"> Selecciona la ubicación de la sucursal </mat-error>
         </div>
-        <div class="col-md-6 col-xs-12 col-sm-6 col-lg-6">
+        <div class="col-md-6 col-xs-12 col-sm-12 col-lg-6">
             <table class="full-width">
                     <tr>
-                        <mat-icon>group</mat-icon>  <strong>Supervisores</strong> 
+                        <mat-icon>group</mat-icon>     <strong>Supervisores</strong> 
                     </tr>
                     <tr>
                         <td>
@@ -287,10 +290,14 @@
                                         matInput
                                         type="number"
                                         required
-                                        placeholder="Número Mínimo de promotores"
-                                        formControlName="supervisorMinFormControl">
-                                        <mat-error *ngIf="branchForm.controls.imageFormControl.hasError('required')">
-                                                Ingresa la url de la imagen
+                                        placeholder="Número Mínimo de supervisores"
+                                        formControlName="supervisorMinFormControl"
+                                        value="0"
+                                        step="1"
+                                        min="1" max="15"
+                                        >
+                                        <mat-error *ngIf="branchForm.controls.supervisorMinFormControl.hasError('required')">
+                                                Ingresa un número
                                         </mat-error>
                             </mat-form-field>
                         </td>
@@ -300,10 +307,13 @@
                                         matInput
                                         type="number"
                                         required
-                                        placeholder="Número Máximo de promotores"
-                                        formControlName="supervisorMaxFormControl">
-                                        <mat-error *ngIf="branchForm.controls.imageFormControl.hasError('required')">
-                                                Ingresa la url de la imagen
+                                        placeholder="Número Máximo de supervisores"
+                                        formControlName="supervisorMaxFormControl"
+                                        value="0"
+                                        step="1"
+                                        min="1" max="15">
+                                        <mat-error *ngIf="branchForm.controls.supervisorMaxFormControl.hasError('required')">
+                                                Ingresa un número
                                         </mat-error>
                             </mat-form-field>
                         </td>
@@ -319,9 +329,12 @@
                                     type="number"
                                     required
                                     placeholder="Número Mínimo de promotores"
-                                    formControlName="supervisorMinFormControl">
-                                    <mat-error *ngIf="branchForm.controls.imageFormControl.hasError('required')">
-                                            Ingresa la url de la imagen
+                                    formControlName="promotersMinFormContron"
+                                    step="1"
+                                    value="0"
+                                    min="1" max="15">
+                                    <mat-error *ngIf="branchForm.controls.promotersMinFormContron.hasError('required')">
+                                                Ingresa un número
                                     </mat-error>
                         </mat-form-field>
                     </td>
@@ -332,14 +345,28 @@
                                     type="number"
                                     required
                                     placeholder="Número Máximo de promotores"
-                                    formControlName="supervisorMaxFormControl">
-                                    <mat-error *ngIf="branchForm.controls.imageFormControl.hasError('required')">
-                                            Ingresa la url de la imagen
+                                    formControlName="supervisorMaxFormControl"
+                                    value="0"
+                                    step="1"
+                                    min="1" max="15">
+                                    <mat-error *ngIf="branchForm.controls.promotersMaxFormContron.hasError('required')">
+                                            Ingresa un número
                                     </mat-error>
                         </mat-form-field>
                     </td>
                 </tr>
             </table>
+            <mat-form-field class="full-width">
+                    <input 
+                        matInput
+                        type="text"
+                        required
+                        placeholder="Foto de la sucursal"
+                        formControlName="imageFormControl">
+                        <mat-error *ngIf="branchForm.controls.imageFormControl.hasError('required')">
+                                Ingresa la url de la imagen
+                        </mat-error>
+            </mat-form-field>
         </div>
     </div>
     <button [disabled]="!branchForm.valid" mat-raised-button type="submit" class="btn-login">

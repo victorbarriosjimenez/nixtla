@@ -57,8 +57,7 @@ export class BranchFormComponent implements OnInit {
         scheduleSunCloseFormControl: ['',Validators.required],        
         detailsFormControl: ['', Validators.required],
         imageFormControl: ['', Validators.required],
-        extraHoursStart: ['', Validators.required],
-        extraHoursEnd: ['', Validators.required]
+        extraHoursFormControl: ['', Validators.required],
     });
   }
   public setBranchCoordinates($event) {
