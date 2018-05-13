@@ -18,6 +18,124 @@ export class BranchFormComponent implements OnInit {
   public markerLng: number;
   public lat: number = 19.5015841;
   public lng: number = -99.4042516;
+  public pokemonGroups: any = [
+    {
+      name: 'A',
+      pokemon: [
+        { value: 'Aguascalientes' }
+      ]
+    },
+    {
+      name: 'B',
+      pokemon: [
+        { value: 'Baja California' },
+        { value: 'Baja California Sur' }
+      ]
+    },
+    {
+      name: 'C',
+      pokemon: [
+        { value: 'Campeche'},
+        { value: 'Coahuila de Zaragoza'},
+        { value: 'Colima'},
+        { value: 'Chiapas'},
+        { value: 'Chihuahua'},  
+        { value: 'CDMX'}                              
+      ]
+    },
+    {
+      name: 'D',
+      pokemon: [
+        { value: 'Durango'}                              
+      ]
+    },
+    {
+      name: 'G',
+      pokemon: [
+        { value: 'Guanajuato'},
+        { value: 'Guerrero'}                                                                       
+      ]
+    },
+    {
+      name: 'H',
+      pokemon: [
+        { value: 'Hidalgo'}                                                                               
+      ]
+    },
+    {
+      name: 'J',
+      pokemon: [
+        { value: 'Jalisco'}                                                                                      
+      ]
+    },
+    {
+      name: 'M',
+      pokemon: [
+        { value: 'México'},
+        { value: 'Michoacán de Ocampo'},
+        { value: 'Morelos'}          
+      ]
+    },
+    {
+      name: 'N',
+      pokemon: [
+        { value: 'Nayarit'},
+        { value: 'Nuevo León'}
+      ]
+    },
+    {
+      name: 'O',
+      pokemon: [
+        { value: 'Oaxaca'}        
+      ]
+    },
+    {
+      name: 'P',
+      pokemon: [
+        { value: 'Puebla'}        
+      ]
+    },
+    {
+      name: 'Q',
+      pokemon: [
+        { value: 'Quintana Roo'} 
+      ]
+    },
+    {
+      name: 'S',
+      pokemon: [
+        { value: 'San Luis Potosi'},
+        { value: 'Sinaloa'},
+        { value: 'Sonora'}                         
+      ]
+    },
+    {
+      name: 'T',
+      pokemon: [
+        { value: 'Tabasco'},
+        { value: 'Tamaulipas'},
+        { value: 'Tlaxcala'},        
+      ]
+    },
+    {
+      name: 'V',
+      pokemon: [
+        { value: 'Veracruz'}
+      ]
+    },
+    {
+      name: 'Y',
+      pokemon: [
+        { value: 'Yucatán'}
+      ]
+    },
+    {
+      name: 'Z',
+      pokemon: [
+        { value: 'Zacatecas'}
+      ]
+    }
+  ]; 
   public openSchedules = [
         { sched: '9:00 AM', valueTime: '9:00:00' },
         { sched: '10:00 AM', valueTime: '10:00:00' },

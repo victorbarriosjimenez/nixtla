@@ -38,17 +38,16 @@
                         </td>
                         <td>
                             <mat-form-field class="full-width">
-                                <input 
-                                    matInput
-                                    type="text"
-                                    placeholder="Estado"
-                                    required
-                                    formControlName="stateFormControl">
-                                    <mat-hint>
-                                        Un estado de la república mexicana 
-                                </mat-hint>
+                                <mat-select  required placeholder="Estado" formControlName="stateFormControl">
+                                    <mat-optgroup *ngFor="let group of pokemonGroups" [label]="group.name"
+                                                    [disabled]="group.disabled">
+                                        <mat-option *ngFor="let pokemon of group.pokemon" [value]="pokemon.value">
+                                                {{ pokemon.value }}
+                                        </mat-option>
+                                    </mat-optgroup>
+                                    </mat-select>
                                     <mat-error *ngIf="branchForm.controls.stateFormControl.hasError('required')">
-                                        Ingresa el nombre del estado
+                                        Ingresa un estado
                                     </mat-error>
                             </mat-form-field>
                         </td>
