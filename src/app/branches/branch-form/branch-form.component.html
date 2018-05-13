@@ -329,11 +329,11 @@
                                     type="number"
                                     required
                                     placeholder="Número Mínimo de promotores"
-                                    formControlName="promotersMinFormContron"
+                                    formControlName="promotersMinFormControl"
                                     step="1"
                                     value="0"
                                     min="1" max="15">
-                                    <mat-error *ngIf="branchForm.controls.promotersMinFormContron.hasError('required')">
+                                    <mat-error *ngIf="branchForm.controls.promotersMinFormControl.hasError('required')">
                                                 Ingresa un número
                                     </mat-error>
                         </mat-form-field>
@@ -345,11 +345,11 @@
                                     type="number"
                                     required
                                     placeholder="Número Máximo de promotores"
-                                    formControlName="supervisorMaxFormControl"
+                                    formControlName="promotersMaxFormControl"
                                     value="0"
                                     step="1"
                                     min="1" max="15">
-                                    <mat-error *ngIf="branchForm.controls.promotersMaxFormContron.hasError('required')">
+                                    <mat-error *ngIf="branchForm.controls.promotersMaxFormControl.hasError('required')">
                                             Ingresa un número
                                     </mat-error>
                         </mat-form-field>

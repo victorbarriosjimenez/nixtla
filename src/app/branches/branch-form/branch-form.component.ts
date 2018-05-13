@@ -2,6 +2,7 @@ import { Component, OnInit, OnChanges } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { BranchesService } from '../branches.service';
 import * as moment from 'moment';
+import { Branch } from '../../models/branch';
 @Component({
   selector: 'app-branch-form',
   templateUrl: './branch-form.component.html',
@@ -13,7 +14,7 @@ export class BranchFormComponent implements OnInit {
   public showMapError: boolean = false;
   public markerLat: number;
   public kaka = "inactivo";
-  public branch: any;
+  public branch: Branch; 
   public markerLng: number;
   public lat: number = 19.5015841;
   public lng: number = -99.4042516;
@@ -42,8 +43,8 @@ export class BranchFormComponent implements OnInit {
         stateFormControl: ['', Validators.required],
         supervisorMinFormControl: ['', Validators.required],
         supervisorMaxFormControl: ['', Validators.required],     
-        promotersMinFormContron:['', Validators.required],
-        promotersMaxFormContron:['', Validators.required],           
+        promotersMinFormControl:['', Validators.required],
+        promotersMaxFormControl:['', Validators.required],           
         address1FormControl:['', Validators.required],     
         address2FormControl:[''],
         postalCodeFormControl: ['', Validators.compose([Validators.required, Validators.minLength(5), Validators.maxLength(5)])],
@@ -65,7 +66,7 @@ export class BranchFormComponent implements OnInit {
     this.showMapError = true ? false : true;  
     this.markerLat = $event['coords'].lat;
     this.markerLng = $event['coords'].lng;
-  }
+  } 
   public createNewBranch(){  
       if(this.branchForm.valid && this.hasMarked){
         const branchModelForm = this.branchForm.value
@@ -85,7 +86,12 @@ export class BranchFormComponent implements OnInit {
           scheduleSatOpen: branchModelForm.scheduleSatOpenFormControl as string,
           scheduleSatClose: branchModelForm.scheduleSatCloseFormControl as string,
           scheduleSunOpen: branchModelForm.scheduleSunOpenFormControl as string,
-          scheduleSunClose: branchModelForm.scheduleSunCloseFormControl as string
+          scheduleSunClose: branchModelForm.scheduleSunCloseFormControl as string,
+          extraHours: branchModelForm.extraHoursFormControl as number,
+          supervisorMin: branchModelForm.supervisorMinFormControl,
+          supervisorMax: branchModelForm.supervisorMaxFormControl,     
+          promotersMin: branchModelForm.promotersMinFormControl,
+          promotersMax: branchModelForm.promotersMaxFormControl
         }
         console.log(this.branch);
     }
