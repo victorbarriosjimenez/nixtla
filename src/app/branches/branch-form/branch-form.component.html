@@ -155,9 +155,6 @@
                             Selecciona las coordenadas de la sucursal
                         </strong>
                     </p>
-                    <agm-map [streetViewControl]="false" (mapClick)="setBranchCoordinates($event)" [latitude]="lat" [longitude]="lng">
-                        <agm-marker [latitude]="markerLat" [longitude]="markerLng"></agm-marker>
-                    </agm-map>
              </div>
             <div class="col-md-6 col-xs-12 col-lg-6 col-sm-6">
                 <table class="full-width">
@@ -176,7 +173,7 @@
                                                 required
                                                 placeholder="Horario de entrada"
                                                 formControlName="scheduleMonFriOpenFormControl">
-                                        <mat-option *ngFor="let openSched of openSchedules" [value]="openSched.sched">
+                                        <mat-option *ngFor="let openSched of openSchedules" [value]="openSched.valueTime">
                                             {{ openSched.sched }}
                                         </mat-option>
                                     </mat-select>
@@ -188,7 +185,7 @@
                                                     required                                    
                                                     placeholder="Horario de salida"
                                                     formControlName="scheduleMonFriCloseFormControl">
-                                                <mat-option *ngFor="let closeSched of closingSchedules" [value]="closeSched.sched">
+                                                <mat-option *ngFor="let closeSched of closingSchedules" [value]="closeSched.valueTime">
                                                         {{ closeSched.sched }}
                                                 </mat-option>
                                             </mat-select>
@@ -207,7 +204,7 @@
                                                 required
                                                 placeholder="Horario de entrada"
                                                 formControlName="scheduleSatOpenFormControl">
-                                            <mat-option *ngFor="let openSched of openSchedules" [value]="openSched.sched">
+                                            <mat-option *ngFor="let openSched of openSchedules" [value]="openSched.valueTime">
                                                     {{ openSched.sched }}
                                             </mat-option>
                                         </mat-select>
@@ -219,7 +216,7 @@
                                                 required
                                                 placeholder="Horario de salida"
                                                 formControlName="scheduleSatCloseFormControl">
-                                            <mat-option *ngFor="let closeSched of closingSchedules" [value]="closeSched.sched">
+                                            <mat-option *ngFor="let closeSched of closingSchedules" [value]="closeSched.valueTime">
                                                     {{ closeSched.sched }}
                                             </mat-option>
                                         </mat-select>
@@ -235,9 +232,10 @@
                             <td>
                                 <mat-form-field class="full-width">
                                         <mat-select 
+                                                required
                                                 placeholder="Horario de entrada"
                                                 formControlName="scheduleSunOpenFormControl">
-                                            <mat-option *ngFor="let openSched of openSchedules" [value]="openSched.sched">
+                                            <mat-option *ngFor="let openSched of openSchedules" [value]="openSched.valueTime">
                                                     {{ openSched.sched }}
                                             </mat-option>
                                         </mat-select>
@@ -245,10 +243,11 @@
                             </td>
                             <td>
                                 <mat-form-field class="full-width">
-                                        <mat-select 
+                                        <mat-select
+                                                required
                                                 placeholder="Horario de entrada"
                                                 formControlName="scheduleSunCloseFormControl">
-                                            <mat-option *ngFor="let closingSched of closingSchedules" [value]="closingSched.sched">
+                                            <mat-option *ngFor="let closingSched of closingSchedules" [value]="closingSched.valueTime">
                                                     {{ closingSched.sched }}
                                             </mat-option>
                                         </mat-select>
@@ -269,7 +268,81 @@
                 </mat-form-field>
             </div>
     </div>
-    <button [disabled]="!branchForm.valid && !hasMarked" mat-raised-button type="submit" class="btn-login">
+    <div class="row">
+        <div class="col-md-6 col-xs-12 col-sm-6 col-lg-6">
+            <agm-map [streetViewControl]="false" (mapClick)="setBranchCoordinates($event)" [latitude]="lat" [longitude]="lng">
+                    <agm-marker [latitude]="markerLat" [longitude]="markerLng"></agm-marker>
+                </agm-map>
+            <mat-error *ngIf="showMapError"> Selecciona la ubicación de la sucursal </mat-error>
+        </div>
+        <div class="col-md-6 col-xs-12 col-sm-6 col-lg-6">
+            <table class="full-width">
+                    <tr>
+                        <mat-icon>group</mat-icon>  <strong>Supervisores</strong> 
+                    </tr>
+                    <tr>
+                        <td>
+                            <mat-form-field class="full-width">
+                                    <input 
+                                        matInput
+                                        type="number"
+                                        required
+                                        placeholder="Número Mínimo de promotores"
+                                        formControlName="supervisorMinFormControl">
+                                        <mat-error *ngIf="branchForm.controls.imageFormControl.hasError('required')">
+                                                Ingresa la url de la imagen
+                                        </mat-error>
+                            </mat-form-field>
+                        </td>
+                        <td>
+                            <mat-form-field class="full-width">
+                                    <input 
+                                        matInput
+                                        type="number"
+                                        required
+                                        placeholder="Número Máximo de promotores"
+                                        formControlName="supervisorMaxFormControl">
+                                        <mat-error *ngIf="branchForm.controls.imageFormControl.hasError('required')">
+                                                Ingresa la url de la imagen
+                                        </mat-error>
+                            </mat-form-field>
+                        </td>
+                    </tr>
+                <tr>
+                    <mat-icon>person</mat-icon>   <strong>Promotores</strong> 
+                </tr>
+                <tr>
+                    <td>
+                        <mat-form-field class="full-width">
+                                <input 
+                                    matInput
+                                    type="number"
+                                    required
+                                    placeholder="Número Mínimo de promotores"
+                                    formControlName="supervisorMinFormControl">
+                                    <mat-error *ngIf="branchForm.controls.imageFormControl.hasError('required')">
+                                            Ingresa la url de la imagen
+                                    </mat-error>
+                        </mat-form-field>
+                    </td>
+                    <td>
+                        <mat-form-field class="full-width">
+                                <input 
+                                    matInput
+                                    type="number"
+                                    required
+                                    placeholder="Número Máximo de promotores"
+                                    formControlName="supervisorMaxFormControl">
+                                    <mat-error *ngIf="branchForm.controls.imageFormControl.hasError('required')">
+                                            Ingresa la url de la imagen
+                                    </mat-error>
+                        </mat-form-field>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <button [disabled]="!branchForm.valid" mat-raised-button type="submit" class="btn-login">
       <span>  CREAR SUCURSAL </span>
     </button>             
    </form> 
