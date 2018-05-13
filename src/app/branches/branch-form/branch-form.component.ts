@@ -1,6 +1,7 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { BranchesService } from '../branches.service';
+import * as moment from 'moment';
 @Component({
   selector: 'app-branch-form',
   templateUrl: './branch-form.component.html',
@@ -9,6 +10,7 @@ import { BranchesService } from '../branches.service';
 export class BranchFormComponent implements OnInit {
   public branchForm: FormGroup;
   public hasMarked: boolean = false;
+  public showMapError: boolean = false;
   public markerLat: number;
   public kaka = "inactivo";
   public branch: any;
@@ -55,7 +57,7 @@ export class BranchFormComponent implements OnInit {
     });
   }
   public setBranchCoordinates($event) {
-    this.hasMarked = true;
+    this.hasMarked = this.branchForm.valid ? true : false;
     this.markerLat = $event['coords'].lat;
     this.markerLng = $event['coords'].lng;
   }

@@ -158,8 +158,7 @@
                     <agm-map [streetViewControl]="false" (mapClick)="setBranchCoordinates($event)" [latitude]="lat" [longitude]="lng">
                         <agm-marker [latitude]="markerLat" [longitude]="markerLng"></agm-marker>
                     </agm-map>
-                    <mat-error *ngIf="!hasMarked"> Selecciona la ubicación exacta de la sucursal</mat-error>            
-            </div>
+             </div>
             <div class="col-md-6 col-xs-12 col-lg-6 col-sm-6">
                 <table class="full-width">
                     <tr>
@@ -238,7 +237,7 @@
                                         <mat-select 
                                                 placeholder="Horario de entrada"
                                                 formControlName="scheduleSunOpenFormControl">
-                                            <mat-option *ngFor="let openSched of penSchedules" [value]="openSched.sched">
+                                            <mat-option *ngFor="let openSched of openSchedules" [value]="openSched.sched">
                                                     {{ openSched.sched }}
                                             </mat-option>
                                         </mat-select>
@@ -270,6 +269,8 @@
                 </mat-form-field>
             </div>
     </div>
-    <button [disabled]="!branchForm.valid && !hasMarked" mat-raised-button type="submit" class="btn-login">CREAR SUCURSAL</button>             
+    <button [disabled]="!branchForm.valid && !hasMarked" mat-raised-button type="submit" class="btn-login">
+      <span>  CREAR SUCURSAL </span>
+    </button>             
    </form> 
   </div>
