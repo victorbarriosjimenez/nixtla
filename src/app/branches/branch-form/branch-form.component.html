@@ -1,272 +1,275 @@
 <app-navigation></app-navigation>
 <div class="home-container">
   <h1>Crear una nueva sucursal</h1>
-  <div class="row">
-    <div class="col-md-6 col-xs-12 col-sm-6 col-lg-6">
-        <form [formGroup]="branchForm">
-            <mat-form-field class="full-width">
-                <input 
-                    matInput
-                    type="text"
-                    placeholder="Nombre de sucursal"
-                    required
-                    formControlName="nameFormControl">
-                    <mat-hint>
-                          Ingresa el nombre de la sucursal
-                   </mat-hint>
-                    <mat-error *ngIf="branchForm.controls.nameFormControl.hasError('required')">
-                          Ingresa un nombre
-                    </mat-error>
-            </mat-form-field>
-            <table class="full-width" cellspacing="0"> 
-              <tr>
-                <td>
+  <form [formGroup]="branchForm" (ngSubmit)="createNewBranch()">
+    <div class="row">
+            <div class="col-md-6 col-xs-12 col-sm-6 col-lg-6">
                     <mat-form-field class="full-width">
                         <input 
                             matInput
                             type="text"
-                            placeholder="Ciudad"
+                            placeholder="Nombre de sucursal"
                             required
-                            formControlName="cityFormControl">
+                            formControlName="nameFormControl">
                             <mat-hint>
-                                  Ingresa una ciudad o municipio
-                          </mat-hint>
-                            <mat-error *ngIf="branchForm.controls.cityFormControl.hasError('required')">
-                                  Ingresa un nombre
-                            </mat-error>
-                    </mat-form-field>   
-                </td>
-                <td>
-                    <mat-form-field class="full-width">
-                        <input 
-                            matInput
-                            type="text"
-                            placeholder="Estado"
-                            required
-                            formControlName="stateFormControl">
-                            <mat-hint>
-                                  Un estado de la república mexicana 
-                          </mat-hint>
-                            <mat-error *ngIf="branchForm.controls.stateFormControl.hasError('required')">
-                                  Ingresa el nombre del estado
-                            </mat-error>
-                    </mat-form-field>
-                </td>
-                <td>
-                    <mat-form-field class="full-width">
-                        <input 
-                            matInput
-                            type="text"
-                            placeholder="Codigo Postal"
-                            required
-                            maxlength="5"
-                            formControlName="postalCodeFormControl">
-                            <mat-hint align="end">5</mat-hint>
-                            <mat-error *ngIf="branchForm.controls.postalCodeFormControl.hasError('required')">
-                                  Ingresa el código postal
-                            </mat-error>
-                 
-                    </mat-form-field>
-                </td>
-              </tr>
-            </table>
-            <table class="full-width" cellspacing="0"> 
-              <tr>
-                <td>
-                    <mat-form-field class="full-width">
-                        <input 
-                            matInput
-                            type="text"
-                            placeholder="Dirección 1"
-                            required
-                            formControlName="address1FormControl">
-                            <mat-hint>
-                                  Delegación , Colonia o Vía
-                            </mat-hint>
+                                Ingresa el nombre de la sucursal
+                        </mat-hint>
                             <mat-error *ngIf="branchForm.controls.nameFormControl.hasError('required')">
-                                  Ingresa una dirección
+                                Ingresa un nombre
                             </mat-error>
-                    </mat-form-field>   
-                </td>
-                <td>
-                    <mat-form-field class="full-width">
-                        <input 
-                            matInput
-                            type="text"
-                            placeholder="Dirección 2"
-                            formControlName="address2FormControl">
-                            <mat-hint>
-                                  Número Exterior, Interior, indicaciones especificas
-                          </mat-hint>
-                    </mat-form-field> 
-                </td>  
-              <td>
-            </tr>
-            <tr>  
-             <td>          
-                <mat-form-field class="full-width">
-                    <input 
-                        matInput
-                        type="text"
-                        required
-                        maxlength="10"
-                        placeholder="Telefono de contacto"
-                        formControlName="contactFormControl">
-                        <mat-hint align="end">10</mat-hint>
-                        <mat-error *ngIf="branchForm.controls.contactFormControl.hasError('required')">
-                                Ingresa un número telefónico de contacto
-                        </mat-error>
-                </mat-form-field>
-             </td>
-             <td>
-                <mat-form-field class="full-width">
-                    <input 
-                        matInput
-                        type="text"
-                        required
-                        placeholder="Email de contacto"
-                        formControlName="contactEmailFormControl">
-                        <mat-error *ngIf="branchForm.controls.contactEmailFormControl.hasError('required')">
-                            Ingresa un correo electrónico
-                        </mat-error>
-                        <mat-error *ngIf="branchForm.controls.contactEmailFormControl.hasError('email') && !branchForm.controls.contactEmailFormControl.hasError('required')">
-                            Ingresa un correo válido
-                      </mat-error>
-                </mat-form-field> 
-             </td>
-            </tr>
-          </table>
-          <mat-form-field class="full-width">
-                <textarea
-                    matInput
-                    required
-                    placeholder="Detalles de la sucursal"
-                    formControlName="detailsFormControl">
-                </textarea>
-                <mat-error *ngIf="branchForm.controls.detailsFormControl.hasError('email')">
-                        Agrega los detalles de la sucursal
-                </mat-error>
-            </mat-form-field> 
-            <p> 
-                <strong>
-                    Selecciona las coordenadas de la sucursal
-                </strong>
-            </p>
-            <agm-map [streetViewControl]="false" (mapClick)="setBranchCoordinates($event)" [latitude]="lat" [longitude]="lng">
-                <agm-marker [latitude]="markerLat" [longitude]="markerLng"></agm-marker>
-            </agm-map>            
-            <button [disabled]="!branchForm.valid" mat-raised-button type="submit" class="btn-login">CREAR SUCURSAL</button>          
-        </form> 
-    </div>
-    <div class="col-md-6 col-xs-12 col-lg-6 col-sm-6">
-        <table class="full-width">
-            <tr>
-                <strong>Horarios</strong> 
-            </tr>
-                    <tr>
-                        <td>
-                            Lunes a Viernes
-                        </td>
-                    </tr>
+                    </mat-form-field>
+                    <table class="full-width" cellspacing="0"> 
                     <tr>
                         <td>
                             <mat-form-field class="full-width">
-                            <mat-select 
-                                        required
-                                        placeholder="Horario de entrada"
-                                        formControlName="scheduleMonFriOpenFormControl">
-                                <mat-option *ngFor="let openSched of openSchedules" [value]="openSched.sched">
-                                    {{ openSched.sched }}
-                                </mat-option>
-                            </mat-select>
+                                <input 
+                                    matInput
+                                    type="text"
+                                    placeholder="Ciudad"
+                                    required
+                                    formControlName="cityFormControl">
+                                    <mat-hint>
+                                        Ingresa una ciudad o municipio
+                                </mat-hint>
+                                    <mat-error *ngIf="branchForm.controls.cityFormControl.hasError('required')">
+                                        Ingresa un nombre
+                                    </mat-error>
+                            </mat-form-field>   
+                        </td>
+                        <td>
+                            <mat-form-field class="full-width">
+                                <input 
+                                    matInput
+                                    type="text"
+                                    placeholder="Estado"
+                                    required
+                                    formControlName="stateFormControl">
+                                    <mat-hint>
+                                        Un estado de la república mexicana 
+                                </mat-hint>
+                                    <mat-error *ngIf="branchForm.controls.stateFormControl.hasError('required')">
+                                        Ingresa el nombre del estado
+                                    </mat-error>
                             </mat-form-field>
                         </td>
                         <td>
                             <mat-form-field class="full-width">
-                                    <mat-select 
-                                            required                                    
-                                            placeholder="Horario de salida"
-                                            formControlName="scheduleMonFriCloseFormControl">
-                                        <mat-option *ngFor="let closeSched of closingSchedules" [value]="closeSched.sched">
-                                                {{ closeSched.sched }}
-                                        </mat-option>
-                                    </mat-select>
+                                <input 
+                                    matInput
+                                    type="text"
+                                    placeholder="Codigo Postal"
+                                    required
+                                    minlength="5"
+                                    maxlength="5"                                    
+                                    formControlName="postalCodeFormControl">
+                                    <mat-hint align="end">5</mat-hint>
+                                    <mat-error *ngIf="branchForm.controls.postalCodeFormControl.hasError('required')">
+                                        Ingresa el código postal
+                                    </mat-error>
+                                    <mat-error *ngIf="branchForm.controls.postalCodeFormControl.hasError('minlength')">
+                                        Ingresa 5 dígitos
+                                    </mat-error>
                             </mat-form-field>
                         </td>
                     </tr>
-                    <tr>
-                        <td>
-                            Sábados
-                        </td>
-                    </tr>
+                    </table>
+                    <table class="full-width" cellspacing="0"> 
                     <tr>
                         <td>
                             <mat-form-field class="full-width">
-                                <mat-select 
-                                        required
-                                        placeholder="Horario de entrada"
-                                        formControlName="scheduleSatOpenFormControl">
-                                    <mat-option *ngFor="let openSched of openSchedules" [value]="openSched.sched">
-                                            {{ openSched.sched }}
-                                    </mat-option>
-                                </mat-select>
-                            </mat-form-field>
+                                <input 
+                                    matInput
+                                    type="text"
+                                    placeholder="Dirección 1"
+                                    required
+                                    formControlName="address1FormControl">
+                                    <mat-hint>
+                                        Delegación , Colonia o Vía
+                                    </mat-hint>
+                                    <mat-error *ngIf="branchForm.controls.nameFormControl.hasError('required')">
+                                        Ingresa una dirección
+                                    </mat-error>
+                            </mat-form-field>   
                         </td>
                         <td>
                             <mat-form-field class="full-width">
-                                <mat-select 
-                                        required
-                                        placeholder="Horario de salida"
-                                        formControlName="scheduleSatCloseFormControl">
-                                    <mat-option *ngFor="let closeSched of closingSchedules" [value]="closeSched.sched">
-                                            {{ closeSched.sched }}
-                                    </mat-option>
-                                </mat-select>
-                            </mat-form-field>
-                        </td>
-                </tr>
-                <tr>
+                                <input 
+                                    matInput
+                                    type="text"
+                                    placeholder="Dirección 2"
+                                    formControlName="address2FormControl">
+                                    <mat-hint>
+                                        Número Exterior, Interior, indicaciones especificas
+                                </mat-hint>
+                            </mat-form-field> 
+                        </td>  
                     <td>
-                        Domingos
-                    </td>
-                </tr>
-                <tr>
-                    <td>
+                    </tr>
+                    <tr>  
+                    <td>          
                         <mat-form-field class="full-width">
-                                <mat-select 
-                                        placeholder="Horario de entrada"
-                                        formControlName="scheduleSunOpenFormControl">
-                                    <mat-option *ngFor="let openSched of openSchedules" [value]="openSched.sched">
-                                            {{ openSched.sched }}
-                                    </mat-option>
-                                </mat-select>
-                            </mat-form-field>
-                    </td>
-                    <td>
-                        <mat-form-field class="full-width">
-                                <mat-select 
-                                        placeholder="Horario de entrada"
-                                        formControlName="scheduleSunOpenFormControl">
-                                    <mat-option *ngFor="let openSched of openSchedules" [value]="openSched.sched">
-                                            {{ openSched.sched }}
-                                    </mat-option>
-                                </mat-select>
+                            <input 
+                                matInput
+                                type="text"
+                                required
+                                maxlength="10"
+                                placeholder="Telefono de contacto"
+                                formControlName="contactFormControl">
+                                <mat-hint align="end">10</mat-hint>
+                                <mat-error *ngIf="branchForm.controls.contactFormControl.hasError('required')">
+                                        Ingresa un número telefónico de contacto
+                                </mat-error>
                         </mat-form-field>
                     </td>
-                </tr>
-                {{ markerLat }} , {{ markerLng }}
-        </table>
-        <mat-form-field class="full-width">
-                <input 
-                    matInput
-                    type="text"
-                    required
-                    placeholder="Foto de la sucursal"
-                    formControlName="imageFormControl">
-                    <mat-error *ngIf="branchForm.controls.imageFormControl.hasError('required')">
-                            Ingresa la url de la imagen
-                    </mat-error>
-        </mat-form-field>
+                    <td>
+                        <mat-form-field class="full-width">
+                            <input 
+                                matInput
+                                type="text"
+                                required
+                                placeholder="Email de contacto"
+                                formControlName="contactEmailFormControl">
+                                <mat-error *ngIf="branchForm.controls.contactEmailFormControl.hasError('required')">
+                                    Ingresa un correo electrónico
+                                </mat-error>
+                                <mat-error *ngIf="branchForm.controls.contactEmailFormControl.hasError('email') && !branchForm.controls.contactEmailFormControl.hasError('required')">
+                                    Ingresa un correo válido
+                            </mat-error>
+                        </mat-form-field> 
+                    </td>
+                    </tr>
+                </table>
+                <mat-form-field class="full-width">
+                        <textarea
+                            matInput
+                            required
+                            placeholder="Detalles de la sucursal"
+                            formControlName="detailsFormControl">
+                        </textarea>
+                        <mat-error *ngIf="branchForm.controls.detailsFormControl.hasError('email')">
+                                Agrega los detalles de la sucursal
+                        </mat-error>
+                    </mat-form-field> 
+                    <p> 
+                        <strong>
+                            Selecciona las coordenadas de la sucursal
+                        </strong>
+                    </p>
+                    <agm-map [streetViewControl]="false" (mapClick)="setBranchCoordinates($event)" [latitude]="lat" [longitude]="lng">
+                        <agm-marker [latitude]="markerLat" [longitude]="markerLng"></agm-marker>
+                    </agm-map>
+                    <mat-error *ngIf="!hasMarked"> Selecciona la ubicación exacta de la sucursal</mat-error>            
+            </div>
+            <div class="col-md-6 col-xs-12 col-lg-6 col-sm-6">
+                <table class="full-width">
+                    <tr>
+                        <strong>Horarios</strong> 
+                    </tr>
+                            <tr>
+                                <td>
+                                    Lunes a Viernes
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <mat-form-field class="full-width">
+                                    <mat-select 
+                                                required
+                                                placeholder="Horario de entrada"
+                                                formControlName="scheduleMonFriOpenFormControl">
+                                        <mat-option *ngFor="let openSched of openSchedules" [value]="openSched.sched">
+                                            {{ openSched.sched }}
+                                        </mat-option>
+                                    </mat-select>
+                                    </mat-form-field>
+                                </td>
+                                <td>
+                                    <mat-form-field class="full-width">
+                                            <mat-select 
+                                                    required                                    
+                                                    placeholder="Horario de salida"
+                                                    formControlName="scheduleMonFriCloseFormControl">
+                                                <mat-option *ngFor="let closeSched of closingSchedules" [value]="closeSched.sched">
+                                                        {{ closeSched.sched }}
+                                                </mat-option>
+                                            </mat-select>
+                                    </mat-form-field>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Sábados
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <mat-form-field class="full-width">
+                                        <mat-select 
+                                                required
+                                                placeholder="Horario de entrada"
+                                                formControlName="scheduleSatOpenFormControl">
+                                            <mat-option *ngFor="let openSched of openSchedules" [value]="openSched.sched">
+                                                    {{ openSched.sched }}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </td>
+                                <td>
+                                    <mat-form-field class="full-width">
+                                        <mat-select 
+                                                required
+                                                placeholder="Horario de salida"
+                                                formControlName="scheduleSatCloseFormControl">
+                                            <mat-option *ngFor="let closeSched of closingSchedules" [value]="closeSched.sched">
+                                                    {{ closeSched.sched }}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Domingos
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <mat-form-field class="full-width">
+                                        <mat-select 
+                                                placeholder="Horario de entrada"
+                                                formControlName="scheduleSunOpenFormControl">
+                                            <mat-option *ngFor="let openSched of penSchedules" [value]="openSched.sched">
+                                                    {{ openSched.sched }}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                            </td>
+                            <td>
+                                <mat-form-field class="full-width">
+                                        <mat-select 
+                                                placeholder="Horario de entrada"
+                                                formControlName="scheduleSunCloseFormControl">
+                                            <mat-option *ngFor="let closingSched of closingSchedules" [value]="closingSched.sched">
+                                                    {{ closingSched.sched }}
+                                            </mat-option>
+                                        </mat-select>
+                                </mat-form-field>
+                            </td>
+                        </tr>
+                </table>
+                <mat-form-field class="full-width">
+                        <input 
+                            matInput
+                            type="text"
+                            required
+                            placeholder="Foto de la sucursal"
+                            formControlName="imageFormControl">
+                            <mat-error *ngIf="branchForm.controls.imageFormControl.hasError('required')">
+                                    Ingresa la url de la imagen
+                            </mat-error>
+                </mat-form-field>
+            </div>
     </div>
+    <button [disabled]="!branchForm.valid && !hasMarked" mat-raised-button type="submit" class="btn-login">CREAR SUCURSAL</button>             
+   </form> 
   </div>
-</div>

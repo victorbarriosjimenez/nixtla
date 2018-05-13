@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { BranchesService } from '../branches.service';
 @Component({
@@ -10,6 +10,8 @@ export class BranchFormComponent implements OnInit {
   public branchForm: FormGroup;
   public hasMarked: boolean = false;
   public markerLat: number;
+  public kaka = "inactivo";
+  public branch: any;
   public markerLng: number;
   public lat: number = 19.5015841;
   public lng: number = -99.4042516;
@@ -39,7 +41,7 @@ export class BranchFormComponent implements OnInit {
         supervisorFormControl: [''],
         address1FormControl:['', Validators.required],     
         address2FormControl:[''],
-        postalCodeFormControl: ['', Validators.compose([Validators.required, Validators.maxLength(5)])],
+        postalCodeFormControl: ['', Validators.compose([Validators.required, Validators.minLength(5), Validators.maxLength(5)])],
         contactFormControl: ['', Validators.compose([Validators.required, Validators.maxLength(10)]) ],
         contactEmailFormControl: ['',Validators.compose([Validators.required, Validators.email])],     
         scheduleMonFriOpenFormControl: ['', Validators.required], 
@@ -58,6 +60,25 @@ export class BranchFormComponent implements OnInit {
     this.markerLng = $event['coords'].lng;
   }
   public createNewBranch(){  
-
+      const branchModelForm = this.branchForm.value
+      this.branch = {
+        name: branchModelForm.nameFormControl as string,
+        city: branchModelForm.cityFormControl as string,
+        state: branchModelForm.stateFormControl as string,
+        address1: branchModelForm.address1FormControl as string,
+        address2: branchModelForm.address2FormControl as string,
+        postalCode: branchModelForm.postalCodeFormControl as string,
+        contact: branchModelForm.contactFormControl as string,
+        contactEmail: branchModelForm.contactEmailFormControl as string,
+        details: branchModelForm.detailsFormControl as string,
+        image: branchModelForm.imageFormControl as string,
+        scheduleMonFriOpen: branchModelForm.scheduleMonFriOpenFormControl as string,
+        scheduleMonFriClose: branchModelForm.scheduleMonFriCloseFormControl as string,
+        scheduleSatOpen: branchModelForm.scheduleSatOpenFormControl as string,
+        scheduleSatClose: branchModelForm.scheduleSatCloseFormControl as string,
+        scheduleSunOpen: branchModelForm.scheduleSunOpenFormControl as string,
+        scheduleSunClose: branchModelForm.scheduleSunCloseFormControl as string
+      }
+      console.log(this.branch);
   }
 }
