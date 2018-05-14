@@ -18,23 +18,23 @@ export class BranchFormComponent implements OnInit {
   public markerLng: number;
   public lat: number = 19.5015841;
   public lng: number = -99.4042516;
-  public pokemonGroups: any = [
+  public stateGroups: any = [
     {
       name: 'A',
-      pokemon: [
+      states: [
         { value: 'Aguascalientes' }
       ]
     },
     {
       name: 'B',
-      pokemon: [
+      states: [
         { value: 'Baja California' },
         { value: 'Baja California Sur' }
       ]
     },
     {
       name: 'C',
-      pokemon: [
+      states: [
         { value: 'Campeche'},
         { value: 'Coahuila de Zaragoza'},
         { value: 'Colima'},
@@ -45,32 +45,32 @@ export class BranchFormComponent implements OnInit {
     },
     {
       name: 'D',
-      pokemon: [
+      states: [
         { value: 'Durango'}                              
       ]
     },
     {
       name: 'G',
-      pokemon: [
+      states: [
         { value: 'Guanajuato'},
         { value: 'Guerrero'}                                                                       
       ]
     },
     {
       name: 'H',
-      pokemon: [
+      states: [
         { value: 'Hidalgo'}                                                                               
       ]
     },
     {
       name: 'J',
-      pokemon: [
+      states: [
         { value: 'Jalisco'}                                                                                      
       ]
     },
     {
       name: 'M',
-      pokemon: [
+      states: [
         { value: 'México'},
         { value: 'Michoacán de Ocampo'},
         { value: 'Morelos'}          
@@ -78,32 +78,32 @@ export class BranchFormComponent implements OnInit {
     },
     {
       name: 'N',
-      pokemon: [
+      states: [
         { value: 'Nayarit'},
         { value: 'Nuevo León'}
       ]
     },
     {
       name: 'O',
-      pokemon: [
+      states: [
         { value: 'Oaxaca'}        
       ]
     },
     {
       name: 'P',
-      pokemon: [
+      states: [
         { value: 'Puebla'}        
       ]
     },
     {
       name: 'Q',
-      pokemon: [
+      states: [
         { value: 'Quintana Roo'} 
       ]
     },
     {
       name: 'S',
-      pokemon: [
+      states: [
         { value: 'San Luis Potosi'},
         { value: 'Sinaloa'},
         { value: 'Sonora'}                         
@@ -111,7 +111,7 @@ export class BranchFormComponent implements OnInit {
     },
     {
       name: 'T',
-      pokemon: [
+      states: [
         { value: 'Tabasco'},
         { value: 'Tamaulipas'},
         { value: 'Tlaxcala'},        
@@ -119,19 +119,19 @@ export class BranchFormComponent implements OnInit {
     },
     {
       name: 'V',
-      pokemon: [
+      states: [
         { value: 'Veracruz'}
       ]
     },
     {
       name: 'Y',
-      pokemon: [
+      states: [
         { value: 'Yucatán'}
       ]
     },
     {
       name: 'Z',
-      pokemon: [
+      states: [
         { value: 'Zacatecas'}
       ]
     }
@@ -176,7 +176,7 @@ export class BranchFormComponent implements OnInit {
         scheduleSunCloseFormControl: ['',Validators.required],        
         detailsFormControl: ['', Validators.required],
         imageFormControl: ['', Validators.required],
-        extraHoursFormControl: ['', Validators.required],
+        extraHoursFormControl: ['', Validators.required]
     });
   }
   public setBranchCoordinates($event) {
@@ -206,9 +206,9 @@ export class BranchFormComponent implements OnInit {
           scheduleSunOpen: branchModelForm.scheduleSunOpenFormControl as string,
           scheduleSunClose: branchModelForm.scheduleSunCloseFormControl as string,
           extraHours: branchModelForm.extraHoursFormControl as number,
-          supervisorMin: branchModelForm.supervisorMinFormControl,
-          supervisorMax: branchModelForm.supervisorMaxFormControl,     
-          promotersMin: branchModelForm.promotersMinFormControl,
+          supervisorMin: branchModelForm.supervisorMinFormControl as number,
+          supervisorMax: branchModelForm.supervisorMaxFormControl as number,     
+          promotersMin: branchModelForm.promotersMinFormControl as number,
           promotersMax: branchModelForm.promotersMaxFormControl
         }
         console.log(this.branch);
