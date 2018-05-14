@@ -3,6 +3,7 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { BranchesService } from '../branches.service';
 import * as moment from 'moment';
 import { Branch } from '../../models/branch';
+import { stateGroups } from '../../models/user';
 @Component({
   selector: 'app-branch-form',
   templateUrl: './branch-form.component.html',
@@ -18,124 +19,7 @@ export class BranchFormComponent implements OnInit {
   public markerLng: number;
   public lat: number = 19.5015841;
   public lng: number = -99.4042516;
-  public stateGroups: any = [
-    {
-      name: 'A',
-      states: [
-        { value: 'Aguascalientes' }
-      ]
-    },
-    {
-      name: 'B',
-      states: [
-        { value: 'Baja California' },
-        { value: 'Baja California Sur' }
-      ]
-    },
-    {
-      name: 'C',
-      states: [
-        { value: 'Campeche'},
-        { value: 'Coahuila de Zaragoza'},
-        { value: 'Colima'},
-        { value: 'Chiapas'},
-        { value: 'Chihuahua'},  
-        { value: 'CDMX'}                              
-      ]
-    },
-    {
-      name: 'D',
-      states: [
-        { value: 'Durango'}                              
-      ]
-    },
-    {
-      name: 'G',
-      states: [
-        { value: 'Guanajuato'},
-        { value: 'Guerrero'}                                                                       
-      ]
-    },
-    {
-      name: 'H',
-      states: [
-        { value: 'Hidalgo'}                                                                               
-      ]
-    },
-    {
-      name: 'J',
-      states: [
-        { value: 'Jalisco'}                                                                                      
-      ]
-    },
-    {
-      name: 'M',
-      states: [
-        { value: 'México'},
-        { value: 'Michoacán de Ocampo'},
-        { value: 'Morelos'}          
-      ]
-    },
-    {
-      name: 'N',
-      states: [
-        { value: 'Nayarit'},
-        { value: 'Nuevo León'}
-      ]
-    },
-    {
-      name: 'O',
-      states: [
-        { value: 'Oaxaca'}        
-      ]
-    },
-    {
-      name: 'P',
-      states: [
-        { value: 'Puebla'}        
-      ]
-    },
-    {
-      name: 'Q',
-      states: [
-        { value: 'Quintana Roo'} 
-      ]
-    },
-    {
-      name: 'S',
-      states: [
-        { value: 'San Luis Potosi'},
-        { value: 'Sinaloa'},
-        { value: 'Sonora'}                         
-      ]
-    },
-    {
-      name: 'T',
-      states: [
-        { value: 'Tabasco'},
-        { value: 'Tamaulipas'},
-        { value: 'Tlaxcala'},        
-      ]
-    },
-    {
-      name: 'V',
-      states: [
-        { value: 'Veracruz'}
-      ]
-    },
-    {
-      name: 'Y',
-      states: [
-        { value: 'Yucatán'}
-      ]
-    },
-    {
-      name: 'Z',
-      states: [
-        { value: 'Zacatecas'}
-      ]
-    }
-  ]; 
+  public stateGroups = stateGroups;
   public openSchedules = [
         { sched: '9:00 AM', valueTime: '9:00:00' },
         { sched: '10:00 AM', valueTime: '10:00:00' },
