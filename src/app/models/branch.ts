@@ -1,4 +1,4 @@
-export class Branch { 
+export interface Branch { 
         name?: string;
         city?: string;
         state?: string;
@@ -20,6 +20,6 @@ export class Branch { 
         details?: string;
         image?: string;
         extraHours?: number;
-        coordintatesLat?: number;
-        coordinatesLng?: number;
+        coorditatesLat: number;
+        coordinatesLng: number;
 }

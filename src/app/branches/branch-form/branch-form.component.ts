@@ -150,9 +150,35 @@ export class BranchFormComponent implements OnInit {
         { sched: '8:00 PM', valueTime: '20:00:00'},
         { sched: '9:00 PM', valueTime: '21:00:00'}            
   ];
-  constructor(private _formBuilder: FormBuilder) { }
+  constructor(private _formBuilder: FormBuilder,private _branchesService: BranchesService) { }
   ngOnInit() { 
-    this.createForm();
+    this.createForm(),
+    this.branch = {
+      coordinatesLng : 2323,
+      coorditatesLat: 212,
+      promotersMin: 21,
+      name: "HOAL",
+      city: "HOAL",
+      state: "HOAL",
+      supervisorMin: 1234,
+      supervisorMax: 1234,     
+      promotersMax: 1234,           
+      address1: "HOAL",     
+      address2: "HOAL",
+      postalCode: "HOAL",
+      contact: "HOAL",
+      contactEmail: "HOAL",     
+      scheduleMonFriOpen: "HOAL", 
+      scheduleMonFriClose: "HOAL",         
+      scheduleSatOpen: "HOAL",
+      scheduleSatClose: "HOAL",        
+      scheduleSunOpen: "HOAL", 
+      scheduleSunClose: "HOAL",      
+      details: "HOAL",
+      image: "HOAL",
+      extraHours: 123
+    }
+    this._branchesService.setNewBranch(this.branch);
   } 
   public createForm( ): void {
     this.branchForm =  this._formBuilder.group({
@@ -209,9 +235,11 @@ export class BranchFormComponent implements OnInit {
           supervisorMin: branchModelForm.supervisorMinFormControl as number,
           supervisorMax: branchModelForm.supervisorMaxFormControl as number,     
           promotersMin: branchModelForm.promotersMinFormControl as number,
-          promotersMax: branchModelForm.promotersMaxFormControl
+          promotersMax: branchModelForm.promotersMaxFormControl as number,
+          coorditatesLat: this.markerLat as number,
+          coordinatesLng: this.markerLng as number
         }
-        console.log(this.branch);
+        this._branchesService.setNewBranch(this.branch);
     }
     else if(this.branchForm.valid && !this.hasMarked){
         this.showMapError = true
