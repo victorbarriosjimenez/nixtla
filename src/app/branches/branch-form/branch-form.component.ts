@@ -152,8 +152,8 @@ export class BranchFormComponent implements OnInit {
   ];
   constructor(private _formBuilder: FormBuilder,private _branchesService: BranchesService) { }
   ngOnInit() { 
-    this.createForm(),
-    this.branch = {
+    this.createForm()
+    /*this.branch = {
       coordinatesLng : 2323,
       coorditatesLat: 212,
       promotersMin: 21,
@@ -179,7 +179,8 @@ export class BranchFormComponent implements OnInit {
       extraHours: 123
     }
     this._branchesService.setNewBranch(this.branch);
-  } 
+    */
+  }
   public createForm( ): void {
     this.branchForm =  this._formBuilder.group({
         nameFormControl:['', Validators.required],

@@ -2,4 +2,16 @@
 <app-floating-button [route]="'branches/new'" [tip]="'Nueva Sucursal'"></app-floating-button>
 <div class="home-container">
   <h1>Sucursales</h1>
+  <div class="row">
+      <div *ngFor="let branch of branches | async" class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+          <img src="..." alt="...">
+          <div class="caption">
+            <h3>{{ branch.name}}</h3>
+            <p>{{ branch.details }}</p>
+            <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
 </div>
