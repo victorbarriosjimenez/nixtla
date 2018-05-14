@@ -5,7 +5,9 @@ import {
           MatIconModule,
           MatTooltipModule,
           MatSelectModule,
-          MatRadioModule
+          MatRadioModule,
+          MatNativeDateModule,
+          MatDatepickerModule
         } 
         from '@angular/material';
 import { CommonModule } from '@angular/common';
@@ -18,7 +20,9 @@ import { AuthService } from '../auth/authentication.service';
     MatIconModule,
     MatTooltipModule,
     MatSelectModule,
-    MatRadioModule   
+    MatRadioModule,
+    MatNativeDateModule,    
+    MatDatepickerModule     
   ], 
   declarations: [
 ],
@@ -28,7 +32,10 @@ import { AuthService } from '../auth/authentication.service';
     MatIconModule,
     MatTooltipModule,
     MatSelectModule,
-    MatRadioModule       
+    MatRadioModule,
+    MatNativeDateModule,
+    
+    MatDatepickerModule      
   ],
   providers: [
     AuthService

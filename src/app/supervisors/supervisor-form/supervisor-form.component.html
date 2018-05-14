@@ -1,9 +1,11 @@
 <app-navigation></app-navigation>
 <div class="home-container">
   <h1>Crear un supervisor</h1>
+  <br>
   <form [formGroup]="registrateSupervisorForm" (ngSubmit)="registerAccountWithEmailAndPassword()">
     <div class="row">
         <div class="col-md-6 col-sm-12 col-xs-12 col-lg-6">
+            <p> <mat-icon>person</mat-icon> <strong> Información personales </strong> </p>
             <mat-form-field class="full-width">
             <input 
                 matInput
@@ -172,6 +174,10 @@
         <div class="col-md-6 col-sm-12 col-xs-12 col-lg-6">
             <table class="full-width">
                 <tr>
+                   <mat-icon>monetization_on</mat-icon>        
+                   <strong>Salarios</strong>
+                </tr>
+                <tr>
                     <td>
                         <mat-form-field class="full-width">
                             <mat-select 
@@ -207,7 +213,48 @@
                         </mat-form-field>
                     </td>
                 </tr>
+                <tr>
+                    <mat-icon>insert_drive_file</mat-icon> 
+                    <strong>  Contrato</strong>
+                </tr>
+                <tr>
+                    <td>
+                        <mat-form-field class="full-width">
+                            <input   
+                                matInput 
+                                [matDatepicker]="picker" 
+                                placeholder="Fecha de inicio de contrato"
+                                ormControlName="contractDateBeginFormControl">
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+                    </td>
+                    <td>
+                        <mat-form-field class="full-width">
+                                <input   
+                                    matInput 
+                                    [matDatepicker]="picker2" 
+                                    placeholder="Fecha de fin de contrato"
+                                    ormControlName="contractDateEndFormControl">
+                                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                                <mat-datepicker #picker2></mat-datepicker>
+                        </mat-form-field>
+                    </td>
+                </tr>
             </table>
+            <p>  <mat-icon>account_box</mat-icon>     <strong>Cuenta</strong></p>
+            <mat-form-field class="full-width">
+                    <input 
+                        matInput
+                        type="text"
+                        required
+                        placeholder="Fotografía del supervisor"
+                        formControlName="imageFormControl">
+                        <mat-error *ngIf="registrateSupervisorForm.controls.imageFormControl.hasError('required')">
+                                Ingresa la url de la imagen
+                        </mat-error>
+                        <mat-hint>Resolución cuadrada (500x500px, 300x300px, etc)</mat-hint>
+            </mat-form-field>
         </div>
       </div>
       <button [disabled]="!registrateSupervisorForm.valid" mat-raised-button type="submit" class="btn-login">
