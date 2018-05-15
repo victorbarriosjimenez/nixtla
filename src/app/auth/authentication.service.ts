@@ -11,6 +11,8 @@ import { MatSnackBar } from '@angular/material';
 export class AuthService {
   admin: Observable<Administrator>;
   public loginFormErrorsCode: any;
+  private employeeRef: AngularFirestoreDocument<Supervisor | Promoter>;  
+  public signupFormErrorsCode: any;
   public authState: any = null;
   constructor(private _snackBar: MatSnackBar,
               private afAuth: AngularFireAuth,
@@ -25,8 +27,22 @@ export class AuthService {
                .then(admin => {
                  this.setAdministratorToDatabase(admin,administrator.name);
                  this.router.navigate(['/settings']);
-               })
-               .catch(err=> console.log(err));
+               }).catch((error) => {
+                this.signupFormErrorsCode = error.code;
+                switch(this.signupFormErrorsCode){
+                    case 'auth/email-already-in-use':
+                           this.showSnackBarForNotifications('Este correo electrónico ya ha sido registrado.');
+                           break;
+                    case 'auth/invalid-email':
+                           this.showSnackBarForNotifications('Este correo electrónico no es válido, intenta con otro.');
+                           break;
+                    case 'auth/weak-password':
+                           this.showSnackBarForNotifications('La contraseña no es muy fuerte ¡Intenta con otra contraseña!');
+                           break;
+                    default: 
+                           return;
+                }
+              });
   }
   public setAdministratorToDatabase(admin, adminName) {
     const userRef: AngularFirestoreDocument<Administrator> = this.afs.doc(`administrators/${admin.uid}`);
@@ -41,12 +57,25 @@ export class AuthService {
     return this.afAuth.auth.createUserWithEmailAndPassword(employee.email,employee.password)
                .then(user => {
                  this.setEmployeeToDatabase(user,employee);
-               })
-               .catch(err=> console.log(err));
+               }).catch((error) => {
+                this.signupFormErrorsCode = error.code;
+                switch(this.signupFormErrorsCode){
+                    case 'auth/email-already-in-use':
+                           this.showSnackBarForNotifications('Este correo electrónico ya ha sido registrado.');
+                           break;
+                    case 'auth/invalid-email':
+                           this.showSnackBarForNotifications('Este correo electrónico no es válido, intenta con otro.');
+                           break;
+                    case 'auth/weak-password':
+                           this.showSnackBarForNotifications('La contraseña no es muy fuerte ¡Intenta con otra contraseña!');
+                           break;
+                    default: 
+                           return;
+                }
+              });
   }
-  public setEmployeeToDatabase(user,employee: Supervisor) {
-    const employeeRef: AngularFirestoreDocument<Supervisor> = this.afs.doc(`supervisors/${user.uid}`);
-    const data = {
+  public setEmployeeToDatabase(user,employee: Supervisor | Promoter ) {
+    const data: Supervisor | Promoter  = {
       uid: user.uid,
       email: employee.email,
       name:  employee.name ,
@@ -62,9 +91,17 @@ export class AuthService {
       rfc: employee.rfc,  
       salary: employee.salary, 
       salaryType: employee.salaryType,   
-      image: employee.image   
+      image: employee.image,
+      employeeKey: employee.employeeKey
     }
-    return employeeRef.set(data);
+    if(employee.employeeKey === 'supervisor'){
+      this.employeeRef = this.afs.doc(`supervisors/${user.uid}`)
+      return this.employeeRef.set(data);
+    }
+    else if(employee.employeeKey === 'promoter') { 
+      this.employeeRef = this.afs.doc(`supervisors/${user.uid}`)
+      return this.employeeRef.set(data);
+    }
   }
   public loginWithEmailAndPassword(_userloginModel: User) {
     this.afAuth.auth.signInWithEmailAndPassword(_userloginModel.email,_userloginModel.password)
@@ -87,7 +124,7 @@ export class AuthService {
       );
   }
   public getAdministratorDocument(uid): Observable<Administrator>{
-   return  this.afs.doc(`administrators/${uid}`).valueChanges();
+    return  this.afs.doc(`administrators/${uid}`).valueChanges();
   }
   public showSnackBarForNotifications(message: string){ 
     this._snackBar.open(message, "OK", {

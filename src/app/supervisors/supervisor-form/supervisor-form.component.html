@@ -1,6 +1,6 @@
 <app-navigation></app-navigation>
 <div class="home-container">
-  <h1>Crear un supervisor</h1>
+  <h1>Nuevo empleado</h1>
   <br>
   <form [formGroup]="registrateSupervisorForm">
     <div class="row">
@@ -123,8 +123,8 @@
                             type="text"
                             placeholder="CURP"
                             required
-                            minlength="13"
-                            maxlength="13" 
+                            minlength="18"
+                            maxlength="18" 
                             formControlName="curpFormControl">
                             <mat-hint>
                                 Clave Única de Registro de Población (CURP)
@@ -133,7 +133,7 @@
                                 Ingresa tu curp
                             </mat-error>
                             <mat-error *ngIf="registrateSupervisorForm.controls.curpFormControl.hasError('minlength')">
-                                    Ingresa 13 dígitos
+                                Ingresa 18 dígitos
                             </mat-error>
                     </mat-form-field> 
                 </td>
@@ -298,6 +298,5 @@
       <button (click)="registerAccountWithEmailAndPassword()" [disabled]="!registrateSupervisorForm.valid" mat-raised-button type="submit" class="btn-login">
           <span> CREAR SUPERVISOR </span>
       </button> 
-      {{ registrateSupervisorForm.value | json }}
   </form>  
 </div>

@@ -29,7 +29,7 @@ export class SupervisorFormComponent implements OnInit {
              contractDateBeginFormControl: ['', Validators.required],             
              contractDateExpFormControl: ['', Validators.required],
              postalCodeFormControl: ['', Validators.compose([Validators.required, Validators.minLength(5), Validators.maxLength(5)])],             
-             curpFormControl:['', Validators.compose([Validators.required, Validators.minLength(13), Validators.maxLength(13)])],             
+             curpFormControl:['', Validators.compose([Validators.required, Validators.minLength(18), Validators.maxLength(18)])],             
              nssFormControl:['', Validators.compose([Validators.required, Validators.minLength(11), Validators.maxLength(11)])],            
              rfcFormControl:['', Validators.compose([Validators.required, Validators.minLength(10), Validators.maxLength(10)])],
              salaryFormControl:['', Validators.required], 
@@ -57,7 +57,7 @@ export class SupervisorFormComponent implements OnInit {
           salary: formModel.salaryFormControl as number, 
           salaryType: formModel.salaryTypeFormControl as string,   
           image: formModel.imageFormControl as string,
-          employeeKey: formModel.employeeTypeFormControl as string,    
+          employeeKey: formModel.employeeTypeFormControl as string, 
           password: this.generatedPasswordEmployee
       }
       this._authService.createEmployeeWithEmailAndPassword(supervisorModel)
