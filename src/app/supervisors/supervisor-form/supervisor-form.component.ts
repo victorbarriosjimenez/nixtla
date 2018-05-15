@@ -34,7 +34,8 @@ export class SupervisorFormComponent implements OnInit {
              rfcFormControl:['', Validators.compose([Validators.required, Validators.minLength(10), Validators.maxLength(10)])],
              salaryFormControl:['', Validators.required], 
              salaryTypeFormControl: ['', Validators.required],   
-             imageFormControl: ['', Validators.required]                      
+             imageFormControl: ['', Validators.required],
+             employeeTypeFormControl: ['', Validators.required ]                     
       });
    } 
    public registerAccountWithEmailAndPassword( ): void { 
@@ -55,7 +56,8 @@ export class SupervisorFormComponent implements OnInit {
           rfc: formModel.rfcFormControl as string,
           salary: formModel.salaryFormControl as number, 
           salaryType: formModel.salaryTypeFormControl as string,   
-          image: formModel.imageFormControl as string,    
+          image: formModel.imageFormControl as string,
+          employeeKey: formModel.employeeTypeFormControl as string,    
           password: this.generatedPasswordEmployee
       }
       this._authService.createEmployeeWithEmailAndPassword(supervisorModel)

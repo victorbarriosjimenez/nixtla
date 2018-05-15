@@ -251,6 +251,19 @@
                     </td>
                 </tr>
             </table>
+            <mat-form-field class="full-width">
+                <mat-select 
+                        required 
+                        placeholder="Tipo de empleado" 
+                        formControlName="employeeTypeFormControl">
+                    <mat-option value="semanal">
+                        Supervisor
+                    </mat-option>
+                    <mat-option value="quincenal">
+                        Promotor
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
             <p>  <mat-icon>account_box</mat-icon>     <strong>Cuenta</strong></p>
             <mat-form-field class="full-width">
                     <input 

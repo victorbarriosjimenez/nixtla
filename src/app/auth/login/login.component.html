@@ -3,7 +3,7 @@
         <div class="col-md-4 offset-md-4 col-sm-4 offset-sm-4 col-xs-12 col-lg-4 offset-lg-4 bordered-form">
             <h1>Nixtla</h1>
             <h5 class="text-center">Administrador</h5> 
-            <form  [formGroup]="loginForm">
+            <form [formGroup]="loginForm">
                 <mat-form-field class="full-width">
                         <input 
                             matInput
@@ -36,7 +36,7 @@
                                 Ingresa tu contraseña
                          </mat-error>
                 </mat-form-field>
-                <button (click)="loginToAccountWithEmailAndPassword()" [disabled]="!loginForm.valid" class="btn-login" mat-raised-button type="submit">                              
+                <button (click)="loginToAccountWithEmailAndPassword()" [disabled]="!loginForm.valid" class="btn-login" mat-raised-button>                              
                         ENTRAR
                 </button>        
             </form>
