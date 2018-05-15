@@ -54,11 +54,11 @@ export class SupervisorFormComponent implements OnInit {
           nss:formModel.nssFormControl as string,            
           rfc: formModel.rfcFormControl as string,
           salary: formModel.salaryFormControl as number, 
-          salaryType: formModel.salaryType as string,   
+          salaryType: formModel.salaryTypeFormControl as string,   
           image: formModel.imageFormControl as string,    
           password: this.generatedPasswordEmployee
       }
-      this._authService.createUserWithEmailAndPassword(supervisorModel)
+      this._authService.createEmployeeWithEmailAndPassword(supervisorModel)
       .then(e => console.log(e));
     }
     else if(this.registrateSupervisorForm.valid && this.generatedPasswordEmployee===''){

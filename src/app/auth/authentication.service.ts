@@ -34,14 +34,14 @@ export class AuthService {
     }
     return userRef.set(data);
   }
-  public createEmployeeWithEmailAndPassword(employee: Supervisor | Promoter){
+  public createEmployeeWithEmailAndPassword(employee: Supervisor){
     return this.afAuth.auth.createUserWithEmailAndPassword(employee.email,employee.password)
                .then(user => {
-                 this.setAdministratorToDatabase(user,employee);
+                 this.setEmployeeToDatabase(user,employee);
                })
                .catch(err=> console.log(err));
   }
-  public setEmployeeToDatabase(user,employee: Supervisor | Promoter) {
+  public setEmployeeToDatabase(user,employee: Supervisor) {
     const employeeRef: AngularFirestoreDocument<Supervisor> = this.afs.doc(`supervisors/${user.uid}`);
     const data = {
       uid: user.uid,

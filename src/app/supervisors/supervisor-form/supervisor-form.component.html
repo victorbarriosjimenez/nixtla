@@ -2,7 +2,7 @@
 <div class="home-container">
   <h1>Crear un supervisor</h1>
   <br>
-  <form [formGroup]="registrateSupervisorForm" (ngSubmit)="registerAccountWithEmailAndPassword()">
+  <form [formGroup]="registrateSupervisorForm">
     <div class="row">
         <div class="col-md-6 col-sm-12 col-xs-12 col-lg-6">
             <p> <mat-icon>person</mat-icon> <strong> Información personales </strong> </p>
@@ -282,7 +282,7 @@
             </table>
         </div>
       </div>
-      <button [disabled]="!registrateSupervisorForm.valid" mat-raised-button type="submit" class="btn-login">
+      <button (click)="registerAccountWithEmailAndPassword()" [disabled]="!registrateSupervisorForm.valid" mat-raised-button type="submit" class="btn-login">
           <span> CREAR SUPERVISOR </span>
       </button> 
   </form>  
