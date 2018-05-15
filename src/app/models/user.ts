@@ -22,6 +22,7 @@ export interface Supervisor extends User {
     address: string;
     contractDateBegin: Date;
     contractDateExp: Date;
+    birthDate: Date;
     postalCode: string;
     image: string,
 }

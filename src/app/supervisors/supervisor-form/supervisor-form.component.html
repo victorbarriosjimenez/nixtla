@@ -7,7 +7,7 @@
         <div class="col-md-6 col-sm-12 col-xs-12 col-lg-6">
             <p> <mat-icon>person</mat-icon> <strong> Información personales </strong> </p>
             <mat-form-field class="full-width">
-            <input 
+                <input 
                 matInput
                 type="text"
                 placeholder="Nombre"
@@ -21,6 +21,15 @@
                         Ingresa un nombre
                 </mat-error>
             </mat-form-field> 
+            <mat-form-field class="full-width">
+                    <input   
+                        matInput 
+                        [matDatepicker]="picker3" 
+                        placeholder="Fecha de nacimiento"
+                        formControlName="birthDateFormControl">
+                    <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+                    <mat-datepicker #picker3></mat-datepicker>
+            </mat-form-field>
             <mat-form-field class="full-width">
                     <input 
                         matInput
@@ -224,7 +233,7 @@
                                 matInput 
                                 [matDatepicker]="picker" 
                                 placeholder="Fecha de inicio de contrato"
-                                ormControlName="contractDateBeginFormControl">
+                                formControlName="contractDateBeginFormControl">
                             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                             <mat-datepicker #picker></mat-datepicker>
                         </mat-form-field>
@@ -235,7 +244,7 @@
                                     matInput 
                                     [matDatepicker]="picker2" 
                                     placeholder="Fecha de fin de contrato"
-                                    ormControlName="contractDateEndFormControl">
+                                    formControlName="contractDateExpFormControl">
                                 <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
                                 <mat-datepicker #picker2></mat-datepicker>
                         </mat-form-field>
@@ -255,10 +264,28 @@
                         </mat-error>
                         <mat-hint>Resolución cuadrada (500x500px, 300x300px, etc)</mat-hint>
             </mat-form-field>
+            <table class="full-width">
+                <tr>
+                   <!-- <td *ngIf="registrateSupervisorForm.valid">-->
+                    <td>
+                        <button 
+                                *ngIf="this.registrateSupervisorForm.controls.nameFormControl.valid && this.registrateSupervisorForm.controls.curpFormControl.valid" 
+                                (click)="generatePassword()" mat-raised-button class="btn-login">
+                            <mat-icon>fingerprint</mat-icon> <strong>Generar Password</strong>
+                        </button>
+                        <mat-error *ngIf="showErrowForm">Genera una contraseña</mat-error>
+                    </td>
+                    <td>
+                        {{ generatedPasswordEmployee }}
+                    </td>                    
+                </tr>
+            </table>
         </div>
       </div>
       <button [disabled]="!registrateSupervisorForm.valid" mat-raised-button type="submit" class="btn-login">
-          <span>  CREAR SUPERVISOR </span>
+          <span> CREAR SUPERVISOR </span>
       </button> 
+      {{ registrateSupervisorForm.valid }}
+      {{ registrateSupervisorForm.value | json }}
   </form>  
 </div>
