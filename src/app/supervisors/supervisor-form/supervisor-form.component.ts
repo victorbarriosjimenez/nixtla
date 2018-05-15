@@ -31,7 +31,7 @@ export class SupervisorFormComponent implements OnInit {
              postalCodeFormControl: ['', Validators.compose([Validators.required, Validators.minLength(5), Validators.maxLength(5)])],             
              curpFormControl:['', Validators.compose([Validators.required, Validators.minLength(18), Validators.maxLength(18)])],             
              nssFormControl:['', Validators.compose([Validators.required, Validators.minLength(11), Validators.maxLength(11)])],            
-             rfcFormControl:['', Validators.compose([Validators.required, Validators.minLength(10), Validators.maxLength(10)])],
+             rfcFormControl:['', Validators.compose([Validators.required, Validators.minLength(13), Validators.maxLength(13)])],
              salaryFormControl:['', Validators.required], 
              salaryTypeFormControl: ['', Validators.required],   
              imageFormControl: ['', Validators.required],

@@ -1,6 +1,6 @@
 <app-navigation></app-navigation>
 <div class="home-container">
-  <h1>Nuevo empleado</h1>
+  <h1>Crear nuevo empleado</h1>
   <br>
   <form [formGroup]="registrateSupervisorForm">
     <div class="row">
@@ -144,8 +144,8 @@
                             type="text"
                             placeholder="RFC"
                             required
-                            minlength="10"
-                            maxlength="10" 
+                            minlength="13"
+                            maxlength="13" 
                             formControlName="rfcFormControl">
                             <mat-hint>
                                 Registro Federal del Contribuyente (Homoclave)

@@ -56,7 +56,15 @@ export class AuthService {
   public createEmployeeWithEmailAndPassword(employee: Supervisor){
     return this.afAuth.auth.createUserWithEmailAndPassword(employee.email,employee.password)
                .then(user => {
-                 this.setEmployeeToDatabase(user,employee);
+                    this.setEmployeeToDatabase(user,employee)
+                    if(employee.employeeKey==='supervisor'){
+                      this.router.navigate(['/supervisors']);
+                      setTimeout(this.showSnackBarForNotifications('Supervisor Creado'), 3000);
+                    }
+                    else if (employee.employeeKey==='promoter'){
+                      this.router.navigate(['/supervisors']);       
+                      setTimeout(this.showSnackBarForNotifications('Promotor Creado'), 3000);                                     
+                    }
                }).catch((error) => {
                 this.signupFormErrorsCode = error.code;
                 switch(this.signupFormErrorsCode){
@@ -99,7 +107,7 @@ export class AuthService {
       return this.employeeRef.set(data);
     }
     else if(employee.employeeKey === 'promoter') { 
-      this.employeeRef = this.afs.doc(`supervisors/${user.uid}`)
+      this.employeeRef = this.afs.doc(`promoters/${user.uid}`)
       return this.employeeRef.set(data);
     }
   }
