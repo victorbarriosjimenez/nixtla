@@ -6,11 +6,14 @@ import { Observable } from 'rxjs/Observable';
 import * as firebase from 'firebase/app';
 import { User,Administrator, Promoter , Supervisor } from '../models/user';
 import 'rxjs/add/operator/switchMap';
+import { MatSnackBar } from '@angular/material';
 @Injectable()
 export class AuthService {
   admin: Observable<Administrator>;
+  public loginFormErrorsCode: any;
   public authState: any = null;
-  constructor(private afAuth: AngularFireAuth,
+  constructor(private _snackBar: MatSnackBar,
+              private afAuth: AngularFireAuth,
               private afs: AngularFirestore,
               private router: Router) {
                 this.afAuth.authState.subscribe((auth) => {
@@ -67,10 +70,29 @@ export class AuthService {
     this.afAuth.auth.signInWithEmailAndPassword(_userloginModel.email,_userloginModel.password)
         .then( user => {
               this.router.navigate(['/']);
-        });
+        }).catch(
+          (error) =>{
+              this.loginFormErrorsCode =  error.code;
+              switch(this.loginFormErrorsCode){
+                  case 'auth/wrong-password':
+                       this.showSnackBarForNotifications('Contraseña Incorrecta, vuelve a intentarlo.');
+                       break;
+                  case 'auth/user-not-found':
+                       this.showSnackBarForNotifications('El usuario con este email no ha sido encontrado.');
+                       break;
+                  default: 
+                      return;
+              }
+          } 
+      );
   }
   public getAdministratorDocument(uid): Observable<Administrator>{
    return  this.afs.doc(`administrators/${uid}`).valueChanges();
+  }
+  public showSnackBarForNotifications(message: string){ 
+    this._snackBar.open(message, "OK", {
+        duration: 6000,
+    });
   }
   public logoutUser() {
     this.afAuth.auth.signOut();

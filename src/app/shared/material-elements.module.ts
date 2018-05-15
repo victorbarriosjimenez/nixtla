@@ -7,7 +7,8 @@ import {
           MatSelectModule,
           MatRadioModule,
           MatNativeDateModule,
-          MatDatepickerModule
+          MatDatepickerModule,
+          MatSnackBarModule
         } 
         from '@angular/material';
 import { CommonModule } from '@angular/common';
@@ -22,7 +23,8 @@ import { AuthService } from '../auth/authentication.service';
     MatSelectModule,
     MatRadioModule,
     MatNativeDateModule,    
-    MatDatepickerModule     
+    MatDatepickerModule,
+    MatSnackBarModule     
   ], 
   declarations: [
 ],
@@ -34,7 +36,7 @@ import { AuthService } from '../auth/authentication.service';
     MatSelectModule,
     MatRadioModule,
     MatNativeDateModule,
-    
+    MatSnackBarModule,   
     MatDatepickerModule      
   ],
   providers: [

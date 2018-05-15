@@ -256,10 +256,10 @@
                         required 
                         placeholder="Tipo de empleado" 
                         formControlName="employeeTypeFormControl">
-                    <mat-option value="semanal">
+                    <mat-option value="supervisor">
                         Supervisor
                     </mat-option>
-                    <mat-option value="quincenal">
+                    <mat-option value="promoter">
                         Promotor
                     </mat-option>
                 </mat-select>
@@ -298,5 +298,6 @@
       <button (click)="registerAccountWithEmailAndPassword()" [disabled]="!registrateSupervisorForm.valid" mat-raised-button type="submit" class="btn-login">
           <span> CREAR SUPERVISOR </span>
       </button> 
+      {{ registrateSupervisorForm.value | json }}
   </form>  
 </div>
