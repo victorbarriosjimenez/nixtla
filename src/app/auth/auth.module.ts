@@ -8,6 +8,7 @@ import { MaterialElementsModule  } from '../shared/material-elements.module';
 import { AuthService } from './authentication.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthGuard } from './authentication.guard';
+import { AuthFollow } from './authentication.follow.guard';
 import { SettingsComponent } from './settings/settings.component';
 import { SharedComponentsModule } from '../shared/shared-components.module';
 @NgModule({
@@ -29,7 +30,8 @@ import { SharedComponentsModule } from '../shared/shared-components.module';
   ],
   providers: [ 
     AuthService,
-    AuthGuard
+    AuthGuard,
+    AuthFollow
   ]
 })
 export class AuthModule { }

@@ -6,10 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./supervisors.component.css']
 })
 export class SupervisorsComponent implements OnInit {
-
   constructor() { }
-
   ngOnInit() {
+    
   }
-
 }
