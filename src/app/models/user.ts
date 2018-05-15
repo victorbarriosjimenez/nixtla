@@ -13,6 +13,7 @@ export interface User {
     salaryType?: string; 
 }
 export interface Administrator extends User { 
+    isAdmin?: boolean;
 }
 export interface Promoter extends User { 
     city: string;

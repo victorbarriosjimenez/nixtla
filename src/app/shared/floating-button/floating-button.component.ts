@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 export class FloatingButtonComponent implements OnInit {
   @Input('route') routeAsigned: string;
   @Input('tip') toolTipText: string;
+  @Input('icon') icon: string; 
   constructor(private _router: Router) { }
   ngOnInit() { }
   public redirecToRoute(route){

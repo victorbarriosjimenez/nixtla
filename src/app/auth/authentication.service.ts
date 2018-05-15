@@ -49,7 +49,8 @@ export class AuthService {
     const data: Administrator = {
       uid: admin.uid,
       name: adminName,
-      email: admin.email || null
+      email: admin.email || null,
+      isAdmin: true
     }
     return userRef.set(data);
   }
@@ -114,6 +115,7 @@ export class AuthService {
   public loginWithEmailAndPassword(_userloginModel: User) {
     this.afAuth.auth.signInWithEmailAndPassword(_userloginModel.email,_userloginModel.password)
         .then( user => {
+              console.log(user.uid);
               this.router.navigate(['/']);
         }).catch(
           (error) =>{
