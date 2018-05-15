@@ -276,7 +276,7 @@
                         <mat-error *ngIf="showErrowForm">Genera una contraseña</mat-error>
                     </td>
                     <td>
-                        {{ generatedPasswordEmployee }}
+                        <span class="password-show" *ngIf="generatedPasswordEmployee">Tu contraseña es:  <strong>{{ generatedPasswordEmployee }}</strong> </span>
                     </td>                    
                 </tr>
             </table>

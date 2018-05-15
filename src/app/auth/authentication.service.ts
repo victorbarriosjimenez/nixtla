@@ -34,6 +34,35 @@ export class AuthService {
     }
     return userRef.set(data);
   }
+  public createEmployeeWithEmailAndPassword(employee: Supervisor | Promoter){
+    return this.afAuth.auth.createUserWithEmailAndPassword(employee.email,employee.password)
+               .then(user => {
+                 this.setAdministratorToDatabase(user,employee);
+               })
+               .catch(err=> console.log(err));
+  }
+  public setEmployeeToDatabase(user,employee: Supervisor | Promoter) {
+    const employeeRef: AngularFirestoreDocument<Supervisor> = this.afs.doc(`supervisors/${user.uid}`);
+    const data = {
+      uid: user.uid,
+      email: employee.email,
+      name:  employee.name ,
+      birthDate: employee.birthDate ,
+      city: employee.city,
+      state: employee.state ,  
+      address: employee.address,                      
+      curp: employee.curp,
+      contractDateBegin: employee.contractDateBegin,             
+      contractDateExp: employee.contractDateExp,
+      postalCode: employee.postalCode ,             
+      nss: employee.nss,            
+      rfc: employee.rfc,  
+      salary: employee.salary, 
+      salaryType: employee.salaryType,   
+      image: employee.image   
+    }
+    return employeeRef.set(data);
+  }
   public loginWithEmailAndPassword(_userloginModel: User) {
     this.afAuth.auth.signInWithEmailAndPassword(_userloginModel.email,_userloginModel.password)
         .then( user => {

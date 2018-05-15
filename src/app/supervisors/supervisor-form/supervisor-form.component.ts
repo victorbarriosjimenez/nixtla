@@ -56,7 +56,6 @@ export class SupervisorFormComponent implements OnInit {
           salary: formModel.salaryFormControl as number, 
           salaryType: formModel.salaryType as string,   
           image: formModel.imageFormControl as string,    
-          employeeKey: this.generatedEmployeeKey,
           password: this.generatedPasswordEmployee
       }
       this._authService.createUserWithEmailAndPassword(supervisorModel)

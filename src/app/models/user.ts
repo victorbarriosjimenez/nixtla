@@ -15,6 +15,14 @@ export interface User {
 export interface Administrator extends User { 
 }
 export interface Promoter extends User { 
+    city: string;
+    state: string;
+    address: string;
+    contractDateBegin: Date;
+    contractDateExp: Date;
+    birthDate: Date;
+    postalCode: string;
+    image: string,
 }
 export interface Supervisor extends User {
     city: string;
