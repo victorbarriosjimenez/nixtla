@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../auth/authentication.service';
 import { FormBuilder, Validators, FormGroup,FormControl } from '@angular/forms';
 import { Supervisor, stateGroups } from '../../models/user';
+import * as moment from 'moment';
 @Component({
   selector: 'app-supervisor-form',
   templateUrl: './supervisor-form.component.html',
@@ -66,7 +67,10 @@ export class SupervisorFormComponent implements OnInit {
     }
   }
   public generatePassword(){
-     const name: string = this.registrateSupervisorForm.controls.nameFormControl.value
-
-  }
+     const name: string = this.registrateSupervisorForm.controls.nameFormControl.value;
+     const db: string =  this.registrateSupervisorForm.controls.birthDateFormControl.value;
+     const formattedDB =  moment(db).format('l').split('/');
+     const nameP: string[] = name.split(" ");
+     this.generatedPasswordEmployee = nameP[0].substr(0,3) + nameP[1].substr(0,3) + formattedDB[0] + formattedDB[1] + formattedDB[2];
+    }
 }

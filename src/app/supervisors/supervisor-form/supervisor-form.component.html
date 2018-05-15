@@ -269,7 +269,7 @@
                    <!-- <td *ngIf="registrateSupervisorForm.valid">-->
                     <td>
                         <button 
-                                *ngIf="this.registrateSupervisorForm.controls.nameFormControl.valid && this.registrateSupervisorForm.controls.curpFormControl.valid" 
+                                *ngIf="this.registrateSupervisorForm.controls.nameFormControl.valid && this.registrateSupervisorForm.controls.birthDateFormControl.valid" 
                                 (click)="generatePassword()" mat-raised-button class="btn-login">
                             <mat-icon>fingerprint</mat-icon> <strong>Generar Password</strong>
                         </button>
@@ -285,7 +285,5 @@
       <button [disabled]="!registrateSupervisorForm.valid" mat-raised-button type="submit" class="btn-login">
           <span> CREAR SUPERVISOR </span>
       </button> 
-      {{ registrateSupervisorForm.valid }}
-      {{ registrateSupervisorForm.value | json }}
   </form>  
 </div>
