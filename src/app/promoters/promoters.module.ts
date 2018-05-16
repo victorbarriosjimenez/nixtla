@@ -6,6 +6,7 @@ import { PromoterComponent } from './promoter/promoter.component';
 import { PromoterDetailsComponent } from './promoter-details/promoter-details.component';
 import { AuthGuard } from '../auth/authentication.guard';
 import { SharedComponentsModule } from '../shared/shared-components.module';
+import { PromotersService } from './promoters.service';
 @NgModule({
   imports: [
     CommonModule, 
@@ -19,7 +20,8 @@ import { SharedComponentsModule } from '../shared/shared-components.module';
     PromoterDetailsComponent
   ],
   providers: [ 
-    AuthGuard
+    AuthGuard,
+    PromotersService
   ]
 })
 export class PromotersModule { }

@@ -8,11 +8,15 @@ import {
           MatRadioModule,
           MatNativeDateModule,
           MatDatepickerModule,
-          MatSnackBarModule
+          MatSnackBarModule,
+          MatTableModule,
+          MatProgressSpinnerModule,
+          MatPaginatorModule
         } 
         from '@angular/material';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../auth/authentication.service';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -24,7 +28,10 @@ import { AuthService } from '../auth/authentication.service';
     MatRadioModule,
     MatNativeDateModule,    
     MatDatepickerModule,
-    MatSnackBarModule     
+    MatSnackBarModule,
+    MatTableModule,
+    MatProgressSpinnerModule,
+    MatPaginatorModule    
   ], 
   declarations: [
 ],
@@ -37,8 +44,11 @@ import { AuthService } from '../auth/authentication.service';
     MatRadioModule,
     MatNativeDateModule,
     MatSnackBarModule,   
-    MatDatepickerModule      
-  ],
+    MatDatepickerModule,
+    MatTableModule,
+    MatProgressSpinnerModule,
+    MatPaginatorModule    
+   ],
   providers: [
     AuthService
   ]

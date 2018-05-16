@@ -3,15 +3,14 @@
 <div class="home-container">
   <h1>Supervisores</h1>
   <div class="row">
-      <div *ngFor="let supervisor of supervisors | async" class="col-sm-6 col-md-4">
-        <div class="thumbnail">
-          <img src="..." alt="...">
-          <div class="caption">
-            <h3>{{ supervisor.name}}</h3>
-            <p>{{ supervisor.email }}</p>
-            <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-          </div>
-        </div>
-      </div>
+    <div class="example-container mat-elevation-z8">
+      <mat-table #table [dataSource]="dataSource">
+        <ng-container matColumnDef="position">
+          <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+          <mat-cell *matCellDef="let supervisor"> {{ supervisor.name }} </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
     </div>
 </div>

@@ -57,13 +57,13 @@ export class AuthService {
   public createEmployeeWithEmailAndPassword(employee: Supervisor){
     return this.afAuth.auth.createUserWithEmailAndPassword(employee.email,employee.password)
                .then(user => {
-                    this.setEmployeeToDatabase(user,employee)
-                    if(employee.employeeKey==='supervisor'){
+                    this.setEmployeeToDatabase(user,employee);
+                    if(employee.employeeKey === 'supervisor'){
                       this.router.navigate(['/supervisors']);
                       setTimeout(this.showSnackBarForNotifications('Supervisor Creado'), 3000);
                     }
-                    else if (employee.employeeKey==='promoter'){
-                      this.router.navigate(['/supervisors']);       
+                    else if (employee.employeeKey === 'promoter'){
+                      this.router.navigate(['/promoters']);       
                       setTimeout(this.showSnackBarForNotifications('Promotor Creado'), 3000);                                     
                     }
                }).catch((error) => {
