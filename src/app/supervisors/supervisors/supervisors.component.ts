@@ -11,18 +11,26 @@ import {catchError} from 'rxjs/operators/catchError';
 import {map} from 'rxjs/operators/map';
 import {startWith} from 'rxjs/operators/startWith';
 import {switchMap} from 'rxjs/operators/switchMap';
-
 @Component({
   selector: 'app-supervisors',
   templateUrl: './supervisors.component.html',
   styleUrls: ['./supervisors.component.css']
 })
 export class SupervisorsComponent implements OnInit {
-  dataSource = new MatTableDataSource();
-  supervisors: Observable<Supervisor[]>;
-  displayedColumns = ['name']; 
-  constructor(private _supervisorService: SupervisorsService, private http: HttpClient) { }
+  dataSource: any;
+  @ViewChild(MatSort) sort: MatSort;
+  displayedColumns = ['name','city','state','info','status','schedule'];
+  constructor(private _supervisorService: SupervisorsService) { }
   ngOnInit() {
-    this._supervisorService.supervisorsReference.valueChanges();      
+    this._supervisorService.supervisorsReference.valueChanges()
+        .subscribe(
+          data => {
+              this.dataSource = new MatTableDataSource(data);
+          })      
+  }
+  public applyFilter(filterValue: string) {
+    filterValue = filterValue.trim(); 
+    filterValue = filterValue.toLowerCase();
+    this.dataSource.filter = filterValue;
   }
 }

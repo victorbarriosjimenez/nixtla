@@ -7,13 +7,15 @@ import { PromoterDetailsComponent } from './promoter-details/promoter-details.co
 import { AuthGuard } from '../auth/authentication.guard';
 import { SharedComponentsModule } from '../shared/shared-components.module';
 import { PromotersService } from './promoters.service';
+import { MaterialElementsModule } from '../shared/material-elements.module';
 @NgModule({
   imports: [
     CommonModule, 
     FormsModule,
     PromotersRoutesModule,
     ReactiveFormsModule,
-    SharedComponentsModule
+    SharedComponentsModule,
+    MaterialElementsModule
    ],
   declarations: [
     PromoterComponent,
