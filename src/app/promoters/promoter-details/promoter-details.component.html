@@ -1,3 +1,29 @@
-<p>
-  promoter-details works!
-</p>
+<app-navigation></app-navigation>
+<div class="home-container">
+    <div style="position: fixed;" class="container-fluid" *ngIf="promoter">
+        <div class="row">        
+          <div class="col-md-4 col-sm-4 col-xs-12 col-lg-4">
+              <img class="promoter-avatar" src="{{ promoter.image }}" alt="{{ promoter.name }}">                  
+              <p>
+                 <strong> <mat-icon>person</mat-icon>  Información del empleado</strong>                       
+              </p>
+              <hr>
+              <p> <strong>Nombre:</strong> {{ promoter.name }} </p> 
+              <p> <strong>Fecha de Nacimiento:</strong> {{ promoter.birthDate | date:'dd/MM/yyyy'  }} </p>             
+              <p> <strong>Curp: </strong> {{ promoter.curp }}     <strong>RFC:</strong> {{ promoter.rfc }} </p>                         
+              <p> <strong>Email:</strong> {{ promoter.email }} </p>             
+              <p> <strong>Ubicación:</strong> {{ promoter.city }} , {{ promoter.state }} </p>                                                            
+              <p> <strong>Dirección:</strong> {{ promoter.address }} , {{ promoter.postalCode }} </p>                                                                                                                               
+              <p>           
+                  <strong>Salario:</strong> {{ promoter.salary | currency:'MXN' }} 
+                  <br>                        
+                  <strong>Fecha de inicio de contrato:</strong> {{ promoter.contractDateBegin | date:'dd/MM/yyyy'   }}  
+                  <br>                        
+                  <strong>Fecha de fin de contrato:</strong> {{ promoter.contractDateExp | date:'dd/MM/yyyy'   }}                         
+                  </p>                          
+          </div>
+          <div class="col-md-8 col-sm-8 col-xs-12 col-lg-8">
+          </div>
+        </div>
+    </div>
+</div>

@@ -12,4 +12,7 @@ export class PromotersService {
               private afs: AngularFirestore,
               private router: Router) {
   }
+  public getPromoter(uid: string): Observable<any> {
+    return this.afs.doc(`promoters/${uid}`).valueChanges();
+  }
 }
