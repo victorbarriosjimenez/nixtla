@@ -17,4 +17,8 @@ export class PromotersService {
   public getPromoter(uid: string): Observable<any> {
     return this.afs.doc(`promoters/${uid}`).valueChanges();
   }
+  public setNewEvent(event: Event){ 
+      this.eventsReference.add(event)
+          .then(() => this.router.navigate(['/home']));
+  }
 }
