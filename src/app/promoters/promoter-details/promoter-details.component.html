@@ -2,7 +2,7 @@
 <div class="home-container">
     <div  class="container-fluid" *ngIf="promoter">
         <div class="row">        
-          <div class="col-md-4 col-sm-4 col-xs-12 col-lg-4">
+          <div class="col-md-4 col-sm-12 col-xs-12 col-lg-4">
               <img  [ngClass]="{ 'promoter-active': promoter.status, 'promoter-unactive': !promoter.status }" 
                     class="supervisor-avatar" 
                     src="{{ promoter.image }}" 
@@ -24,7 +24,7 @@
                   <strong>Fecha de fin de contrato:</strong> {{ promoter.contractDateExp | date:'dd/MM/yyyy'   }}                         
                   </p>                          
           </div>
-          <div class="col-md-8 col-sm-8 col-xs-12 col-lg-8">
+          <div class="col-md-8 col-sm-12 col-xs-12 col-lg-8">
               <mat-tab-group class="demo-tab-group">
                     <mat-tab label="Tab 1">
                       <ng-template mat-tab-label>
@@ -67,8 +67,46 @@
                       </ng-template>
                       <div class="demo-tab-content">
                         <h3 class="text-center">Asignar evento</h3>
-                        <form (ngSubmit)="setNewPromoterEvent()">
-                            
+                        <form (ngSubmit)="setNewPromoterEvent()" [formGroup]="eventForm">
+                            <mat-form-field class="full-width">
+                                <input matInput 
+                                        placeholder="Sucursal"
+                                       aria-label="Sucursal" 
+                                       [matAutocomplete]="auto" 
+                                      formControlName="branchFormControl">
+                                <mat-autocomplete #auto="matAutocomplete">
+                                  <mat-option *ngFor="let branch of branches | async" [value]="branch.uid">
+                                    <img style="vertical-align:middle;" aria-hidden src="{{branch.image}}" height="35" />
+                                    <span>{{ branch.name }}</span> |
+                                  </mat-option>
+                                </mat-autocomplete>
+                              </mat-form-field>
+                              <table class="full-width">
+                                <tr>
+                                  <td>
+                                      <mat-form-field class="full-width">
+                                          <input   
+                                                matInput 
+                                                [matDatepicker]="picker" 
+                                                placeholder="Fecha de inicio de evento"
+                                                formControlName="eventDateBeginFormControl">
+                                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                            <mat-datepicker #picker></mat-datepicker>
+                                      </mat-form-field>
+                                  </td>
+                                  <td>
+                                      <mat-form-field class="full-width">
+                                          <input   
+                                                matInput 
+                                                [matDatepicker]="picker2" 
+                                                placeholder="Fecha de fin de evento"
+                                                formControlName="eventDateExpFormControl">
+                                            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                                            <mat-datepicker #picker2></mat-datepicker>
+                                      </mat-form-field>
+                                  </td>
+                                </tr>
+                              </table>
                         </form>
                       </div>  
                     </mat-tab>

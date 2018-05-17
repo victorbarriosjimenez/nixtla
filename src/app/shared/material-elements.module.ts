@@ -17,7 +17,7 @@ import {
         from '@angular/material';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../auth/authentication.service';
-
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 @NgModule({
   imports: [
     CommonModule,
@@ -33,7 +33,8 @@ import { AuthService } from '../auth/authentication.service';
     MatTableModule,
     MatProgressSpinnerModule,
     MatPaginatorModule,
-    MatTabsModule    
+    MatTabsModule,
+    MatAutocompleteModule
   ], 
   declarations: [
 ],
@@ -50,7 +51,8 @@ import { AuthService } from '../auth/authentication.service';
     MatTableModule,
     MatProgressSpinnerModule,
     MatPaginatorModule,
-    MatTabsModule     
+    MatTabsModule  ,
+    MatAutocompleteModule        
    ],
   providers: [
     AuthService

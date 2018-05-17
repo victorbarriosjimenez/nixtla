@@ -11,6 +11,7 @@ import { MaterialElementsModule } from '../shared/material-elements.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CalendarModule } from 'angular-calendar';
 import { DemoUtilsModule } from './demo-utils/module';
+import { BranchesService } from '../branches/branches.service';
 
 @NgModule({
   imports: [
@@ -30,7 +31,8 @@ import { DemoUtilsModule } from './demo-utils/module';
   ],
   providers: [ 
     AuthGuard,
-    PromotersService
+    PromotersService,
+    BranchesService
   ]
 })
 export class PromotersModule { }
