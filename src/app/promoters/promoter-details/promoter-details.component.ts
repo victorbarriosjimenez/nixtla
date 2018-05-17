@@ -91,14 +91,14 @@ export class PromoterDetailsComponent implements OnInit {
   }
   public createForm( ): void {
       this.eventForm = this._formBuilder.group({
-          branchFormControl: [''],
-          eventDateBeginFormControl: [''],
-          eventDateExpFormControl: [''],
-          hourWorkdayBeginFormControl: [''],
-          hourWorkdayEndFormControl: [''],
-          salaryFormControl: [''],
-          salaryTypeFormControl: [''],
-          extraHoursSalaryFormControl: ['']                                        
+          branchFormControl: ['', Validators.required],
+          eventDateBeginFormControl: ['',Validators.required],
+          eventDateExpFormControl: ['',Validators.required],
+          hourWorkdayBeginFormControl: ['',Validators.required],
+          hourWorkdayEndFormControl: ['',Validators.required],
+          salaryFormControl: ['',Validators.required],
+          salaryTypeFormControl: ['',Validators.required],
+          extraHoursSalaryFormControl: ['',Validators.required]                                        
       })
   }
   public getListOfBranches( ){

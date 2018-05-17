@@ -66,24 +66,18 @@
                         <mat-icon>playlist_add</mat-icon>
                       </ng-template>
                       <div class="demo-tab-content">
-                        <h3 class="text-center">Asignar evento</h3>
                         <form (ngSubmit)="setNewPromoterEvent()" [formGroup]="eventForm">
                             <mat-form-field class="full-width">
-                                <input matInput 
-                                        placeholder="Sucursal"
-                                        aria-label="Sucursal" 
-                                        [matAutocomplete]="auto" 
-                                      formControlName="branchFormControl">
-                                <mat-autocomplete #auto="matAutocomplete">
-                                  <mat-option *ngFor="let branch of branches | async" [value]="branch.name">
-                                    <img style="vertical-align:middle;" aria-hidden src="{{branch.image}}" height="35" />
-                                    <span>{{ branch.name }}</span> |
-                                  </mat-option>
-                                </mat-autocomplete>
-                                <mat-hint>
-                                    Sucursal de trabajo
-                                </mat-hint>
-                              </mat-form-field>
+                                    <mat-select 
+                                            required
+                                            placeholder="Selecciona una sucursal"
+                                            formControlName="branchFormControl">
+                                        <mat-option *ngFor="let branch of branches | async" [value]="branch.uid">
+                                            <img style="vertical-align:middle;" aria-hidden src="{{branch.image}}" height="35" />
+                                            <span>{{ branch.name }}</span>
+                                        </mat-option>
+                                    </mat-select>
+                            </mat-form-field>
                               <table class="full-width">
                                 <tr>
                                   <td>
@@ -135,63 +129,65 @@
                                       </mat-form-field>
                                   </td>
                                 </tr>
-                                  <tr> <mat-icon></mat-icon> <strong> Salario </strong> </tr>
-                                  <tr>
-                                    <td>
-                                        <mat-form-field class="full-width">
-                                            <mat-select 
-                                                    required 
-                                                    placeholder="Forma de pago" 
-                                                    formControlName="salaryTypeFormControl">
-                                                <mat-option value="semanal">
-                                                    Diario
-                                                </mat-option>
-                                                <mat-option value="semanal">
-                                                    Semanal
-                                                </mat-option>
-                                                <mat-option value="quincenal">
-                                                    Quincenal
-                                                </mat-option>
-                                                <mat-option value="mensual">
-                                                    Mensual
-                                                </mat-option>
-                                            </mat-select>
-                                            <mat-hint>Tipo del periodo pago</mat-hint>
-                                        </mat-form-field>
-                                    </td>
-                                    <td>  
-                                        <mat-form-field class="full-width">
-                                            <span matPrefix>$MXN &nbsp;</span>
-                                            <input 
-                                                matInput
-                                                type="number"
-                                                placeholder="Salario"
-                                                required
-                                                min="0"
-                                                max="100000" 
-                                                formControlName="salaryFormControl">
-                                                <mat-hint>
-                                                    Salario al tipo de pago seleccionado
-                                                </mat-hint>
-                                        </mat-form-field>
-                                    </td>  
-                                    <td>
-                                        <mat-form-field class="full-width">
-                                            <span matPrefix>$MXN &nbsp;</span>
-                                            <input 
-                                                matInput
-                                                type="number"
-                                                placeholder="Pago por horas extra"
-                                                required
-                                                min="0"
-                                                max="100000" 
-                                                formControlName="extraHoursSalaryFormControl">
-                                                <mat-hint>
-                                                    Pago de horas extra por hora
-                                                </mat-hint>
-                                        </mat-form-field>
-                                    </td>                                  
-                                  </tr>
+                              </table>
+                              <table class="full-width">
+                                    <tr> <mat-icon></mat-icon> <strong> Salario </strong> </tr>
+                                    <tr>
+                                      <td>
+                                          <mat-form-field class="full-width">
+                                              <mat-select 
+                                                      required 
+                                                      placeholder="Forma de pago" 
+                                                      formControlName="salaryTypeFormControl">
+                                                  <mat-option value="semanal">
+                                                      Diario
+                                                  </mat-option>
+                                                  <mat-option value="semanal">
+                                                      Semanal
+                                                  </mat-option>
+                                                  <mat-option value="quincenal">
+                                                      Quincenal
+                                                  </mat-option>
+                                                  <mat-option value="mensual">
+                                                      Mensual
+                                                  </mat-option>
+                                              </mat-select>
+                                              <mat-hint>Tipo del periodo pago</mat-hint>
+                                          </mat-form-field>
+                                      </td>
+                                      <td>  
+                                          <mat-form-field class="full-width">
+                                              <span matPrefix>$MXN &nbsp;</span>
+                                              <input 
+                                                  matInput
+                                                  type="number"
+                                                  placeholder="Salario"
+                                                  required
+                                                  min="0"
+                                                  max="100000" 
+                                                  formControlName="salaryFormControl">
+                                                  <mat-hint>
+                                                      Salario al tipo de pago seleccionado
+                                                  </mat-hint>
+                                          </mat-form-field>
+                                      </td>  
+                                      <td>
+                                          <mat-form-field class="full-width">
+                                              <span matPrefix>$MXN &nbsp;</span>
+                                              <input 
+                                                  matInput
+                                                  type="number"
+                                                  placeholder="Pago por horas extra"
+                                                  required
+                                                  min="0"
+                                                  max="100000" 
+                                                  formControlName="extraHoursSalaryFormControl">
+                                                  <mat-hint>
+                                                      Pago de horas extra por hora
+                                                  </mat-hint>
+                                          </mat-form-field>
+                                      </td>                                  
+                                    </tr>
                               </table>
                               <br>
                               <button [disabled]="!eventForm.valid" 
