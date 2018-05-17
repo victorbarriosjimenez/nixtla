@@ -16,6 +16,7 @@ import { RouterModule } from '@angular/router';
 import { BranchesModule } from './branches/branches.module';
 import { CommonModule } from '@angular/common';
 import { AgmCoreModule } from '@agm/core';
+import { CalendarModule } from 'angular-calendar';
 @NgModule({
   declarations: [
     AppComponent
@@ -24,7 +25,8 @@ import { AgmCoreModule } from '@agm/core';
     AngularFireModule.initializeApp(environment.firebase), 
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCUbOflVAbwvABiv8Kp8oq5ALadDky0HNE'
-    }),  
+    }),
+    BrowserAnimationsModule, CalendarModule.forRoot(),  
     CommonModule,
     RouterModule,  
     BranchesModule,  

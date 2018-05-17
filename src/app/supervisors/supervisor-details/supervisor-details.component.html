@@ -1,6 +1,6 @@
 <app-navigation></app-navigation>
 <div class="home-container">
-  <div class="container-fluid" *ngIf="supervisor">
+  <div style="position: fixed;" class="container-fluid" *ngIf="supervisor">
       <div class="row">        
         <div class="col-md-4 col-sm-4 col-xs-12 col-lg-4">
             <img class="supervisor-avatar" src="{{ supervisor.image }}" alt="{{ supervisor.name }}">                  
@@ -21,6 +21,8 @@
                 <br>                        
                 <strong>Fecha de fin de contrato:</strong> {{ supervisor.contractDateExp | date:'dd/MM/yyyy'   }}                         
                 </p>                          
+        </div>
+        <div class="col-md-8 col-sm-8 col-xs-12 col-lg-8">
         </div>
       </div>
   </div>

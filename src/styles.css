@@ -1,4 +1,5 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "../node_modules/angular-calendar/css/angular-calendar.css";
 @font-face {
     font-family: 'lemonmilkbold';
     src: url('assets/fonts/lemonmilkbold-webfont.woff2') format('woff2'),

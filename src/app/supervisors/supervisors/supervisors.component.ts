@@ -21,7 +21,7 @@ import { NGSP_UNICODE } from '@angular/compiler';
 export class SupervisorsComponent implements OnInit {
   dataSource: any;
   @ViewChild(MatSort) sort: MatSort;
-  displayedColumns = ['name','city','state','info','status','schedule'];
+  displayedColumns = ['name','city','state','status','info'];
   constructor(private _supervisorService: SupervisorsService, private _router: Router) { }
   ngOnInit() {
     this._supervisorService.supervisorsReference.valueChanges()
