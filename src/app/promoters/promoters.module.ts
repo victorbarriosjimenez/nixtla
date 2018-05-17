@@ -8,9 +8,14 @@ import { AuthGuard } from '../auth/authentication.guard';
 import { SharedComponentsModule } from '../shared/shared-components.module';
 import { PromotersService } from './promoters.service';
 import { MaterialElementsModule } from '../shared/material-elements.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CalendarModule } from 'angular-calendar';
+
 @NgModule({
   imports: [
-    CommonModule, 
+    CommonModule,
+    BrowserAnimationsModule, 
+    CalendarModule.forRoot(), 
     FormsModule,
     PromotersRoutesModule,
     ReactiveFormsModule,

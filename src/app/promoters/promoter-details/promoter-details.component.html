@@ -1,9 +1,9 @@
 <app-navigation></app-navigation>
 <div class="home-container">
-    <div style="position: fixed;" class="container-fluid" *ngIf="promoter">
+    <div  class="container-fluid" *ngIf="promoter">
         <div class="row">        
           <div class="col-md-4 col-sm-4 col-xs-12 col-lg-4">
-              <img class="promoter-avatar" src="{{ promoter.image }}" alt="{{ promoter.name }}">                  
+              <img class="supervisor-avatar" src="{{ promoter.image }}" alt="{{ promoter.name }}">                  
               <p>
                  <strong> <mat-icon>person</mat-icon>  Información del empleado</strong>                       
               </p>
@@ -15,7 +15,7 @@
               <p> <strong>Ubicación:</strong> {{ promoter.city }} , {{ promoter.state }} </p>                                                            
               <p> <strong>Dirección:</strong> {{ promoter.address }} , {{ promoter.postalCode }} </p>                                                                                                                               
               <p>           
-                  <strong>Salario:</strong> {{ promoter.salary | currency:'MXN' }} 
+                  <strong>Salario:</strong> {{ promoter.salary | currency:'MXN':'.2' }} 
                   <br>                        
                   <strong>Fecha de inicio de contrato:</strong> {{ promoter.contractDateBegin | date:'dd/MM/yyyy'   }}  
                   <br>                        
