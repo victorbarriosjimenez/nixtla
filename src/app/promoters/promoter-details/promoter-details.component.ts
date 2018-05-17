@@ -36,6 +36,20 @@ const colors: any = {
 })
 export class PromoterDetailsComponent implements OnInit {
   public eventForm: FormGroup;
+  public openSchedules = [
+    { sched: '9:00 AM', valueTime: '9:00:00' },
+    { sched: '10:00 AM', valueTime: '10:00:00' },
+    { sched: '11:00 AM', valueTime: '11:00:00'},       
+    { sched: '12:00 AM', valueTime: '12:00:00' }
+  ];
+  public closingSchedules = [
+    { sched: '4:00 PM', valueTime: '16:00:00'},
+    { sched: '5:00 PM', valueTime: '17:00:00'},
+    { sched: '6:00 PM', valueTime: '18:00:00'},
+    { sched: '7:00 PM', valueTime: '19:00:00'},
+    { sched: '8:00 PM', valueTime: '20:00:00'},
+    { sched: '9:00 PM', valueTime: '21:00:00'}            
+  ];
   public promoter: Promoter; 
   public branches: Observable<Branch[]>;
   view: string = 'month';
@@ -67,6 +81,7 @@ export class PromoterDetailsComponent implements OnInit {
   }
   ngOnInit() {
      this.getPromoter();
+     this.createForm();
      this.getListOfBranches();
   }
   private getPromoter(): void {
@@ -82,6 +97,7 @@ export class PromoterDetailsComponent implements OnInit {
           hourWorkdayBeginFormControl: [''],
           hourWorkdayEndFormControl: [''],
           salaryFormControl: [''],
+          salaryTypeFormControl: [''],
           extraHoursSalaryFormControl: ['']                                        
       })
   }

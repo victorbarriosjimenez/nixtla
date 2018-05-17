@@ -71,15 +71,18 @@
                             <mat-form-field class="full-width">
                                 <input matInput 
                                         placeholder="Sucursal"
-                                       aria-label="Sucursal" 
-                                       [matAutocomplete]="auto" 
+                                        aria-label="Sucursal" 
+                                        [matAutocomplete]="auto" 
                                       formControlName="branchFormControl">
                                 <mat-autocomplete #auto="matAutocomplete">
-                                  <mat-option *ngFor="let branch of branches | async" [value]="branch.uid">
+                                  <mat-option *ngFor="let branch of branches | async" [value]="branch.name">
                                     <img style="vertical-align:middle;" aria-hidden src="{{branch.image}}" height="35" />
                                     <span>{{ branch.name }}</span> |
                                   </mat-option>
                                 </mat-autocomplete>
+                                <mat-hint>
+                                    Sucursal de trabajo
+                                </mat-hint>
                               </mat-form-field>
                               <table class="full-width">
                                 <tr>
@@ -106,7 +109,96 @@
                                       </mat-form-field>
                                   </td>
                                 </tr>
+                                <tr>
+                                  <td>
+                                      <mat-form-field class="full-width">
+                                          <mat-select 
+                                                  required
+                                                  placeholder="Horario de entrada"
+                                                  formControlName="hourWorkdayBeginFormControl">
+                                              <mat-option *ngFor="let openSched of openSchedules" [value]="openSched.valueTime">
+                                                      {{ openSched.sched }}
+                                              </mat-option>
+                                          </mat-select>
+                                      </mat-form-field>
+                                  </td>
+                                  <td>
+                                      <mat-form-field class="full-width">
+                                          <mat-select 
+                                                  required
+                                                  placeholder="Horario de salida"
+                                                  formControlName="hourWorkdayEndFormControl">
+                                              <mat-option *ngFor="let closeSched of closingSchedules" [value]="closeSched.valueTime">
+                                                      {{ closeSched.sched }}
+                                              </mat-option>
+                                          </mat-select>
+                                      </mat-form-field>
+                                  </td>
+                                </tr>
+                                  <tr> <mat-icon></mat-icon> <strong> Salario </strong> </tr>
+                                  <tr>
+                                    <td>
+                                        <mat-form-field class="full-width">
+                                            <mat-select 
+                                                    required 
+                                                    placeholder="Forma de pago" 
+                                                    formControlName="salaryTypeFormControl">
+                                                <mat-option value="semanal">
+                                                    Diario
+                                                </mat-option>
+                                                <mat-option value="semanal">
+                                                    Semanal
+                                                </mat-option>
+                                                <mat-option value="quincenal">
+                                                    Quincenal
+                                                </mat-option>
+                                                <mat-option value="mensual">
+                                                    Mensual
+                                                </mat-option>
+                                            </mat-select>
+                                            <mat-hint>Tipo del periodo pago</mat-hint>
+                                        </mat-form-field>
+                                    </td>
+                                    <td>  
+                                        <mat-form-field class="full-width">
+                                            <span matPrefix>$MXN &nbsp;</span>
+                                            <input 
+                                                matInput
+                                                type="number"
+                                                placeholder="Salario"
+                                                required
+                                                min="0"
+                                                max="100000" 
+                                                formControlName="salaryFormControl">
+                                                <mat-hint>
+                                                    Salario al tipo de pago seleccionado
+                                                </mat-hint>
+                                        </mat-form-field>
+                                    </td>  
+                                    <td>
+                                        <mat-form-field class="full-width">
+                                            <span matPrefix>$MXN &nbsp;</span>
+                                            <input 
+                                                matInput
+                                                type="number"
+                                                placeholder="Pago por horas extra"
+                                                required
+                                                min="0"
+                                                max="100000" 
+                                                formControlName="extraHoursSalaryFormControl">
+                                                <mat-hint>
+                                                    Pago de horas extra por hora
+                                                </mat-hint>
+                                        </mat-form-field>
+                                    </td>                                  
+                                  </tr>
                               </table>
+                              <br>
+                              <button [disabled]="!eventForm.valid" 
+                                       mat-raised-button 
+                                       type="submit" class="btn-login text-center">
+                                    <span> CREAR EVENTO</span>
+                              </button> 
                         </form>
                       </div>  
                     </mat-tab>
