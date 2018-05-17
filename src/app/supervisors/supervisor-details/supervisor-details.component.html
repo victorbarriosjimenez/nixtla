@@ -1,3 +1,7 @@
-<p>
-  supervisor-details works!
-</p>
+<app-navigation></app-navigation>
+<div class="home-container">
+  <h1>Detalles</h1>
+  <div *ngIf="supervisor" class="jumbotron">
+      {{ supervisor.name }}
+  </div>
+</div>

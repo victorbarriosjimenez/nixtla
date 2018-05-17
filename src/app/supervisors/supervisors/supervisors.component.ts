@@ -11,6 +11,8 @@ import {catchError} from 'rxjs/operators/catchError';
 import {map} from 'rxjs/operators/map';
 import {startWith} from 'rxjs/operators/startWith';
 import {switchMap} from 'rxjs/operators/switchMap';
+import { Router } from '@angular/router';
+import { NGSP_UNICODE } from '@angular/compiler';
 @Component({
   selector: 'app-supervisors',
   templateUrl: './supervisors.component.html',
@@ -20,7 +22,7 @@ export class SupervisorsComponent implements OnInit {
   dataSource: any;
   @ViewChild(MatSort) sort: MatSort;
   displayedColumns = ['name','city','state','info','status','schedule'];
-  constructor(private _supervisorService: SupervisorsService) { }
+  constructor(private _supervisorService: SupervisorsService, private _router: Router) { }
   ngOnInit() {
     this._supervisorService.supervisorsReference.valueChanges()
         .subscribe(
@@ -32,5 +34,8 @@ export class SupervisorsComponent implements OnInit {
     filterValue = filterValue.trim(); 
     filterValue = filterValue.toLowerCase();
     this.dataSource.filter = filterValue;
+  }
+  public getDetails(uid:string) { 
+    this._router.navigate(['/supervisors', uid]);
   }
 }

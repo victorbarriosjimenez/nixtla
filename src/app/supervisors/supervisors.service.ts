@@ -10,4 +10,7 @@ export class SupervisorsService {
   constructor(private afs: AngularFirestore,
               private router: Router) {
   }
+  getSupervisor(uid: string): Observable<any> {
+    return this.afs.doc(`supervisors/${uid}`).valueChanges();
+  }
 }

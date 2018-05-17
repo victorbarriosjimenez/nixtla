@@ -24,7 +24,7 @@
             <ng-container matColumnDef="info">
                 <mat-header-cell *matHeaderCellDef mat-sort-header> Detalles </mat-header-cell>
                 <mat-cell *matCellDef="let supervisor"> 
-                  <button mat-icon-button color="primary">
+                  <button  (click)="getDetails(supervisor.uid)" mat-icon-button color="primary">
                         <mat-icon aria-label="Información del usuario">info</mat-icon>
                     </button>
                 </mat-cell>
