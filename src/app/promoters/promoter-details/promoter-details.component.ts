@@ -15,6 +15,7 @@ import { Observable } from 'rxjs/Observable';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { BranchesService } from '../../branches/branches.service';
 import { Branch } from '../../models/branch';
+import { Event } from '../../models/event';
 const colors: any = {
   red: {
     primary: '#ad2121',
@@ -36,6 +37,7 @@ const colors: any = {
 })
 export class PromoterDetailsComponent implements OnInit {
   public eventForm: FormGroup;
+  public event: Event;
   public openSchedules = [
     { sched: '9:00 AM', valueTime: '9:00:00' },
     { sched: '10:00 AM', valueTime: '10:00:00' },
@@ -101,7 +103,21 @@ export class PromoterDetailsComponent implements OnInit {
           extraHoursSalaryFormControl: ['',Validators.required]                                        
       })
   }
-  public getListOfBranches( ){
+  public getListOfBranches( ): void{
     this.branches = this._branchesService.branchesRef.valueChanges();
+  }
+  public setNewPromoterEvent(): void {
+    const eventModelForm = this.eventForm.value;
+    this.event = {
+        branch: eventModelForm.branchFormControl as string,
+        eventDateBegin: eventModelForm.eventDateBeginFormControl as Date,
+        eventDateExp: eventModelForm.eventDateExpFormControl as Date,
+        hourWorkdayBegin: eventModelForm.hourWorkdayBeginFormControl as string,
+        hourWorkdayEnd: eventModelForm.hourWorkdayEndFormControl as string,
+        salary: eventModelForm.salaryFormControl as number,
+        salaryType: eventModelForm.salaryTypeFormControl as string,
+        extraHoursSalary: eventModelForm. extraHoursSalaryFormControl as number,
+        promoter: this.promoter.uid,
+    }
   }
 }       
