@@ -20,14 +20,6 @@
                 <mat-header-cell *matHeaderCellDef mat-sort-header> Estado </mat-header-cell>
                 <mat-cell *matCellDef="let promoter"> {{ promoter.state }} </mat-cell>
             </ng-container>
-            <ng-container matColumnDef="info">
-                <mat-header-cell *matHeaderCellDef mat-sort-header> Detalles </mat-header-cell>
-                <mat-cell *matCellDef="let promoter"> 
-                    <button mat-icon-button color="primary">
-                        <mat-icon aria-label="Información del usuario">info</mat-icon>
-                    </button>
-                </mat-cell>
-            </ng-container>
             <ng-container matColumnDef="status">
                 <mat-header-cell *matHeaderCellDef mat-sort-header> Estatus </mat-header-cell>
                 <mat-cell *matCellDef="let promoter"> 
@@ -36,11 +28,11 @@
                     </button>
                 </mat-cell>
             </ng-container>
-            <ng-container matColumnDef="schedule">
-                <mat-header-cell *matHeaderCellDef mat-sort-header> Itinerario </mat-header-cell>
+            <ng-container matColumnDef="info">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Detalles </mat-header-cell>
                 <mat-cell *matCellDef="let promoter"> 
                     <button mat-icon-button color="primary">
-                        <mat-icon aria-label="Itinerario">calendar_today</mat-icon>
+                        <mat-icon aria-label="Información del usuario">info</mat-icon>
                     </button>
                 </mat-cell>
             </ng-container>

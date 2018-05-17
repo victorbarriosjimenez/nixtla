@@ -13,7 +13,7 @@ import {map} from 'rxjs/operators/map';
 })
 export class PromoterComponent implements OnInit {
   dataSource: any;  
-  public displayedColumns = ['name','city','state','info','status','schedule'];  
+  public displayedColumns = ['name','city','state','status','info'];  
   @ViewChild(MatSort) sort: MatSort;  
   constructor(private _promotersService: PromotersService) { }
   ngOnInit() {
