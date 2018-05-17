@@ -66,12 +66,15 @@
                         <mat-icon>playlist_add</mat-icon>
                       </ng-template>
                       <div class="demo-tab-content">
-                    
+                        <h3 class="text-center">Asignar evento</h3>
+                        <form (ngSubmit)="setNewPromoterEvent()">
+                            
+                        </form>
                       </div>  
                     </mat-tab>
                     <mat-tab label="Tab 3">
                       <ng-template mat-tab-label>
-                        <mat-icon>block</mat-icon>
+                        <mat-icon>edit</mat-icon>
                       </ng-template>
                     </mat-tab>
                   </mat-tab-group>
