@@ -10,6 +10,7 @@ import { PromotersService } from './promoters.service';
 import { MaterialElementsModule } from '../shared/material-elements.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CalendarModule } from 'angular-calendar';
+import { DemoUtilsModule } from './demo-utils/module';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import { CalendarModule } from 'angular-calendar';
     PromotersRoutesModule,
     ReactiveFormsModule,
     SharedComponentsModule,
-    MaterialElementsModule
+    MaterialElementsModule,
+    DemoUtilsModule
    ],
   declarations: [
     PromoterComponent,
