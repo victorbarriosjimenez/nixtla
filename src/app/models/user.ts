@@ -6,11 +6,11 @@ export interface User {
     curp?: string;
     rfc?: string;
     nss?: string;
-    departamento?: string;
     password?: string;
     employeeKey?: string;
     salary?: number; 
     salaryType?: string; 
+    status?: boolean;
 }
 export interface Administrator extends User { 
     isAdmin?: boolean;

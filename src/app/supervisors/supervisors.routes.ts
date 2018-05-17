@@ -6,7 +6,7 @@ import { SupervisorFormComponent } from './supervisor-form/supervisor-form.compo
 import { SupervisorDetailsComponent } from './supervisor-details/supervisor-details.component';
 const supervisorsRoutes: Routes = [  
     { path: 'supervisors' , component: SupervisorsComponent, canActivate: [AuthGuard] },
-    { path: 'supervisors/:uid', component: SupervisorDetailsComponent, canActivate: [AuthGuard] }
+    { path: 'supervisors/:uid', component: SupervisorDetailsComponent, canActivate: [AuthGuard] },
     { path: 'new-employee' , component: SupervisorFormComponent, canActivate: [AuthGuard] }    
 ];
 @NgModule({

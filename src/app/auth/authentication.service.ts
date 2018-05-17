@@ -101,7 +101,8 @@ export class AuthService {
       salary: employee.salary, 
       salaryType: employee.salaryType,   
       image: employee.image,
-      employeeKey: employee.employeeKey
+      employeeKey: employee.employeeKey,
+      status: false
     }
     if(employee.employeeKey === 'supervisor'){
       this.employeeRef = this.afs.doc(`supervisors/${user.uid}`)

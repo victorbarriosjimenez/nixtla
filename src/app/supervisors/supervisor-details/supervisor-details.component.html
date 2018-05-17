@@ -1,7 +1,27 @@
 <app-navigation></app-navigation>
 <div class="home-container">
-  <h1>Detalles</h1>
-  <div *ngIf="supervisor" class="jumbotron">
-      {{ supervisor.name }}
+  <div class="container-fluid" *ngIf="supervisor">
+      <div class="row">        
+        <div class="col-md-4 col-sm-4 col-xs-12 col-lg-4">
+            <img class="supervisor-avatar" src="{{ supervisor.image }}" alt="{{ supervisor.name }}">                  
+            <p>
+               <strong> <mat-icon>person</mat-icon>  Información del empleado</strong>                       
+            </p>
+            <hr>
+            <p> <strong>Nombre:</strong> {{ supervisor.name }} </p> 
+            <p> <strong>Fecha de Nacimiento:</strong> {{ supervisor.birthDate | date:'dd/MM/yyyy'  }} </p>             
+            <p> <strong>Curp: </strong> {{ supervisor.curp }}     <strong>RFC:</strong> {{ supervisor.rfc }} </p>                         
+            <p> <strong>Email:</strong> {{ supervisor.email }} </p>             
+            <p> <strong>Ubicación:</strong> {{ supervisor.city }} , {{ supervisor.state }} </p>                                                            
+            <p> <strong>Dirección:</strong> {{ supervisor.address }} , {{ supervisor.postalCode }} </p>                                                                                                                               
+            <p>           
+                <strong>Salario:</strong> {{ supervisor.salary | currency:'MXN' }} 
+                <br>                        
+                <strong>Fecha de inicio de contrato:</strong> {{ supervisor.contractDateBegin | date:'dd/MM/yyyy'   }}  
+                <br>                        
+                <strong>Fecha de fin de contrato:</strong> {{ supervisor.contractDateExp | date:'dd/MM/yyyy'   }}                         
+                </p>                          
+        </div>
+      </div>
   </div>
 </div>
