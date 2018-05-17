@@ -12,7 +12,6 @@
               </p>
               <p> <strong>Nombre:</strong> {{ promoter.name }} </p> 
               <p> <strong>Fecha de Nacimiento:</strong> {{ promoter.birthDate | date:'dd/MM/yyyy'  }} </p>             
-              <p> <strong>Curp: </strong> {{ promoter.curp }}     <strong>RFC:</strong> {{ promoter.rfc }} </p>                         
               <p> <strong>Email:</strong> {{ promoter.email }} </p>             
               <p> <strong>Ubicación:</strong> {{ promoter.city }} , {{ promoter.state }} </p>                                                            
               <p> <strong>Dirección:</strong> {{ promoter.address }} , {{ promoter.postalCode }} </p>                                                                                                                               
@@ -197,11 +196,6 @@
                               </button> 
                         </form>
                       </div>  
-                    </mat-tab>
-                    <mat-tab label="Tab 3">
-                      <ng-template mat-tab-label>
-                        <mat-icon>edit</mat-icon>
-                      </ng-template>
                     </mat-tab>
                   </mat-tab-group>
         </div>

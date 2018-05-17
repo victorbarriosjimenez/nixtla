@@ -1,4 +1,5 @@
 export interface Branch { 
+        uid?: string;
         name?: string;
         city?: string;
         state?: string;

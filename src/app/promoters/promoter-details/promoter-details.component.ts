@@ -119,6 +119,6 @@ export class PromoterDetailsComponent implements OnInit {
         extraHoursSalary: eventModelForm. extraHoursSalaryFormControl as number,
         promoter: this.promoter.uid,
     }
-    this._promotersService.
+    this._promotersService.setNewEvent(this.event, this.promoter);
   }
 }       

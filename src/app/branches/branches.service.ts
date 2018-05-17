@@ -12,8 +12,10 @@ export class BranchesService {
               private afs: AngularFirestore,
               private router: Router) {  }
   public setNewBranch(branch: Branch){ 
-      this.branchesRef.add(branch)
-          .then(() => this.router.navigate(['/branches']));
+    const uid: string = this.afs.createId();
+    branch.uid = uid
+    this.branchesRef.doc(uid).set(branch)
+        .then(() => this.router.navigate(['/branches']));
   }
 }
 
