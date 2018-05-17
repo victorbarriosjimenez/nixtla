@@ -1,6 +1,18 @@
 .supervisor-avatar{
-    width: 200px;
-    height: 200px;
+    width: 250px;
+    height: 250px;
     margin: 0 auto 50px auto; 
     border-radius: 50%; 
+    -webkit-box-shadow: 11px 10px 99px -64px rgba(0,0,0,0.9);
+    -moz-box-shadow: 11px 10px 99px -64px rgba(0,0,0,0.9); 
+    box-shadow: 11px 10px 99px -64px rgba(0,0,0,0.9);
+}
+.promoter-active {
+    border: 5px solid green;
+}
+.promoter-unactive {
+    border: 5px solid red;    
+}
+.demo-tab-content {
+    padding: 20px 0px;
 }

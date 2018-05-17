@@ -5,60 +5,78 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   template: `
     <div class="row text-center">
       <div class="col-md-4">
-        <div class="btn-group">
-          <div
-            class="btn btn-primary"
+        <div class="button-row">
+          <button
+            mat-mini-fab
+            matTooltip="Anterior"                                    
+            color="primary"
             mwlCalendarPreviousView
             [view]="view"
             [(viewDate)]="viewDate"
             (viewDateChange)="viewDateChange.next(viewDate)">
-            Previous
-          </div>
-          <div
-            class="btn btn-outline-secondary"
+            <mat-icon>keyboard_arrow_left</mat-icon>  
+          </button>
+          <button
+            mat-mini-fab
+            matTooltip="Hoy"                                    
+            color="primary"
             mwlCalendarToday
             [(viewDate)]="viewDate"
             (viewDateChange)="viewDateChange.next(viewDate)">
-            Today
-          </div>
-          <div
-            class="btn btn-primary"
+            <mat-icon>today</mat-icon>  
+          </button>
+          <button
+            mat-mini-fab
+            color="primary"
+            matTooltip="Siguiente"                                    
             mwlCalendarNextView
             [view]="view"
             [(viewDate)]="viewDate"
             (viewDateChange)="viewDateChange.next(viewDate)">
-            Next
-          </div>
+            <mat-icon>keyboard_arrow_right</mat-icon>              
+          </button>
         </div>
       </div>
       <div class="col-md-4">
         <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):locale }}</h3>
       </div>
       <div class="col-md-4">
-        <div class="btn-group">
-          <div
-            class="btn btn-primary"
+        <div class="button-row">
+          <button
+            mat-mini-fab
+            matTooltip="Este Mes"           
+            color="primary"
             (click)="viewChange.emit('month')"
             [class.active]="view === 'month'">
-            Month
-          </div>
-          <div
-            class="btn btn-primary"
+            <mat-icon>calendar_today</mat-icon>              
+          </button>
+          <button
+             mat-mini-fab
+            matTooltip="Esta Semana"                        
+            color="primary"            
             (click)="viewChange.emit('week')"
             [class.active]="view === 'week'">
-            Week
-          </div>
-          <div
-            class="btn btn-primary"
+            <mat-icon>date_range</mat-icon>              
+          </button>
+          <button
+            mat-mini-fab
+            color="primary"  
+            matTooltip="Este día"                                              
             (click)="viewChange.emit('day')"
             [class.active]="view === 'day'">
-            Day
-          </div>
+            <mat-icon>today</mat-icon>              
+          </button>
         </div>
       </div>
     </div>
     <br>
-  `
+  `,
+  styles:[`
+  .button-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }`]
 })
 export class CalendarHeaderComponent {
   @Input() view: string;

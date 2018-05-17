@@ -11,7 +11,8 @@ import {
           MatSnackBarModule,
           MatTableModule,
           MatProgressSpinnerModule,
-          MatPaginatorModule
+          MatPaginatorModule,
+          MatTabsModule
         } 
         from '@angular/material';
 import { CommonModule } from '@angular/common';
@@ -31,7 +32,8 @@ import { AuthService } from '../auth/authentication.service';
     MatSnackBarModule,
     MatTableModule,
     MatProgressSpinnerModule,
-    MatPaginatorModule    
+    MatPaginatorModule,
+    MatTabsModule    
   ], 
   declarations: [
 ],
@@ -47,7 +49,8 @@ import { AuthService } from '../auth/authentication.service';
     MatDatepickerModule,
     MatTableModule,
     MatProgressSpinnerModule,
-    MatPaginatorModule    
+    MatPaginatorModule,
+    MatTabsModule     
    ],
   providers: [
     AuthService

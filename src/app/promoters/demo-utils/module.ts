@@ -8,6 +8,7 @@ import {
 import { CalendarModule } from 'angular-calendar';
 import { CalendarHeaderComponent } from './calendar-header.component';
 import { DateTimePickerComponent } from './date-time-picker.component';
+import { MaterialElementsModule } from '../../shared/material-elements.module';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { DateTimePickerComponent } from './date-time-picker.component';
     FormsModule,
     NgbDatepickerModule.forRoot(),
     NgbTimepickerModule.forRoot(),
-    CalendarModule
+    CalendarModule,
+    MaterialElementsModule
   ],
   declarations: [CalendarHeaderComponent, DateTimePickerComponent],
   exports: [CalendarHeaderComponent, DateTimePickerComponent]

@@ -3,11 +3,13 @@
     <div  class="container-fluid" *ngIf="promoter">
         <div class="row">        
           <div class="col-md-4 col-sm-4 col-xs-12 col-lg-4">
-              <img class="supervisor-avatar" src="{{ promoter.image }}" alt="{{ promoter.name }}">                  
+              <img  [ngClass]="{ 'promoter-active': promoter.status, 'promoter-unactive': !promoter.status }" 
+                    class="supervisor-avatar" 
+                    src="{{ promoter.image }}" 
+                    alt="{{ promoter.name }}">      
               <p>
                  <strong> <mat-icon>person</mat-icon>  Información del promotor</strong>                       
               </p>
-              <hr>
               <p> <strong>Nombre:</strong> {{ promoter.name }} </p> 
               <p> <strong>Fecha de Nacimiento:</strong> {{ promoter.birthDate | date:'dd/MM/yyyy'  }} </p>             
               <p> <strong>Curp: </strong> {{ promoter.curp }}     <strong>RFC:</strong> {{ promoter.rfc }} </p>                         
@@ -23,36 +25,57 @@
                   </p>                          
           </div>
           <div class="col-md-8 col-sm-8 col-xs-12 col-lg-8">
-              <h1 style="margin-bottom: 30px;" class="text-center"> Calendario de Jornadas </h1>
-            <mwl-demo-utils-calendar-header
-                [(view)]="view"
-                [(viewDate)]="viewDate">
-                </mwl-demo-utils-calendar-header>
-                <div class="alert alert-warning" *ngIf="period?.events.length === 0">
-                There are no events on this {{ view }}
-                </div>
-                <div [ngSwitch]="view">
-                <mwl-calendar-month-view
-                    *ngSwitchCase="'month'"
-                    [viewDate]="viewDate"
-                    [events]="events"
-                    [activeDayIsOpen]="true"
-                    (beforeViewRender)="beforeViewRender($event)">
-                </mwl-calendar-month-view>
-                <mwl-calendar-week-view
-                    *ngSwitchCase="'week'"
-                    [viewDate]="viewDate"
-                    [events]="events"
-                    (beforeViewRender)="beforeViewRender($event)">
-                </mwl-calendar-week-view>
-                <mwl-calendar-day-view
-                    *ngSwitchCase="'day'"
-                    [viewDate]="viewDate"
-                    [events]="events"
-                    (beforeViewRender)="beforeViewRender($event)">
-                </mwl-calendar-day-view>
-                </div>
-          </div>
+              <mat-tab-group class="demo-tab-group">
+                    <mat-tab label="Tab 1">
+                      <ng-template mat-tab-label>
+                        <mat-icon>perm_contact_calendar</mat-icon>
+                      </ng-template>
+                      <div class="demo-tab-content">
+                            <mwl-demo-utils-calendar-header
+                            [(view)]="view"
+                            [(viewDate)]="viewDate">
+                            </mwl-demo-utils-calendar-header>
+                            <div class="alert alert-warning" *ngIf="period?.events.length === 0">
+                            There are no events on this {{ view }}
+                            </div>
+                            <div [ngSwitch]="view">
+                                <mwl-calendar-month-view
+                                    *ngSwitchCase="'month'"
+                                    [viewDate]="viewDate"
+                                    [events]="events"
+                                    [activeDayIsOpen]="true"
+                                    (beforeViewRender)="beforeViewRender($event)">
+                                </mwl-calendar-month-view>
+                                <mwl-calendar-week-view
+                                    *ngSwitchCase="'week'"
+                                    [viewDate]="viewDate"
+                                    [events]="events"
+                                    (beforeViewRender)="beforeViewRender($event)">
+                                </mwl-calendar-week-view>
+                                <mwl-calendar-day-view
+                                    *ngSwitchCase="'day'"
+                                    [viewDate]="viewDate"
+                                    [events]="events"
+                                    (beforeViewRender)="beforeViewRender($event)">
+                                </mwl-calendar-day-view>
+                            </div>
+                    </div>
+                    </mat-tab>
+                    <mat-tab label="Tab 2" [disabled]="!promoter.status">
+                      <ng-template mat-tab-label>
+                        <mat-icon>playlist_add</mat-icon>
+                      </ng-template>
+                      <div class="demo-tab-content">
+                    
+                      </div>  
+                    </mat-tab>
+                    <mat-tab label="Tab 3">
+                      <ng-template mat-tab-label>
+                        <mat-icon>block</mat-icon>
+                      </ng-template>
+                    </mat-tab>
+                  </mat-tab-group>
         </div>
     </div>
+ </div>
 </div>
