@@ -18,6 +18,7 @@ import {
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../auth/authentication.service';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { NotFoundComponent } from './not-found/not-found.component';
 @NgModule({
   imports: [
     CommonModule,

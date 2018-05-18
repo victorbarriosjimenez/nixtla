@@ -4,6 +4,7 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { AuthService } from '../auth/authentication.service';
 import { MaterialElementsModule  } from './material-elements.module';
 import { FloatingButtonComponent } from './floating-button/floating-button.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -11,7 +12,8 @@ import { FloatingButtonComponent } from './floating-button/floating-button.compo
   ], 
   declarations: [
     NavigationComponent,
-    FloatingButtonComponent
+    FloatingButtonComponent,
+    NotFoundComponent    
   ],
   exports: [
     NavigationComponent,
