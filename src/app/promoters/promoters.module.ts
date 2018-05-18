@@ -12,6 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CalendarModule } from 'angular-calendar';
 import { DemoUtilsModule } from './demo-utils/module';
 import { BranchesService } from '../branches/branches.service';
+import { PromoterFormComponent } from './promoter-form/promoter-form.component';
 
 @NgModule({
   imports: [
@@ -27,7 +28,8 @@ import { BranchesService } from '../branches/branches.service';
    ],
   declarations: [
     PromoterComponent,
-    PromoterDetailsComponent
+    PromoterDetailsComponent,
+    PromoterFormComponent
   ],
   providers: [ 
     AuthGuard,

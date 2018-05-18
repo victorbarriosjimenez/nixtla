@@ -8,7 +8,7 @@ import { Observable } from 'rxjs/observable';
   styleUrls: ['./settings.component.css']
 })
 export class SettingsComponent implements OnInit {
-  private admin: Observable<Administrator>;
+  public admin: Observable<Administrator>;
   constructor(private _auth: AuthService) { }
   ngOnInit() {
     this.getAdministratorData(this._auth.authState.uid);

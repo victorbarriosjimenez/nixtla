@@ -10,11 +10,11 @@ import * as moment from 'moment';
 })
 export class SupervisorFormComponent implements OnInit {
   public registrateSupervisorForm: FormGroup;  
-  private showErrowForm: boolean = false;
-  private generatedEmployeeKey: string = '';
-  private generatedPasswordEmployee: string = '';
-  private stateGroups: any[] = stateGroups;
-  constructor(private _authService: AuthService, private _formBuilder: FormBuilder) { }
+  public showErrowForm: boolean = false;
+  public generatedEmployeeKey: string = '';
+  public generatedPasswordEmployee: string = '';
+  public stateGroups: any[] = stateGroups;
+  constructor(public _authService: AuthService, public _formBuilder: FormBuilder) { }
   ngOnInit() {
     this.createForm();    
   }

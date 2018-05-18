@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
       passwordFormControl: ['', Validators.required],
     });
   }
-  private loginToAccountWithEmailAndPassword( ): void { 
+  public loginToAccountWithEmailAndPassword( ): void { 
     this.isLoginIn = true;
     const loginForm = this.loginForm.value;
     const loginUserModel = { 
