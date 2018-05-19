@@ -26,9 +26,10 @@
                         matInput 
                         [matDatepicker]="picker3" 
                         placeholder="Fecha de nacimiento"
-                        formControlName="birthDateFormControl">
+                        formControlName="birthDateFormControl"
+                        disabled>
                     <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
-                    <mat-datepicker #picker3></mat-datepicker>
+                    <mat-datepicker  #picker3 disabled="false"></mat-datepicker>
             </mat-form-field>
             <mat-form-field class="full-width">
                     <input 
@@ -183,46 +184,6 @@
         <div class="col-md-6 col-sm-12 col-xs-12 col-lg-6">
             <table class="full-width">
                 <tr>
-                   <mat-icon>monetization_on</mat-icon>        
-                   <strong>Salarios</strong>
-                </tr>
-                <tr>
-                    <td>
-                        <mat-form-field class="full-width">
-                            <mat-select 
-                                    required 
-                                    placeholder="Forma de pago" 
-                                    formControlName="salaryTypeFormControl">
-                                <mat-option value="semanal">
-                                    Semanal
-                                </mat-option>
-                                <mat-option value="quincenal">
-                                    Quincenal
-                                </mat-option>
-                                <mat-option value="mensual">
-                                    Mensual
-                                </mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                    </td>
-                    <td>
-                        <mat-form-field class="full-width">
-                            <span matPrefix>$MXN &nbsp;</span>
-                            <input 
-                                matInput
-                                type="number"
-                                placeholder="Salario"
-                                required
-                                min="0"
-                                max="100000" 
-                                formControlName="salaryFormControl">
-                                <mat-hint>
-                                    Número de seguridad social
-                                </mat-hint>
-                        </mat-form-field>
-                    </td>
-                </tr>
-                <tr>
                     <mat-icon>insert_drive_file</mat-icon> 
                     <strong>  Contrato</strong>
                 </tr>
@@ -233,9 +194,10 @@
                                 matInput 
                                 [matDatepicker]="picker" 
                                 placeholder="Fecha de inicio de contrato"
-                                formControlName="contractDateBeginFormControl">
+                                formControlName="contractDateBeginFormControl"
+                                disabled>
                             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                            <mat-datepicker #picker></mat-datepicker>
+                            <mat-datepicker disabled="false" #picker></mat-datepicker>
                         </mat-form-field>
                     </td>
                     <td>
@@ -244,9 +206,10 @@
                                     matInput 
                                     [matDatepicker]="picker2" 
                                     placeholder="Fecha de fin de contrato"
-                                    formControlName="contractDateExpFormControl">
+                                    formControlName="contractDateExpFormControl"
+                                    disabled>
                                 <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-                                <mat-datepicker #picker2></mat-datepicker>
+                                <mat-datepicker disabled="false" #picker2></mat-datepicker>
                         </mat-form-field>
                     </td>
                 </tr>

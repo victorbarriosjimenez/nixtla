@@ -97,9 +97,7 @@ export class AuthService {
       contractDateExp: employee.contractDateExp,
       postalCode: employee.postalCode ,             
       nss: employee.nss,            
-      rfc: employee.rfc,  
-      salary: employee.salary, 
-      salaryType: employee.salaryType,   
+      rfc: employee.rfc,   
       image: employee.image,
       employeeKey: employee.employeeKey,
       status: true
