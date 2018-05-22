@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
-import {  PromotersService } from '../promoters.service';
+import { PromotersService } from '../promoters.service';
 import { Location } from '@angular/common';
 import { Supervisor, Promoter } from '../../models/user';
 import {

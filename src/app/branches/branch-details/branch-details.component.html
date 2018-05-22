@@ -1,4 +1,43 @@
 <app-navigation></app-navigation>
-<div *ngIf="branch" class="home-container">
-  {{ branch.name }}
+<div  class="home-container">
+  <div *ngIf="branch" class="container-fluid">
+    <div class="row">        
+      <div class="col-md-4 col-sm-4 col-xs-12 col-lg-4">
+          <img class="branch-avatar" src="{{ branch.image }}" alt="{{ branch.name }}">                  
+          <p>
+             <strong> <mat-icon>person</mat-icon>  Información de la sucursal </strong>                       
+          </p>
+          <hr>
+          <p> <strong>Nombre:</strong> {{ branch.name }} </p> 
+          <p> <strong>Email:</strong> {{ branch.contactEmail }} </p>             
+          <p> <strong>Ubicación:</strong> {{ branch.city }} , {{ branch.state }} </p>                                                            
+          <p> <strong>Dirección:</strong> {{ branch.address1 }} , {{ branch.address2 }} {{ branch.postalCode }}</p>                                                                                                                                                        
+      </div>
+      <div class="col-md-8 col-sm-8 col-xs-12 col-lg-8">
+          <mat-tab-group class="demo-tab-group">
+              <mat-tab label="Horarios">
+                <ng-template mat-tab-label>
+                  <mat-icon>timer</mat-icon>
+                </ng-template>
+                <div class="demo-tab-content">                 
+                </div>
+              </mat-tab>
+              <mat-tab label="Editar">
+                <ng-template mat-tab-label>
+                  <mat-icon>edit</mat-icon>
+                </ng-template>
+                <div class="demo-tab-content">
+                </div>  
+              </mat-tab>
+              <mat-tab label="Eliminar">
+                  <ng-template mat-tab-label>
+                    <mat-icon>delete</mat-icon>
+                  </ng-template>
+                  <div class="demo-tab-content">
+                  </div>  
+                </mat-tab>
+        </mat-tab-group>
+      </div>
+    </div>
+  </div>
 </div>
