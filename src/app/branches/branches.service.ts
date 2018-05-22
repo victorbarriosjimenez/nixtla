@@ -17,5 +17,8 @@ export class BranchesService {
     this.branchesRef.doc(uid).set(branch)
         .then(() => this.router.navigate(['/branches']));
   }
+  public getBranch(uid: string) {
+    return this.afs.doc(`branches/${uid}`).valueChanges();    
+  }
 }
 

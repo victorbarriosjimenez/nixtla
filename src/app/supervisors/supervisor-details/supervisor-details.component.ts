@@ -15,7 +15,6 @@ export class SupervisorDetailsComponent implements OnInit {
               private router: Router,
               private location: Location,
               private _supervisorService: SupervisorsService) { }
-
   ngOnInit() {
     this.getSupervisor();
   }
