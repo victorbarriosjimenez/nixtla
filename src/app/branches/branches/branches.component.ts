@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { BranchesService } from '../branches.service';
 import { Branch } from '../../models/branch';
 import { Observable } from 'rxjs/Observable';
+import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-branches',
   templateUrl: './branches.component.html',
@@ -9,8 +11,23 @@ import { Observable } from 'rxjs/Observable';
 })
 export class BranchesComponent implements OnInit {
   branches:  Observable<Branch[]>;
-  constructor(private _branchesService: BranchesService) { }
+  dataSource: any; 
+  @ViewChild(MatSort) sort: MatSort;  
+  displayedColumns = ['name','city','state','status','info'];  
+  constructor(private _branchesService: BranchesService,
+              private _router: Router) { }
   ngOnInit() {
-    this.branches = this._branchesService.branchesRef.valueChanges();
+    this._branchesService.branchesRef.valueChanges().subscribe(
+      data => {
+          this.dataSource = new MatTableDataSource(data);
+      })    
+  }
+  public applyFilter(filterValue: string){
+    filterValue = filterValue.trim(); 
+    filterValue = filterValue.toLowerCase();
+    this.dataSource.filter = filterValue;
+  }
+  public getDetails(uid:string) { 
+    this._router.navigate(['/branches', uid]);
   }
 }
