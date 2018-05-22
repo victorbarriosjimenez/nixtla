@@ -23,7 +23,7 @@
             <ng-container matColumnDef="status">
                 <mat-header-cell *matHeaderCellDef mat-sort-header> Estatus </mat-header-cell>
                 <mat-cell *matCellDef="let supervisor"> 
-                  <button mat-icon-button  disabled>
+                  <button mat-icon-button>
                      <mat-icon [ngStyle]="{ 'color': supervisor.status ? 'green': 'red'}" aria-label="Status">grid_off</mat-icon>
                   </button>
                 </mat-cell>
