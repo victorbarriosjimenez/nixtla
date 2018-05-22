@@ -44,10 +44,7 @@ export class EventFormComponent implements OnInit {
         eventDateBeginFormControl: ['',Validators.required],
         eventDateExpFormControl: ['',Validators.required],
         hourWorkdayBeginFormControl: ['',Validators.required],
-        hourWorkdayEndFormControl: ['',Validators.required],
-        salaryFormControl: ['',Validators.required],
-        salaryTypeFormControl: ['',Validators.required],
-        extraHoursSalaryFormControl: ['',Validators.required]                                        
+        hourWorkdayEndFormControl: ['',Validators.required]                                     
     })
   }
   public setNewPromoterEvent(): void {
@@ -58,9 +55,6 @@ export class EventFormComponent implements OnInit {
         eventDateExp: eventModelForm.eventDateExpFormControl as Date,
         hourWorkdayBegin: eventModelForm.hourWorkdayBeginFormControl as string,
         hourWorkdayEnd: eventModelForm.hourWorkdayEndFormControl as string,
-        salary: eventModelForm.salaryFormControl as number,
-        salaryType: eventModelForm.salaryTypeFormControl as string,
-        extraHoursSalary: eventModelForm. extraHoursSalaryFormControl as number,
         promoter: this.employee.uid,
     }
     this._promotersService.setNewEvent(this.event, this.employee);

@@ -6,7 +6,4 @@ export class Event {
     eventDateExp: Date;
     hourWorkdayBegin: string;
     hourWorkdayEnd: string;
-    salary: number;
-    salaryType: string;
-    extraHoursSalary: number;
 }

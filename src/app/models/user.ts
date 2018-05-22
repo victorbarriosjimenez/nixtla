@@ -8,8 +8,6 @@ export interface User {
     nss?: string;
     password?: string;
     employeeKey?: string;
-    salary?: number; 
-    salaryType?: string; 
     status?: boolean;
 }
 export interface Administrator extends User { 
