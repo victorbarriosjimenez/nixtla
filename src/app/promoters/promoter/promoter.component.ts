@@ -23,7 +23,7 @@ export class PromoterComponent implements OnInit {
         .subscribe(
           data => {
               this.dataSource = new MatTableDataSource(data);
-          })  
+          });  
   }
   public applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); 
