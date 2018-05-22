@@ -13,7 +13,7 @@ export class BranchesComponent implements OnInit {
   branches:  Observable<Branch[]>;
   dataSource: any; 
   @ViewChild(MatSort) sort: MatSort;  
-  displayedColumns = ['name','city','state','status','info'];  
+  displayedColumns = ['name','city','state','info'];  
   constructor(private _branchesService: BranchesService,
               private _router: Router) { }
   ngOnInit() {

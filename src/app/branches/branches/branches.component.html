@@ -3,49 +3,42 @@
 <div class="home-container">
   <h1>Sucursales</h1>
   <div class="row">
-      <div *ngFor="let branch of branches | async" class="col-sm-4 col-md-4">
-        <div class="thumbnail">
-          <img style="width: 400px; height: 400px;" [src]="branch.image" [alt]="branch.name">
-          <div class="caption">
-            <h3>{{ branch.name }}</h3>
-            <p>{{ branch.city }} , {{ branch.state }}</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <mat-form-field class="full-width">
-        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtrar resultados">
-    </mat-form-field>
-    <mat-table #table [dataSource]="dataSource" matSort class="animate">
-        <ng-container matColumnDef="name">
-          <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </mat-header-cell>
-          <mat-cell *matCellDef="let supervisor"> {{ supervisor.name }} </mat-cell>
-        </ng-container>
-        <ng-container matColumnDef="city">
-            <mat-header-cell *matHeaderCellDef mat-sort-header> Ciudad</mat-header-cell>
-            <mat-cell *matCellDef="let supervisor"> {{ supervisor.city }} </mat-cell>
-        </ng-container>
-        <ng-container matColumnDef="state">
-            <mat-header-cell *matHeaderCellDef mat-sort-header> Estado </mat-header-cell>
-            <mat-cell *matCellDef="let supervisor"> {{ supervisor.state }} </mat-cell>
-        </ng-container>
-        <ng-container matColumnDef="status">
-            <mat-header-cell *matHeaderCellDef mat-sort-header> Estatus </mat-header-cell>
-            <mat-cell *matCellDef="let supervisor"> 
-              <button mat-icon-button color="warn" disabled>
-                    <mat-icon aria-label="Status">grid_off</mat-icon>
-              </button>
-            </mat-cell>
-        </ng-container>
-        <ng-container matColumnDef="info">
-                <mat-header-cell *matHeaderCellDef mat-sort-header> Detalles </mat-header-cell>
-                <mat-cell *matCellDef="let supervisor"> 
-                  <button  (click)="getDetails(supervisor.uid)" mat-icon-button color="primary">
-                        <mat-icon aria-label="Información del usuario">info</mat-icon>
-                    </button>
+    <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
+        <mat-form-field class="full-width">
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtrar resultados">
+        </mat-form-field>
+        <mat-table #table [dataSource]="dataSource" matSort class="animate">
+            <ng-container matColumnDef="name">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </mat-header-cell>
+              <mat-cell *matCellDef="let branch"> {{ branch.name }} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="city">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Ciudad</mat-header-cell>
+                <mat-cell *matCellDef="let branch"> {{ branch.city }} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="state">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Estado </mat-header-cell>
+                <mat-cell *matCellDef="let branch"> {{ branch.state }} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="status">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Estatus </mat-header-cell>
+                <mat-cell *matCellDef="let branch"> 
+                  <button mat-icon-button color="warn" disabled>
+                        <mat-icon aria-label="Status">grid_off</mat-icon>
+                  </button>
                 </mat-cell>
-        </ng-container>
-      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns;" class="animate"></mat-row>
-    </mat-table>
+            </ng-container>
+            <ng-container matColumnDef="info">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Detalles </mat-header-cell>
+                    <mat-cell *matCellDef="let branch"> 
+                      <button  (click)="getDetails(branch.uid)" mat-icon-button color="primary">
+                            <mat-icon aria-label="Información del usuario">info</mat-icon>
+                        </button>
+                    </mat-cell>
+            </ng-container>
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;" class="animate"></mat-row>
+        </mat-table>
+    </div>
+  </div>    
 </div>
