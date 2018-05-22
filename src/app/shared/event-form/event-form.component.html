@@ -1,4 +1,4 @@
-<form (ngSubmit)="setNewPromoterEvent()" [formGroup]="eventForm">
+<form *ngIf="employee"  (ngSubmit)="setNewPromoterEvent()" [formGroup]="eventForm">
     <mat-form-field class="full-width">
             <mat-select 
                     required
@@ -126,5 +126,6 @@
                mat-raised-button 
                type="submit" class="btn-login text-center">
             <span> CREAR EVENTO</span>
+            {{ employee }}
       </button> 
 </form>

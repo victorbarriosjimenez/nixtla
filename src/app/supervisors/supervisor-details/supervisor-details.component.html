@@ -19,8 +19,6 @@
             <p> <strong>Ubicación:</strong> {{ supervisor.city }} , {{ supervisor.state }} </p>                                                            
             <p> <strong>Dirección:</strong> {{ supervisor.address }} , {{ supervisor.postalCode }} </p>                                                                                                                               
             <p>           
-                <strong>Salario:</strong> {{ supervisor.salary | currency:'MXN':'.2' }} 
-                <br>                        
                 <strong>Fecha de inicio de contrato:</strong> {{ supervisor.contractDateBegin | date:'dd/MM/yyyy'   }}  
                 <br>                        
                 <strong>Fecha de fin de contrato:</strong> {{ supervisor.contractDateExp | date:'dd/MM/yyyy'   }}                         
@@ -68,6 +66,7 @@
                     <mat-icon>playlist_add</mat-icon>
                   </ng-template>
                   <div class="demo-tab-content">
+                      <app-event-form [employee]="supervisor"></app-event-form>
                   </div>  
                 </mat-tab>
              </mat-tab-group>
