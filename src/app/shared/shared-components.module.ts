@@ -6,10 +6,14 @@ import { MaterialElementsModule  } from './material-elements.module';
 import { FloatingButtonComponent } from './floating-button/floating-button.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { EventFormComponent } from './event-form/event-form.component';
+import { BranchesService } from '../branches/branches.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   imports: [
     CommonModule,
-    MaterialElementsModule
+    MaterialElementsModule,
+    FormsModule, 
+    ReactiveFormsModule
   ], 
   declarations: [
     NavigationComponent,
@@ -23,7 +27,8 @@ import { EventFormComponent } from './event-form/event-form.component';
     EventFormComponent
   ],
   providers: [
-    AuthService
+    AuthService,
+    BranchesService
   ]
 })
 export class SharedComponentsModule { }
