@@ -20,7 +20,6 @@ export class PromotersService {
     return this.afs.doc(`promoters/${uid}`).valueChanges();
   }
   public setNewEvent(event: Event, promoter: Promoter){
-    console.log(promoter); 
     this.eventsReference.add(event)
           .then(() =>{
               this.updatePromoterStatus(promoter);

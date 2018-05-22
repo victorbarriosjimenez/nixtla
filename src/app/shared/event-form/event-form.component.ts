@@ -63,7 +63,7 @@ export class EventFormComponent implements OnInit {
         extraHoursSalary: eventModelForm. extraHoursSalaryFormControl as number,
         promoter: this.employee.uid,
     }
-    //this._promotersService.setNewEvent(this.event, this.promoter);
+    this._promotersService.setNewEvent(this.event, this.employee);
   }
   public getListOfBranches( ): void{
     this.branches = this._branchesService.branchesRef.valueChanges();
