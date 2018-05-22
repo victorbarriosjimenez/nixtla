@@ -38,9 +38,7 @@ import { EventFormComponent } from './event-form/event-form.component';
     MatTabsModule,
     MatAutocompleteModule
   ], 
-  declarations: [,
-    EventFormComponent
-],
+  declarations: [ ],
   exports: [
     MatButtonModule,
     MatInputModule,
@@ -54,7 +52,7 @@ import { EventFormComponent } from './event-form/event-form.component';
     MatTableModule,
     MatProgressSpinnerModule,
     MatPaginatorModule,
-    MatTabsModule  ,
+    MatTabsModule,
     MatAutocompleteModule        
    ],
   providers: [

@@ -5,6 +5,7 @@ import { AuthService } from '../auth/authentication.service';
 import { MaterialElementsModule  } from './material-elements.module';
 import { FloatingButtonComponent } from './floating-button/floating-button.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { EventFormComponent } from './event-form/event-form.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -13,11 +14,13 @@ import { NotFoundComponent } from './not-found/not-found.component';
   declarations: [
     NavigationComponent,
     FloatingButtonComponent,
-    NotFoundComponent    
+    NotFoundComponent,
+    EventFormComponent 
   ],
   exports: [
     NavigationComponent,
-    FloatingButtonComponent
+    FloatingButtonComponent,
+    EventFormComponent
   ],
   providers: [
     AuthService

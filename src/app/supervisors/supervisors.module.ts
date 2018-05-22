@@ -9,6 +9,8 @@ import { SupervisorsComponent } from './supervisors/supervisors.component';
 import { SupervisorFormComponent } from './supervisor-form/supervisor-form.component';
 import { AuthGuard } from '../auth/authentication.guard';
 import { MaterialElementsModule } from '../shared/material-elements.module';
+import { CalendarModule } from 'angular-calendar';
+import { DemoUtilsModule } from '../promoters/demo-utils/module';
 @NgModule({
   imports: [
     CommonModule,
@@ -16,7 +18,9 @@ import { MaterialElementsModule } from '../shared/material-elements.module';
     SupervisorsRoutesModule,     
     MaterialElementsModule,
     ReactiveFormsModule,
-    SharedComponentsModule
+    SharedComponentsModule,
+    CalendarModule.forRoot(),
+    DemoUtilsModule    
    ],
   declarations: [
     SupervisorsComponent,
