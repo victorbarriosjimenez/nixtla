@@ -95,7 +95,9 @@ export class BranchFormComponent implements OnInit {
           promotersMin: branchModelForm.promotersMinFormControl as number,
           promotersMax: branchModelForm.promotersMaxFormControl as number,
           coorditatesLat: this.markerLat as number,
-          coordinatesLng: this.markerLng as number
+          coordinatesLng: this.markerLng as number,
+          promoters: 0,
+          supervisors: 0
         }
         this._branchesService.setNewBranch(this.branch);
     }

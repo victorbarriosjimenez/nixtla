@@ -4,6 +4,8 @@ export interface Branch { 
         city?: string;
         state?: string;
         supervisorMin?: number;
+        promoters?: number;
+        supervisors?: number;
         supervisorMax?: number;     
         promotersMin: number;
         promotersMax: number;           
