@@ -19,6 +19,7 @@ import { CommonModule } from '@angular/common';
 import { AuthService } from '../auth/authentication.service';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { EventFormComponent } from './event-form/event-form.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -37,7 +38,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     MatTabsModule,
     MatAutocompleteModule
   ], 
-  declarations: [
+  declarations: [,
+    EventFormComponent
 ],
   exports: [
     MatButtonModule,
