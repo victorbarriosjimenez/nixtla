@@ -4,6 +4,7 @@ export class Event {
     promoter?: string;
     eventDateBegin: Date;
     eventDateExp: Date;
+    status?: string;
     hourWorkdayBegin: string;
     hourWorkdayEnd: string;
 }
