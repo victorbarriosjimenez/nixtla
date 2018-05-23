@@ -56,12 +56,13 @@ export class EventFormComponent implements OnInit {
         hourWorkdayBegin: eventModelForm.hourWorkdayBeginFormControl as string,
         hourWorkdayEnd: eventModelForm.hourWorkdayEndFormControl as string,
         promoter: this.employee.uid,
+        status: true
     }
     if(this.employee.employeeKey === 'promoter'){
       this._promotersService.setNewEvent(this.event, this.employee);    
     }
     else if (this.employee.employeeKey === 'supervisor') {
-      this._supervisorService.setNewEvent(this.event ,this.employee)
+      this._supervisorService.setNewEvent(this.event ,this.employee);
     } 
   }
   public getListOfBranches( ): void{

@@ -8,6 +8,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { EventFormComponent } from './event-form/event-form.component';
 import { BranchesService } from '../branches/branches.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { StatusComponent } from './status/status.component';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -19,12 +21,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NavigationComponent,
     FloatingButtonComponent,
     NotFoundComponent,
-    EventFormComponent 
+    EventFormComponent,
+    StatusComponent
   ],
   exports: [
     NavigationComponent,
     FloatingButtonComponent,
-    EventFormComponent
+    EventFormComponent, 
+    StatusComponent
   ],
   providers: [
     AuthService,

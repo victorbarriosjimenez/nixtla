@@ -7,9 +7,9 @@ import {  Administrator, Promoter , Supervisor } from '../models/user';
 import { Event } from '../models/event';
 @Injectable()
 export class SupervisorsService {
-  private supervisorsReference:   AngularFirestoreCollection<Supervisor> = this.afs.collection<Supervisor>('supervisors');
-  private supervisorRef: AngularFirestoreDocument<Supervisor>;
-  private eventsReference:  AngularFirestoreCollection<Event> = this.afs.collection<Event>('events');      
+  public supervisorsReference:   AngularFirestoreCollection<Supervisor> = this.afs.collection<Supervisor>('supervisors');
+  public supervisorRef: AngularFirestoreDocument<Supervisor>;
+  public eventsReference:  AngularFirestoreCollection<Event> = this.afs.collection<Event>('events');      
   constructor(private afs: AngularFirestore,
               private router: Router) {
   }
@@ -29,5 +29,5 @@ export class SupervisorsService {
         status: false
     }
     return this.supervisorRef.update(data);
-}
+  }
 }
