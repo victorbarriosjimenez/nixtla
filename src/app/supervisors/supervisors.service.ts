@@ -4,6 +4,7 @@ import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection 
 import { Observable } from 'rxjs/Observable';
 import * as firebase from 'firebase/app';
 import {  Administrator, Promoter , Supervisor } from '../models/user';
+import { Event } from '../models/event';
 @Injectable()
 export class SupervisorsService {
   private supervisorsReference:   AngularFirestoreCollection<Supervisor> = this.afs.collection<Supervisor>('supervisors');
