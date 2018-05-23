@@ -43,11 +43,11 @@ export class EventFormComponent implements OnInit {
         branchFormControl: ['', Validators.required],
         eventDateBeginFormControl: ['',Validators.required],
         eventDateExpFormControl: ['',Validators.required],
-        hourWorkdayBeginFormControl: ['',Validators.required],
-        hourWorkdayEndFormControl: ['',Validators.required]                                     
+        hourWorkdayBeginFormControl: [''],
+        hourWorkdayEndFormControl: ['']                                     
     })
   }
-  public setNewPromoterEvent(): void {
+  public setNewEmployeeEvent(): void {
     const eventModelForm = this.eventForm.value;
     this.event = {
         branch: eventModelForm.branchFormControl as string,
@@ -57,7 +57,12 @@ export class EventFormComponent implements OnInit {
         hourWorkdayEnd: eventModelForm.hourWorkdayEndFormControl as string,
         promoter: this.employee.uid,
     }
-    this._promotersService.setNewEvent(this.event, this.employee);
+    if(this.employee.employeeKey === 'promoter'){
+      this._promotersService.setNewEvent(this.event, this.employee);    
+    }
+    else if (this.employee.employeeKey === 'supervisor') {
+      this._supervisorService.setNewEvent(this.event,this.employee)
+    } 
   }
   public getListOfBranches( ): void{
     this.branches = this._branchesService.branchesRef.valueChanges();

@@ -6,11 +6,27 @@ import * as firebase from 'firebase/app';
 import {  Administrator, Promoter , Supervisor } from '../models/user';
 @Injectable()
 export class SupervisorsService {
-  supervisorsReference:   AngularFirestoreCollection<Supervisor> = this.afs.collection<Supervisor>('supervisors');
+  private supervisorsReference:   AngularFirestoreCollection<Supervisor> = this.afs.collection<Supervisor>('supervisors');
+  private supervisorRef: AngularFirestoreDocument<Supervisor>;
+  private eventsReference:  AngularFirestoreCollection<Event> = this.afs.collection<Event>('events');      
   constructor(private afs: AngularFirestore,
               private router: Router) {
   }
-  getSupervisor(uid: string): Observable<any> {
+  public getSupervisor(uid: string): Observable<any> {
     return this.afs.doc(`supervisors/${uid}`).valueChanges();
   }
+  public setNewEvent(event: Event, supervisor: Supervisor){
+    this.eventsReference.add(event)
+    .then(() =>{
+        this.updatePromoterStatus(supervisor);
+        this.router.navigate(['/']);
+    });
+  }
+  public updatePromoterStatus(supervisor: Supervisor) {
+    this.supervisorRef = this.afs.doc(`supervisors/${supervisor.uid}`);
+    const data = {
+        status: false
+    }
+    return this.supervisorRef.update(data);
+}
 }
