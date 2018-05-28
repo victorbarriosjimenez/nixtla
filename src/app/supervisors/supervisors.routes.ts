@@ -5,9 +5,9 @@ import { AuthGuard } from '../auth/authentication.guard';
 import { SupervisorFormComponent } from './supervisor-form/supervisor-form.component';
 import { SupervisorDetailsComponent } from './supervisor-details/supervisor-details.component';
 const supervisorsRoutes: Routes = [  
-    { path: 'supervisors' , component: SupervisorsComponent, canActivate: [AuthGuard] },
-    { path: 'supervisors/:uid', component: SupervisorDetailsComponent, canActivate: [AuthGuard] },
-    { path: 'new-employee' , component: SupervisorFormComponent, canActivate: [AuthGuard] }    
+    { path: 'supervisors' , component: SupervisorsComponent, canActivate: [AuthGuard], data: { animation: 'settings' } },
+    { path: 'supervisors/:uid', component: SupervisorDetailsComponent, canActivate: [AuthGuard], data: { animation: 'settings' } },
+    { path: 'new-employee' , component: SupervisorFormComponent, canActivate: [AuthGuard], data: { animation: 'settings' } }    
 ];
 @NgModule({
   imports: [

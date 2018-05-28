@@ -11,8 +11,8 @@ import { NotFoundComponent } from './shared/not-found/not-found.component';
 const appRoutes: Routes = [  
   { path: '', component: HomeComponent, canActivate: [AuthGuard]},  
   { path: 'settings', component: SettingsComponent, canActivate: [AuthGuard], data: { animation: 'settings' } },  
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent }
+  { path: 'login', component: LoginComponent, data: { animation: 'login' } },
+  { path: 'register', component: RegisterComponent, data: { animation: 'login' } }
 ];
 @NgModule({
   imports: [

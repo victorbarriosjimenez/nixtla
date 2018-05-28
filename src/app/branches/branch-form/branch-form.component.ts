@@ -94,7 +94,7 @@ export class BranchFormComponent implements OnInit {
           supervisorMax: branchModelForm.supervisorMaxFormControl as number,     
           promotersMin: branchModelForm.promotersMinFormControl as number,
           promotersMax: branchModelForm.promotersMaxFormControl as number,
-          coorditatesLat: this.markerLat as number,
+          coordinatesLat: this.markerLat as number,
           coordinatesLng: this.markerLng as number,
           promoters: 0,
           supervisors: 0
