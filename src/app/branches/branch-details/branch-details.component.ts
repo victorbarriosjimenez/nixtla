@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { BranchesService } from '../branches.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Branch } from '../../models/branch';
 @Component({
   selector: 'app-branch-details',
@@ -9,8 +10,10 @@ import { Branch } from '../../models/branch';
 })
 export class BranchDetailsComponent implements OnInit {
   branch: any; 
+  branchDayOffForm: FormGroup;
   constructor(private route: ActivatedRoute,
               private router: Router,
+              private _fb: FormBuilder,
               private _branchesService: BranchesService) { 
   }
   ngOnInit() {
@@ -20,5 +23,10 @@ export class BranchDetailsComponent implements OnInit {
     const uid = this.route.snapshot.paramMap.get('uid');
     this._branchesService.getBranch(uid)
       .subscribe(sup => this.branch = sup);
+  }
+  public createForm(){
+    this.branchDayOffForm = this._fb.group({
+      dayOffDate: ['', Validators.required]
+    }); 
   }
 }
