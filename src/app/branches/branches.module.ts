@@ -30,6 +30,9 @@ import { AgmCoreModule } from '@agm/core';
   providers: [ 
     AuthGuard,
     BranchesService
+  ],
+  exports: [
+    BranchFormComponent
   ]
 })
 export class BranchesModule { }

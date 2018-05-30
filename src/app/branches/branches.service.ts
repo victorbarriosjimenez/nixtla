@@ -35,7 +35,10 @@ export class BranchesService {
     return this.afs.collection<dayOff>(`branches/${uid}/daysOff`).valueChanges();
   }
   public deleteDayOffFromList(dayOff: dayOff){
-    return this.afs.doc(`branches/${dayOff.branchUid}/${dayOff.uid}`)
+    return this.afs.collection('branches')
+                   .doc(dayOff.branchUid)
+                   .collection('daysOff')
+                   .doc(dayOff.uid)
                    .delete();
   }
 }

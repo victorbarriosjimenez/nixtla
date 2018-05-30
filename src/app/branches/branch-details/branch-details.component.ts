@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { BranchesService, dayOff } from '../branches.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';

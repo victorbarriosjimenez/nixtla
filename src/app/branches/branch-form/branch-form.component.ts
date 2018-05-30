@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
+import { Component, OnInit, OnChanges, Input } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { BranchesService } from '../branches.service';
 import * as moment from 'moment';
@@ -10,6 +10,7 @@ import { stateGroups } from '../../models/user';
   styleUrls: ['./branch-form.component.css']
 })
 export class BranchFormComponent implements OnInit {
+  @Input('branch-data') branchEditable: Branch;
   public branchForm: FormGroup;
   public hasMarked: boolean = false;
   public showMapError: boolean = false;
