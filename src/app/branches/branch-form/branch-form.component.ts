@@ -36,7 +36,7 @@ export class BranchFormComponent implements OnInit {
   ];
   constructor(private _formBuilder: FormBuilder,private _branchesService: BranchesService) { }
   ngOnInit() { 
-    this.createForm()
+    this.createForm();
   }
   public createForm( ): void {
     this.branchForm =  this._formBuilder.group({
