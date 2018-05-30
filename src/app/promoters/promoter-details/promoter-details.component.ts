@@ -15,6 +15,7 @@ import { Observable } from 'rxjs/Observable';
 import { BranchesService } from '../../branches/branches.service';
 import { Branch } from '../../models/branch';
 import { Event } from '../../models/event';
+import { Workday } from '../../models/workday';
 import * as moment from 'moment';
 const colors: any = {
   red: {
@@ -39,9 +40,17 @@ export class PromoterDetailsComponent implements OnInit {
   public event: Event;
   public branches: Observable<Branch[]>;
   view: string = 'month';
+  workdays;
   promoter: Promoter;
   viewDate: Date = new Date();
-  events: CalendarEvent[] = [];
+  public events: CalendarEvent[] = [
+    {
+      title: 'Event 1',
+      color: colors.yellow,
+      start: new Date(),
+      end: new Date(),
+    }
+  ];
   period: CalendarViewPeriod;
   constructor(private route: ActivatedRoute,
           private router: Router,
@@ -66,7 +75,17 @@ export class PromoterDetailsComponent implements OnInit {
   private getPromoter(): void {
     const uid = this.route.snapshot.paramMap.get('uid');
     this._promotersService.getPromoter(uid)
-      .subscribe(sup => this.promoter = sup);
+      .subscribe(sup =>{ this.promoter = sup });
+    this.getPromoterWorkdays(uid);
+  }
+  private getPromoterWorkdays(uid: string){
+    this._promotersService.getPromoterWordkdays(uid)
+        .subscribe((workdays: Workday[]) => {  
+            this.formatWorkdaysAsEvents(workdays);
+        });
+  } 
+  public formatWorkdaysAsEvents(workdays: Workday[]){
+    this.workdays
   }
 
 }       

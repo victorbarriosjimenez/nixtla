@@ -5,6 +5,7 @@ import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection 
 import { Observable } from 'rxjs/Observable';
 import * as firebase from 'firebase/app';
 import {  Administrator, Promoter , Supervisor } from '../models/user';
+import { Workday } from '../models/workday';
 import { Event } from '../models/event';
 import { getMatIconFailedToSanitizeError } from '@angular/material';
 @Injectable()
@@ -33,7 +34,8 @@ export class PromotersService {
       }
       return this.promoterRef.update(data);
   }
-  public getPromoterWordkdays(){
-      
+  public getPromoterWordkdays(promoterUid: string) {
+    return this.afs.collection('workdays', ref => ref.where('promoter','==',promoterUid))
+                   .valueChanges();
   }
 }
