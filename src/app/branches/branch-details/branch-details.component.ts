@@ -26,7 +26,13 @@ export class BranchDetailsComponent implements OnInit {
   }
   public createForm(){
     this.branchDayOffForm = this._fb.group({
-      dayOffDate: ['', Validators.required]
+      dayOffDateFormControl: ['', Validators.required]
     }); 
+  }
+  public addNewDayOff() {
+
+  }
+  public getListOfDaysOff(){
+
   }
 }

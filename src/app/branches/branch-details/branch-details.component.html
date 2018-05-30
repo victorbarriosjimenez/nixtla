@@ -27,6 +27,23 @@
                     <mat-icon>perm_contact_calendar</mat-icon>
                   </ng-template>
                   <div class="demo-tab-content">
+                    <form class="full-width" style="display:flex;">
+                        <mat-form-field  style="width: 90%">
+                            <input   
+                                matInput 
+                                [matDatepicker]="picker" 
+                                placeholder="Fecha del día feriado"
+                                formControlName="dayOffDateFormControl"
+                                disabled>
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker  #picker disabled="false"></mat-datepicker>
+                         </mat-form-field>
+                         <button class="add-button" mat-icon-button color="primary">
+                            <mat-icon aria-label="button">
+                              add
+                            </mat-icon>
+                          </button>
+                    </form>
                   </div>  
               </mat-tab>
               <mat-tab label="Editar">
