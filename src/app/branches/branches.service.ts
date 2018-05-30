@@ -5,6 +5,11 @@ import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection 
 import { Observable } from 'rxjs/Observable';
 import * as firebase from 'firebase/app';
 import { Branch } from '../models/branch';
+export interface dayOff {
+    branchUid: string,
+    uid?: string,
+    dayOffDate: Date
+} 
 @Injectable()
 export class BranchesService {
   branchesRef: AngularFirestoreCollection<Branch> = this.afs.collection<Branch>('branches'); 
@@ -19,6 +24,19 @@ export class BranchesService {
   }
   public getBranch(uid: string) {
     return this.afs.doc(`branches/${uid}`).valueChanges();    
+  }
+  public setNewDayOff(data: dayOff) {
+      let branchDaysOffRef = this.afs.collection<dayOff>(`branches/${data.branchUid}/daysOff`);
+      let uid = this.afs.createId();
+      data.uid = uid
+      return branchDaysOffRef.doc(uid).set(data);
+  }
+  public getListOfDaysOff(uid: string){
+    return this.afs.collection<dayOff>(`branches/${uid}/daysOff`).valueChanges();
+  }
+  public deleteDayOffFromList(dayOff: dayOff){
+    return this.afs.doc(`branches/${dayOff.branchUid}/${dayOff.uid}`)
+                   .delete();
   }
 }
 

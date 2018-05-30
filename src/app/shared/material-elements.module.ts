@@ -12,7 +12,8 @@ import {
           MatTableModule,
           MatProgressSpinnerModule,
           MatPaginatorModule,
-          MatTabsModule
+          MatTabsModule,
+          MatCardModule
         } 
         from '@angular/material';
 import { CommonModule } from '@angular/common';
@@ -36,7 +37,8 @@ import { EventFormComponent } from './event-form/event-form.component';
     MatProgressSpinnerModule,
     MatPaginatorModule,
     MatTabsModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatCardModule
   ], 
   declarations: [ ],
   exports: [
@@ -53,7 +55,8 @@ import { EventFormComponent } from './event-form/event-form.component';
     MatProgressSpinnerModule,
     MatPaginatorModule,
     MatTabsModule,
-    MatAutocompleteModule        
+    MatAutocompleteModule,
+    MatCardModule        
    ],
   providers: [
     AuthService

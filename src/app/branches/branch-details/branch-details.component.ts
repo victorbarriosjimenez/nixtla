@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { BranchesService } from '../branches.service';
+import { BranchesService, dayOff } from '../branches.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Branch } from '../../models/branch';
 @Component({
@@ -10,6 +10,8 @@ import { Branch } from '../../models/branch';
 })
 export class BranchDetailsComponent implements OnInit {
   branch: any; 
+  dayOfFormModel;
+  daysOff: dayOff[];
   branchDayOffForm: FormGroup;
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -18,21 +20,36 @@ export class BranchDetailsComponent implements OnInit {
   }
   ngOnInit() {
     this.getSupervisorDetails();
+    this.createForm();
   }
   public getSupervisorDetails(){
     const uid = this.route.snapshot.paramMap.get('uid');
     this._branchesService.getBranch(uid)
-      .subscribe(sup => this.branch = sup);
+      .subscribe(sup =>{ 
+        this.branch = sup
+        this.getDaysOff(this.branch.uid);
+      });
   }
   public createForm(){
     this.branchDayOffForm = this._fb.group({
       dayOffDateFormControl: ['', Validators.required]
-    }); 
+    }) 
   }
-  public addNewDayOff() {
-
+  public addNewDayOf() {
+    const dayOffModelForm = this.branchDayOffForm.value;
+    const dayOffModel = {
+      branchUid: this.branch.uid,
+      dayOffDate: dayOffModelForm.dayOffDateFormControl
+    }
+    this._branchesService.setNewDayOff(dayOffModel);
   }
-  public getListOfDaysOff(){
-
+  public getDaysOff(uid: string){
+    this._branchesService.getListOfDaysOff(uid)
+        .subscribe(days => {
+            this.daysOff = days
+        });
+  }
+  public deleteDayOff(dayOff: dayOff) {
+    this._branchesService.deleteDayOffFromList(dayOff);
   }
 }
