@@ -41,5 +41,17 @@ export class BranchesService {
                    .doc(dayOff.uid)
                    .delete();
   }
+  public editBranch(branch: Branch, branchUid: string){
+    return this.afs.collection('branches')
+                   .doc(branchUid)
+                   .update(branch)
+                   .then(() => this.router.navigate(['/branches']));
+  }
+  public deleteBranch(branch: Branch,uid: string){
+    return this.afs.collection('branches')
+                   .doc(uid)
+                   .delete()
+                   .then(() => this.router.navigate(['/branches']));
+  }
 }
 

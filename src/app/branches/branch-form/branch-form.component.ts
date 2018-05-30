@@ -14,6 +14,7 @@ export class BranchFormComponent implements OnInit {
   public branchForm: FormGroup;
   public hasMarked: boolean = false;
   public showMapError: boolean = false;
+  public text = "Crear sucursal"
   public markerLat: number;
   public kaka = "inactivo";
   public branch: Branch; 
@@ -21,6 +22,7 @@ export class BranchFormComponent implements OnInit {
   public lat: number = 19.5015841;
   public lng: number = -99.4042516;
   public stateGroups = stateGroups;
+  public branchEditionEnabled: boolean = false;
   public openSchedules = [
         { sched: '9:00 AM', valueTime: '9:00:00' },
         { sched: '10:00 AM', valueTime: '10:00:00' },
@@ -37,7 +39,13 @@ export class BranchFormComponent implements OnInit {
   ];
   constructor(private _formBuilder: FormBuilder,private _branchesService: BranchesService) { }
   ngOnInit() { 
-    this.createForm();
+    this.createForm();        
+    if(this.branchEditable){
+      this.branchEditionEnabled = true;
+      this.hasMarked = true;      
+      this.text = "Editar sucursal"; 
+      this.initializeDataIfBranchExists();
+    }
   }
   public createForm( ): void {
     this.branchForm =  this._formBuilder.group({
@@ -96,10 +104,36 @@ export class BranchFormComponent implements OnInit {
           promoters: 0,
           supervisors: 0
         }
-        this._branchesService.setNewBranch(this.branch);
+        this.branchEditionEnabled ? this._branchesService.editBranch(this.branch,this.branchEditable.uid) : this._branchesService.setNewBranch(this.branch);
     }
     else if(this.branchForm.valid && !this.hasMarked){
         this.showMapError = true
     }
+    
+  }
+  public initializeDataIfBranchExists() {
+    this.branchForm.setValue({
+      nameFormControl: this.branchEditable.name,
+      cityFormControl:   this.branchEditable.city,
+      stateFormControl: this.branchEditable.state,
+      supervisorMinFormControl: this.branchEditable.supervisorMin,
+      supervisorMaxFormControl: this.branchEditable.supervisorMax,     
+      promotersMinFormControl: this.branchEditable.promotersMin,
+      promotersMaxFormControl: this.branchEditable.promotersMax,           
+      address1FormControl: this.branchEditable.address1,     
+      address2FormControl: this.branchEditable.address2,
+      postalCodeFormControl: this.branchEditable.postalCode,
+      contactFormControl: this.branchEditable.contact,
+      contactEmailFormControl: this.branchEditable.contactEmail,     
+      scheduleMonFriOpenFormControl: this.branchEditable.scheduleMonFriOpen, 
+      scheduleMonFriCloseFormControl: this.branchEditable.scheduleMonFriClose,         
+      scheduleSatOpenFormControl: this.branchEditable.scheduleSatOpen,
+      scheduleSatCloseFormControl: this.branchEditable.scheduleSatClose,                
+      detailsFormControl: this.branchEditable.details,
+      imageFormControl: this.branchEditable.image,
+      extraHoursFormControl: this.branchEditable.extraHours
+    });
+    this.markerLat = this.branchEditable.coordinatesLat;
+    this.markerLng = this.branchEditable.coordinatesLng;
   }
 }
