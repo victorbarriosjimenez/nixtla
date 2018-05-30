@@ -7,10 +7,21 @@ import { Supervisor, Promoter } from '../../models/user';
 import {
   CalendarEvent,
   CalendarViewPeriod,
+  CalendarEventAction,
   CalendarMonthViewBeforeRenderEvent,
   CalendarWeekViewBeforeRenderEvent,
   CalendarDayViewBeforeRenderEvent
 } from 'angular-calendar';
+import {
+  startOfDay,
+  endOfDay,
+  subDays,
+  addDays,
+  endOfMonth,
+  isSameDay,
+  isSameMonth,
+  addHours
+} from 'date-fns'
 import { Observable } from 'rxjs/Observable';
 import { BranchesService } from '../../branches/branches.service';
 import { Branch } from '../../models/branch';
@@ -43,15 +54,9 @@ export class PromoterDetailsComponent implements OnInit {
   workdays;
   promoter: Promoter;
   viewDate: Date = new Date();
-  public events: CalendarEvent[] = [
-    {
-      title: 'Event 1',
-      color: colors.yellow,
-      start: new Date(),
-      end: new Date(),
-    }
-  ];
+  public events: CalendarEvent[] = [ ];
   period: CalendarViewPeriod;
+  activeDayIsOpen: boolean = false;
   constructor(private route: ActivatedRoute,
           private router: Router,
           private location: Location,
@@ -72,20 +77,30 @@ export class PromoterDetailsComponent implements OnInit {
   ngOnInit() {
      this.getPromoter();
   }
+  dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
+    if (isSameMonth(date, this.viewDate)) {
+      if (
+        (isSameDay(this.viewDate, date) && this.activeDayIsOpen === true) ||
+        events.length === 0
+      ) {
+        this.activeDayIsOpen = false;
+      } else {
+        this.activeDayIsOpen = true;
+        this.viewDate = date;
+      }
+    }
+  }
+  
   private getPromoter(): void {
     const uid = this.route.snapshot.paramMap.get('uid');
     this._promotersService.getPromoter(uid)
       .subscribe(sup =>{ this.promoter = sup });
-    this.getPromoterWorkdays(uid);
+    this.getListOfCalendarEvents(uid);
   }
-  private getPromoterWorkdays(uid: string){
+  public getListOfCalendarEvents(uid: string){
     this._promotersService.getPromoterWordkdays(uid)
-        .subscribe((workdays: Workday[]) => {  
-            this.formatWorkdaysAsEvents(workdays);
-        });
-  } 
-  public formatWorkdaysAsEvents(workdays: Workday[]){
-    this.workdays
+        .subscribe(calendarEvents => {
+            this.events = calendarEvents;
+        })
   }
-
 }       

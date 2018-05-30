@@ -8,6 +8,7 @@ import {  Administrator, Promoter , Supervisor } from '../models/user';
 import { Workday } from '../models/workday';
 import { Event } from '../models/event';
 import { getMatIconFailedToSanitizeError } from '@angular/material';
+import { CalendarEvent } from 'calendar-utils';
 @Injectable()
 export class PromotersService {
   public promotersReference:  AngularFirestoreCollection<Promoter> = this.afs.collection<Promoter>('promoters');  
@@ -35,7 +36,7 @@ export class PromotersService {
       return this.promoterRef.update(data);
   }
   public getPromoterWordkdays(promoterUid: string) {
-    return this.afs.collection('workdays', ref => ref.where('promoter','==',promoterUid))
+    return this.afs.collection<CalendarEvent>('calendar_events', ref => ref.where('promoter','==',promoterUid))
                    .valueChanges();
   }
 }
