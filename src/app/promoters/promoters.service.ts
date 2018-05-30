@@ -11,7 +11,7 @@ import { getMatIconFailedToSanitizeError } from '@angular/material';
 export class PromotersService {
   public promotersReference:  AngularFirestoreCollection<Promoter> = this.afs.collection<Promoter>('promoters');  
   public promoterRef: AngularFirestoreDocument<Promoter>;
-  public eventsReference:  AngularFirestoreCollection<Event> = this.afs.collection<Event>('events');    
+  public eventsReference:  AngularFirestoreCollection<Event> = this.afs.collection<Event>('events'); 
   constructor(private afAuth: AngularFireAuth,
               private afs: AngularFirestore,
               private router: Router) {
@@ -32,5 +32,8 @@ export class PromotersService {
           status: false
       }
       return this.promoterRef.update(data);
+  }
+  public getPromoterWordkdays(){
+      
   }
 }

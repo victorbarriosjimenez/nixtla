@@ -15,6 +15,7 @@ import { Observable } from 'rxjs/Observable';
 import { BranchesService } from '../../branches/branches.service';
 import { Branch } from '../../models/branch';
 import { Event } from '../../models/event';
+import * as moment from 'moment';
 const colors: any = {
   red: {
     primary: '#ad2121',
@@ -40,13 +41,7 @@ export class PromoterDetailsComponent implements OnInit {
   view: string = 'month';
   promoter: Promoter;
   viewDate: Date = new Date();
-  events: CalendarEvent[] = [
-    {
-      title: 'Event 1',
-      color: colors.yellow,
-      start: new Date()
-    }
-  ];
+  events: CalendarEvent[] = [];
   period: CalendarViewPeriod;
   constructor(private route: ActivatedRoute,
           private router: Router,
@@ -73,4 +68,5 @@ export class PromoterDetailsComponent implements OnInit {
     this._promotersService.getPromoter(uid)
       .subscribe(sup => this.promoter = sup);
   }
+
 }       
