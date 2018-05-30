@@ -11,8 +11,7 @@ export class BranchDetailsComponent implements OnInit {
   branch: any; 
   constructor(private route: ActivatedRoute,
               private router: Router,
-              private _branchesService: BranchesService
-  ) { 
+              private _branchesService: BranchesService) { 
   }
   ngOnInit() {
     this.getSupervisorDetails();
