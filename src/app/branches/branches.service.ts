@@ -6,7 +6,8 @@ import { Observable } from 'rxjs/Observable';
 import * as firebase from 'firebase/app';
 import { Branch } from '../models/branch';
 export interface dayOff {
-    branchUid: string,
+    branchUid?: string,
+    promoterUid?: string;
     uid?: string,
     dayOffDate: Date
 } 
@@ -16,7 +17,7 @@ export class BranchesService {
   constructor(private afAuth: AngularFireAuth,
               private afs: AngularFirestore,
               private router: Router) {  }
-  public setNewBranch(branch: Branch){ 
+  public setNewBranch(branch: Branch) { 
     const uid: string = this.afs.createId();
     branch.uid = uid
     this.branchesRef.doc(uid).set(branch)

@@ -9,6 +9,7 @@ import { Workday } from '../models/workday';
 import { Event } from '../models/event';
 import { getMatIconFailedToSanitizeError } from '@angular/material';
 import { CalendarEvent } from 'calendar-utils';
+import { dayOff } from '../branches/branches.service';
 @Injectable()
 export class PromotersService {
   public promotersReference:  AngularFirestoreCollection<Promoter> = this.afs.collection<Promoter>('promoters');  
@@ -38,5 +39,27 @@ export class PromotersService {
   public getPromoterWordkdays(promoterUid: string) {
     return this.afs.collection<CalendarEvent>('calendar_events', ref => ref.where('promoter','==',promoterUid))
                    .valueChanges();
+  }
+  public deletePromoter(promoter: Promoter,uid: string){
+    return this.afs.collection('branches')
+                   .doc(uid)
+                   .delete()
+                   .then(() => this.router.navigate(['/branches']));
+  }
+  public getListOfDaysOff(uid: string){
+    return this.afs.collection<dayOff>(`promoters/${uid}/daysOff`).valueChanges();
+  }
+  public setNewDayOff(data: dayOff) {
+    let promoterDaysOffRef = this.afs.collection<dayOff>(`promoters/${data.promoterUid}/daysOff`);
+    let uid = this.afs.createId();
+    data.uid = uid
+    return promoterDaysOffRef.doc(uid).set(data);
+  }
+  public deleteDayOffFromList(dayOff: dayOff){
+    return this.afs.collection('promoters')
+                   .doc(dayOff.promoterUid)
+                   .collection('daysOff')
+                   .doc(dayOff.uid)
+                   .delete();
   }
 }

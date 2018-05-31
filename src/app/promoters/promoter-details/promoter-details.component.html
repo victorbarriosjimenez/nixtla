@@ -25,7 +25,7 @@
               <mat-tab-group class="demo-tab-group">
                     <mat-tab label="Tab 1">
                       <ng-template mat-tab-label>
-                        <mat-icon>perm_contact_calendar</mat-icon>
+                        <mat-icon>calendar_today</mat-icon>
                       </ng-template>
                       <div class="demo-tab-content">
                             <mwl-demo-utils-calendar-header
@@ -59,7 +59,39 @@
                             </div>
                     </div>
                     </mat-tab>
-                    <mat-tab label="Tab 2" [disabled]="!promoter.status">
+                    <mat-tab label="Tab 2">
+                        <ng-template mat-tab-label>
+                          <mat-icon>perm_contact_calendar</mat-icon>
+                        </ng-template>
+                        <div class="demo-tab-content">
+                            <form [formGroup]="branchDayOffForm" 
+                            class="full-width" style="display:flex;"
+                            (ngSubmit)="addNewDayOf()">
+                          <mat-form-field  style="width: 85%">
+                              <input   
+                                  matInput 
+                                  [matDatepicker]="picker" 
+                                  placeholder="Fecha del día feriado"
+                                  formControlName="dayOffDateFormControl"
+                                  disabled>
+                              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                              <mat-datepicker  #picker disabled="false"></mat-datepicker>
+                           </mat-form-field>
+                           <button  [disabled]="!branchDayOffForm.valid" type="submit" class="add-button" mat-mini-fab color="primary">
+                              <mat-icon aria-label="button">
+                                add
+                              </mat-icon>
+                            </button>
+                      </form>
+                      <mat-card *ngFor="let dayOff of daysOff">
+                          <mat-icon>calendar_today</mat-icon>   <span style="margin-left:15px; margin-top:-20px;">{{ dayOff.dayOffDate | date:'longDate' }}</span>
+                          <button (click)="deleteDayOff(dayOff)" style="float:right; position: relative; margin-left:50px;" mat-icon-button color="warn">
+                            <mat-icon aria-label="Example icon-button with a heart icon">delete</mat-icon>
+                          </button>
+                      </mat-card>
+                        </div>  
+                      </mat-tab>
+                    <mat-tab label="Tab 2">
                       <ng-template mat-tab-label>
                         <mat-icon>playlist_add</mat-icon>
                       </ng-template>
