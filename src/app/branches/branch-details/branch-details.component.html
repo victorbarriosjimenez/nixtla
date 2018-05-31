@@ -23,7 +23,7 @@
                     <form [formGroup]="branchDayOffForm" 
                           class="full-width" style="display:flex;"
                           (ngSubmit)="addNewDayOf()">
-                        <mat-form-field  style="width: 90%">
+                        <mat-form-field  style="width: 85%">
                             <input   
                                 matInput 
                                 [matDatepicker]="picker" 
@@ -33,7 +33,7 @@
                             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                             <mat-datepicker  #picker disabled="false"></mat-datepicker>
                          </mat-form-field>
-                         <button  [disabled]="!branchDayOffForm.valid" type="submit" class="add-button" mat-icon-button color="primary">
+                         <button  [disabled]="!branchDayOffForm.valid" type="submit" class="add-button" mat-mini-fab color="primary">
                             <mat-icon aria-label="button">
                               add
                             </mat-icon>
@@ -41,7 +41,7 @@
                     </form>
                     <mat-card *ngFor="let dayOff of daysOff">
                         <mat-icon>calendar_today</mat-icon>   <span style="margin-left:15px; margin-top:-20px;">{{ dayOff.dayOffDate | date:'longDate' }}</span>
-                        <button (click)="deleteDayOff(dayOff)" style="float:right; position: relative;" mat-icon-button color="warn">
+                        <button (click)="deleteDayOff(dayOff)" style="float:right; position: relative; margin-left:50px;" mat-icon-button color="warn">
                           <mat-icon aria-label="Example icon-button with a heart icon">delete</mat-icon>
                         </button>
                     </mat-card>
@@ -60,6 +60,9 @@
                     <mat-icon>delete</mat-icon>
                   </ng-template>
                   <div class="demo-tab-content">
+                    <button (click)="deleteBranch()" mat-button color="warn">
+                       ELIMINAR SUCURSAL
+                    </button>
                   </div>  
               </mat-tab> 
         </mat-tab-group>
