@@ -59,6 +59,22 @@
                             </div>
                     </div>
                     </mat-tab>
+                    <mat-tab label="Eventos">
+                      <ng-template mat-tab-label>
+                        <mat-icon>apps</mat-icon>
+                      </ng-template>
+                      <div class="demo-tab-content">
+                        <div *ngIf="eventsWork">
+                              <mat-card *ngFor="let eventWork of eventsWork | async">
+                               <mat-icon>perm_contact_calendar</mat-icon>  {{ eventWork.eventDateBegin | date:'shortDate' }} A {{ eventWork.eventDateExp | date:'shortDate' }}
+                               <mat-icon>timer</mat-icon>  {{ eventWork.hourWorkdayBegin }} - {{ eventWork.hourWorkdayEnd }}
+                               <button mat-icon-button>
+                                  <mat-icon [ngStyle]="{ 'color': eventWork.status ? 'green': 'red'}" aria-label="Status">grid_off</mat-icon>
+                              </button>
+                              </mat-card>
+                        </div>
+                      </div>  
+                    </mat-tab>
                     <mat-tab label="Tab 2">
                         <ng-template mat-tab-label>
                           <mat-icon>perm_contact_calendar</mat-icon>
@@ -98,6 +114,14 @@
                       <div class="demo-tab-content">
                         <app-event-form [employee]="promoter"></app-event-form>
                       </div>  
+                    </mat-tab>
+                    <mat-tab label="Reportes">
+                        <ng-template mat-tab-label>
+                          <mat-icon>warning</mat-icon>
+                        </ng-template>
+                        <div class="demo-tab-content">
+                         
+                        </div>  
                     </mat-tab>
               </mat-tab-group>
         </div>

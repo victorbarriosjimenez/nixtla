@@ -62,4 +62,8 @@ export class PromotersService {
                    .doc(dayOff.uid)
                    .delete();
   }
+  public getAllEvents(uid: string){
+    return this.afs.collection<Event>('events', ref => ref.where('promoter','==',uid,)).valueChanges();
+  }
+  
 }

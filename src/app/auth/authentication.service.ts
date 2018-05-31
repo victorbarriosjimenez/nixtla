@@ -144,4 +144,7 @@ export class AuthService {
     this.afAuth.auth.signOut();
     this.router.navigate(['/login']);
   }
+  get authUid(): string { 
+		return this.authState.uid
+	}
 }

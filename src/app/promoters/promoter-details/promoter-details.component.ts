@@ -52,6 +52,7 @@ export class PromoterDetailsComponent implements OnInit {
   public event: Event;
   public branches: Observable<Branch[]>;
   view: string = 'month';
+  eventsWork: Observable<Event[]>;
   workdays;
   promoter: Promoter;
   viewDate: Date = new Date();
@@ -102,6 +103,7 @@ export class PromoterDetailsComponent implements OnInit {
       .subscribe(sup =>{ 
         this.promoter = sup,
         this.getDaysOff(sup.uid)
+        this.eventsWork = this._promotersService.getAllEvents(sup.uid);
        });
     this.getListOfCalendarEvents(uid);
   }
